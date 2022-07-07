@@ -23,7 +23,7 @@ class Blockchain:
             else:
                 print('Wallet has insufficient balance!')
         except(NameError):
-            print('Wallet does not exist!')
+            print('Wallet does not exist!') #Try except doesnt work
 
 
     def addBlock(self):
