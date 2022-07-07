@@ -5,6 +5,7 @@ class Wallet:
         self.sent = 0
         self.recieved = 0
         self.balance = self.getBalance()
+        self.futureBalance = self.balance
 
     def generateKeys():
         pass
@@ -18,6 +19,7 @@ class godWallet:
         self.sent = 0
         self.recieved = 0
         self.balance = balance
+        self.futureBalance = balance
 
     def getBalance(self):
         pass
