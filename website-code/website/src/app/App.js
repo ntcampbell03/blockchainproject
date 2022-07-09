@@ -1,5 +1,5 @@
 import './App.css';
-import { Hero, Overlay, Video } from '../styles';
+import { Overlay, Video } from '../styles';
 import { useRef, useEffect } from 'react';
 function App() {
   const vidRef=useRef();
