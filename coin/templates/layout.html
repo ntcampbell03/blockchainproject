@@ -4,20 +4,28 @@
         <meta charset="utf-8" />
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='site.css')}}" />
+        <script type="text/javascript" src="https://livejs.com/live.js"></script>
     </head>
 
     <body>
-        <div class="navbar">
-            <a href="{{ url_for('home') }}" class="navbar-brand">Home</a>
+        <div class="overlay">
+            <video class="bgvideo" src="https://i.imgur.com/KEnwbfZ.mp4" muted autoPlay loop >
         </div>
 
-        <div class="body-content">
+        <div class="sidenav">
+            <a href="{{ url_for('home') }}" class="navbar-brand">HOME</a>
+            <a href="{{ url_for('blockchain') }}" class="navbar-brand">BLOCKS</a>
+            <a href="{{ url_for('mine') }}" class="navbar-brand">MINE</a>
+        </div>
+
+
+        <!-- <div class="body-content">
             {% block content %}
             {% endblock %}
             <hr/>
             <footer>
                 <p>© 2022</p>
             </footer>
-        </div>
+        </div> -->
     </body>
 </html>

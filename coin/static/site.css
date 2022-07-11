@@ -1,20 +1,68 @@
+@font-face{
+    font-family: cyber;
+    src: url('./assets/SYNNova-Bold.otf');
+    font-weight: bold;
+}
+
+.overlay {
+    opacity: 85%;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    position: fixed;
+}
+
+.bgvideo {
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: -2;
+}
+
 .navbar {
-    background-color: lightslategray;
-    font-size: 1em;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background: transparent;
+    
     color: white;
-    padding: 8px 5px 8px 5px;
+    border-right: 2px;
+    border-color: orange;
+    padding:10px;
+    height: 100vh;
+    position: fixed;
+    width: 0;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.navbar a {
+/* The sidebar menu */
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 300px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background: transparent; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+    
+    font-size: 1em;
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    text-align: center;
+    margin: 20% 20px;
+    padding: 20px 50px;
+    box-shadow: 0px 2px 2px 1px #0F0F0F;
+    border-radius: 15px;
     text-decoration: none;
-    color: inherit;
-}
-
-.navbar-brand {
-    font-size: 1.2em;
-    font-weight: 600;
-}
+    font-size: 35px;
+    color: white;
+    display: block;
+    background-color: #D6517d;
+  }
 
 .navbar-item {
     font-variant: small-caps;
