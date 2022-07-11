@@ -20,18 +20,9 @@
     z-index: -2;
 }
 
-.navbar {
-    background: transparent;
-    
-    color: white;
-    border-right: 2px;
-    border-color: orange;
-    padding:10px;
-    height: 100vh;
-    position: fixed;
-    width: 0;
-    flex-direction: column;
-    justify-content: space-between;
+.logo {
+    width: 200px;
+    height: auto;
 }
 
 /* The sidebar menu */
@@ -50,8 +41,19 @@
     font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
   
+  .logo-bg {
+    background: transparent;
+    text-align: center;
+    margin: 10% 0px;
+    padding: 0px 10%;
+    text-decoration: none;
+    font-size: 35px;
+    color: white;
+    display: block;
+  }
+
   /* The navigation menu links */
-  .sidenav a {
+  .sidenav-box {
     text-align: center;
     margin: 20% 20px;
     padding: 20px 50px;
