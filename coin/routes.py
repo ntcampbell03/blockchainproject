@@ -4,6 +4,6 @@ from datetime import datetime
 from . import app
 
 @app.route("/")
-@app.route("/<name>")
-def home(name = None):
-    return render_template('home.html', name=name, date=datetime.now());
+@app.route("/home")
+def home():
+    return render_template('home.html', date=datetime.now());
