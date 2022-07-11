@@ -4,11 +4,11 @@ import time
 
 class Blockchain:
     def __init__(self):
-        self.chain = [Block([Transaction('', '', 0)], 0)]
-        self.length = 1
+        self.chain = []
+        self.length = 0
         self.difficulty = 1
         self.newTransactions = []
-        self.pgpkeys = {}
+        self.miningReward = 10
 
     def getBlock(self, n):
         return self.chain[n]
@@ -29,12 +29,13 @@ class Blockchain:
 
     def addBlock(self):
         for transaction in self.newTransactions:
-            transaction.sender.sent += transaction.amount
-            transaction.reciever.recieved += transaction.amount
-            transaction.sender.getBalance()
-            transaction.sender.futureBalance = transaction.sender.balance
-            transaction.reciever.getBalance()
-            transaction.reciever.futureBalance = transaction.reciever.balance
+            if str(gpg.decrypt(str(transaction.signature), passphrase = transaction.reciever.name)) == transaction.transactionString:
+                transaction.sender.sent += transaction.amount
+                transaction.reciever.recieved += transaction.amount
+                transaction.sender.getBalance()
+                transaction.sender.futureBalance = transaction.sender.balance
+                transaction.reciever.getBalance()
+                transaction.reciever.futureBalance = transaction.reciever.balance
         newBlock = Block(self.newTransactions, self.length - 1)
         newBlock.mineBlock(self.difficulty)
         self.length += 1
@@ -51,8 +52,8 @@ class Block:
         self.hash = self.calculateHash()
 
     def getTransactions(self):
-        for i in self.transactions:
-            print(f'{self.transactions[0].sender} to {self.transactions[0].reciever}: {self.transactions[0].amount}')
+        for transaction in self.transactions:
+            print(f'{transaction.sender.name} to {transaction.reciever.name}: {transaction.amount}')
 
     def calculateHash(self):
         hashTransactions = ''
@@ -75,9 +76,14 @@ class Transaction:
         self.reciever = reciever
         self.amount = amount
         self.time = time.ctime()
-        self.transactionString = f'{self.sender} to {self.reciever}: {self.amount}'
+        self.transactionString = f'{self.sender.name} to {self.reciever.name}: {self.amount} at {self.time}'
         self.signature = self.getSignature()
 
     def getSignature(self):
-        encrypted_data = gpg.encrypt(self.transactionString, self.reciever.key.fingerprint, sign=self.sender.key.fingerprint)
-        self.signature = self.sender.key.gpg.sign(self.transactionString)
+        encrypted_data = gpg.encrypt(
+        self.transactionString,
+        self.reciever.key.fingerprint,
+        sign=self.sender.key.fingerprint,
+        passphrase = self.reciever.name)
+        self.signature = encrypted_data
+        return encrypted_data
