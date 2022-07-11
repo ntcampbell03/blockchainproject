@@ -8,6 +8,7 @@ class Blockchain:
         self.length = 1
         self.difficulty = 1
         self.newTransactions = []
+        self.pgpkeys = {}
 
     def getBlock(self, n):
         return self.chain[n]
@@ -22,7 +23,7 @@ class Blockchain:
                 transaction.sender.futureBalance -= transaction.amount
             else:
                 print('Wallet has insufficient balance!')
-        except(NameError):
+        except NameError:
             print('Wallet does not exist!') #Try except doesnt work
 
 
@@ -75,3 +76,8 @@ class Transaction:
         self.amount = amount
         self.time = time.ctime()
         self.transactionString = f'{self.sender} to {self.reciever}: {self.amount}'
+        self.signature = self.getSignature()
+
+    def getSignature(self):
+        encrypted_data = gpg.encrypt(self.transactionString, self.reciever.key.fingerprint, sign=self.sender.key.fingerprint)
+        self.signature = self.sender.key.gpg.sign(self.transactionString)
