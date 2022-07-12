@@ -6,4 +6,4 @@ app = Flask(__name__)
 blockchainObj = Blockchain()
 blockchainObj.difficulty = 5
 
-# from coin import routes
+from coin import routes

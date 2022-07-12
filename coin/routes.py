@@ -13,9 +13,17 @@ def home():
 
 @app.route("/blockchain")
 def blockchain():
-    return render_template('blockchain.html', blockchain=blockchainObj)
+    chain = []
+    for blockObj in blockchainObj.chain:
+        chain.append(blockObj.hash)
+    return render_template('blockchain.html', blockchain=blockchainObj, chain=chain)
 
 
-@app.route("/mine")
+@app.route("/mine", methods=['GET', 'POST'])
 def mine():
+    return render_template('mine.html')
+
+@app.route("/mineblock/", methods=['GET', 'POST'])
+def mineblock():
+    blockchainObj.addBlock()
     return render_template('mine.html')
