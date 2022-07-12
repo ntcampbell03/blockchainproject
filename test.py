@@ -16,6 +16,7 @@ god = godWallet(100)
 me = Wallet('me')
 you = Wallet('you')
 
-t = Transaction(god, me, 10)
-u = Transaction(me, you, 3)
-v = Transaction(me, you, 2)
+t = [Transaction(god, me, 10)]
+
+for i in t:
+    blockchain.addTransaction(i)
