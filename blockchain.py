@@ -2,6 +2,7 @@ from wallet import *
 import hashlib
 import time
 
+
 class Blockchain:
     def __init__(self):
         self.chain = []
@@ -24,12 +25,11 @@ class Blockchain:
             else:
                 print('Wallet has insufficient balance!')
         except NameError:
-            print('Wallet does not exist!') #Try except doesnt work
-
+            print('Wallet does not exist!')  # Try except doesnt work
 
     def addBlock(self):
         for transaction in self.newTransactions:
-            if str(gpg.decrypt(str(transaction.signature), passphrase = transaction.reciever.name)) == transaction.transactionString:
+            if str(gpg.decrypt(str(transaction.signature), passphrase=transaction.reciever.name)) == transaction.transactionString:
                 transaction.sender.sent += transaction.amount
                 transaction.reciever.recieved += transaction.amount
                 transaction.sender.getBalance()
@@ -42,6 +42,7 @@ class Blockchain:
         self.chain.append(newBlock)
         self.newTransactions = []
 
+
 class Block:
     def __init__(self, transactions, index):
         self.nonce = 0
@@ -53,13 +54,15 @@ class Block:
 
     def getTransactions(self):
         for transaction in self.transactions:
-            print(f'{transaction.sender.name} to {transaction.reciever.name}: {transaction.amount}')
+            print(
+                f'{transaction.sender.name} to {transaction.reciever.name}: {transaction.amount}')
 
     def calculateHash(self):
         hashTransactions = ''
         for transaction in self.transactions:
             hashTransactions += transaction.transactionString
-        hashString = (f'{hashTransactions}{self.prev}{self.index}{self.nonce}{self.time}').encode()
+        hashString = (
+            f'{hashTransactions}{self.prev}{self.index}{self.nonce}{self.time}').encode()
         return hashlib.sha256(hashString).hexdigest()
 
     def mineBlock(self, difficulty):
@@ -69,6 +72,7 @@ class Block:
         while self.hash[0:difficulty] != target:
             self.nonce += 1
             self.hash = self.calculateHash()
+
 
 class Transaction:
     def __init__(self, sender, reciever, amount):
@@ -81,9 +85,9 @@ class Transaction:
 
     def getSignature(self):
         encrypted_data = gpg.encrypt(
-        self.transactionString,
-        self.reciever.key.fingerprint,
-        sign=self.sender.key.fingerprint,
-        passphrase = self.reciever.name)
+            self.transactionString,
+            self.reciever.key.fingerprint,
+            sign=self.sender.key.fingerprint,
+            passphrase=self.reciever.name)
         self.signature = encrypted_data
         return encrypted_data
