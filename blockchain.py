@@ -5,7 +5,7 @@ import time
 class Blockchain:
     def __init__(self):
         self.chain = [Block(None, 0, "None")]
-        self.length = 1 #change
+        self.length = 1
         self.difficulty = 1
         self.newTransactions = []
         self.numTransactions = 0
