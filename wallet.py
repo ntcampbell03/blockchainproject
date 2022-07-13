@@ -14,6 +14,7 @@ class Wallet:
         self.name = str(name)
         self.sent = 0
         self.recieved = 0
+        self.rewards = 0
         self.balance = self.getBalance()
         self.futureBalance = self.balance
         self.input_data = gpg.gen_key_input(
@@ -23,7 +24,7 @@ class Wallet:
             key_length=1024)
         self.key = gpg.gen_key(self.input_data)
 
-    def generateKeys(self):
+    def generateKeys(self): #Generates GPG keys for encryption and signing of transaction data
         input_data = gpg.gen_key_input(
             name_real='hello',
             no_protection=True,
@@ -33,8 +34,12 @@ class Wallet:
         return self.key
 
     def getBalance(self):
-        self.balance = self.recieved - self.sent
+        self.balance = self.recieved - self.sent + self.rewards
         return self.balance
+    
+    def mineBlock(self, Blockchain):
+        self.rewards = Blockchain.addBlock()
+        self.balance = self.getBalance()
 
     
 

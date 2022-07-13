@@ -4,7 +4,7 @@ import time
 
 class Blockchain:
     def __init__(self):
-        self.chain = [Block(None, 0, "None")]
+        self.chain = [Block([None], 0, "None")]
         self.length = 1
         self.difficulty = 1
         self.newTransactions = []
@@ -65,6 +65,10 @@ class Blockchain:
                 print("Previous hash does not match")
                 return False
             prevHash = curBlock.hash
+            for transaction in curBlock.transactions: #Check if transaction signatures are valid
+                if str(gpg.decrypt(str(transaction.signature))) != transaction.transactionString:
+                    print("Transaction signature is not valid")
+                    return False
         return True
 
 class Block:
@@ -81,12 +85,10 @@ class Block:
             print(transaction.transactionString)
 
     def calculateHash(self):
-        if not self.transactions: #deal with genesis block
-            return "0"
-        else:
             hashTransactions = ''
             for transaction in self.transactions:
-                hashTransactions += transaction.transactionString
+                if transaction: #Handle genesis block
+                    hashTransactions += transaction.transactionString
             hashString = (f'{hashTransactions}{self.prev}{self.index}{self.nonce}{self.time}').encode()
             return hashlib.sha256(hashString).hexdigest()
 
