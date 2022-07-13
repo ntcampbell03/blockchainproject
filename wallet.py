@@ -5,12 +5,12 @@ from blockchain import *
 gpg = gnupg.GPG(gnupghome='/Users/noahcampbell/Desktop/CS/blockchainproject/env/lib/python3.10/site-packages')
 gpg.encoding = 'utf-8'
 
-
 class Wallet:
     def __init__(self, name):
         self.name = str(name)
         self.sent = 0
         self.recieved = 0
+        self.rewards = 0
         self.balance = self.getBalance()
         self.futureBalance = self.balance
         self.input_data = gpg.gen_key_input(
@@ -30,13 +30,12 @@ class Wallet:
         return self.key
 
     def getBalance(self):
-        self.balance = self.recieved - self.sent
+        self.balance = self.recieved - self.sent + self.rewards
         return self.balance
 
-    
-
-
-
+    def mineBlock(self, Blockchain):
+        self.rewards += Blockchain.addBlock()
+        self.balance = self.getBalance()
 
 class godWallet:
     def __init__(self, balance):
