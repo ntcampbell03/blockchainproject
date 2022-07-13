@@ -6,7 +6,12 @@
 {% block content %}
 <body>
   <div class="contentbg">
-    yo
+    <a href="{{ url_for('transaction') }}" style="color: white;">Send 5</a>
+    <br><br>
+    {% for trans in blockchain.newTransactions %}
+      <small>Transactions: {{ trans }}</small>
+      <br><br>
+    {% endfor %}
   </div>
   
 </body>
