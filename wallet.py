@@ -2,7 +2,7 @@ import gnupg
 import os
 from blockchain import *
 
-gpg = gnupg.GPG(gnupghome='/Users/noahcampbell/Desktop/CS/blockchainproject/env/lib/python3.10/site-packages')
+gpg = gnupg.GPG(gnupghome='/opt/homebrew/Cellar/gnupg')
 gpg.encoding = 'utf-8'
 
 
