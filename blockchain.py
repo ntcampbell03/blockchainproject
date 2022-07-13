@@ -45,6 +45,22 @@ class Blockchain:
                 self.newTransactions = []
         else:
             print("No pending transactions")
+    
+    def verifyBlockchain(self):
+        prevHash = 0
+        for curBlock in self.chain[1:]:
+            if curBlock.hash != curBlock.calculateHash(): #Check if hash is legitimate
+                print("Hash does not match data")
+                return False
+            for i in curBlock.hash[0:self.difficulty]: #Check if hash is acceptable
+                if i != '0':
+                    print("Hash does not meet requirements")
+                    return False
+            if curBlock.prev != prevHash: #Check if prev is acceptable
+                print("Previous hash does not match")
+                return False
+            prevHash = curBlock.hash
+        return True
 
 class Block:
     def __init__(self, transactions, index, prev):
