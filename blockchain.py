@@ -52,7 +52,7 @@ class Block:
         self.prev = ''
         self.hash = self.calculateHash()
 
-    def getTransactions(self):
+    def getPendingTransactions(self):
         for transaction in self.transactions:
             print(
                 f'{transaction.sender.name} to {transaction.reciever.name}: {transaction.amount}')

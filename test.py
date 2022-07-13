@@ -19,3 +19,5 @@ you = Wallet('you')
 t = Transaction(god, me, 10)
 u = Transaction(me, you, 3)
 v = Transaction(me, you, 2)
+
+print(me.key.fingerprint)
