@@ -1,5 +1,5 @@
-from flask import Flask
-from flask import render_template
+from flask import Flask, redirect
+from flask import render_template, flash
 from datetime import datetime
 from . import app
 from coin import blockchainObj

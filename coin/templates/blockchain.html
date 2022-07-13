@@ -6,8 +6,11 @@
 {% block content %}
 <body>
   <div class="contentbg">
-    
-    <small>Blockchain: {{ chain }}</small>
+    {% for block in blockchain.chain %}
+    <small>Hash: {{ block.hash[0:20] }} &nbsp;&nbsp; Prev: {{ block.prev }}<br></small>
+    <small>Timestamp: {{ block.time }}</small>
+    <br><br>
+    {% endfor %}
   </div>
   
 </body>
