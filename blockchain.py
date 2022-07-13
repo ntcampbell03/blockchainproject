@@ -9,6 +9,7 @@ class Blockchain:
         self.length = 0
         self.difficulty = 1
         self.newTransactions = []
+        self.numTransactions = 0
         self.miningReward = 10
 
     def getBlock(self, n):
@@ -22,6 +23,7 @@ class Blockchain:
             if transaction.sender.futureBalance >= transaction.amount:
                 self.newTransactions.append(transaction)
                 transaction.sender.futureBalance -= transaction.amount
+                self.numTransactions += 1
             else:
                 print('Wallet has insufficient balance!')
         except NameError:
@@ -41,7 +43,7 @@ class Blockchain:
         self.length += 1
         self.chain.append(newBlock)
         self.newTransactions = []
-
+        self.numTransactions = 0
 
 class Block:
     def __init__(self, transactions, index):
