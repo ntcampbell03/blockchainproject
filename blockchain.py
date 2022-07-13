@@ -4,7 +4,7 @@ import time
 
 class Blockchain:
     def __init__(self):
-        self.chain = [Block(None, 0)]
+        self.chain = [Block(None, 0, '')]
         self.length = 1
         self.difficulty = 1
         self.newTransactions = []
@@ -37,7 +37,7 @@ class Blockchain:
                     transaction.sender.futureBalance = transaction.sender.balance
                     transaction.reciever.getBalance()
                     transaction.reciever.futureBalance = transaction.reciever.balance
-            newBlock = Block(self.newTransactions, self.length)
+            newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash)
             newBlock.mineBlock(self.difficulty)
             if self.getLastBlock().index <= newBlock.index:
                 self.length += 1
@@ -47,12 +47,12 @@ class Blockchain:
             print("No pending transactions")
 
 class Block:
-    def __init__(self, transactions, index):
+    def __init__(self, transactions, index, prev):
         self.nonce = 0
         self.transactions = transactions
         self.index = index
         self.time = time.ctime()
-        self.prev = ''
+        self.prev = prev
         self.hash = self.calculateHash()
 
     def getPendingTransactions(self):
