@@ -6,7 +6,7 @@ class Blockchain:
     def __init__(self):
         self.chain = [Block([None], 0, "None")]
         self.length = 1
-        self.difficulty = 1
+        self.difficulty = 5
         self.newTransactions = []
         self.numTransactions = 0
         self.miningReward = 10
@@ -52,7 +52,7 @@ class Blockchain:
         
     
     def verifyBlockchain(self):
-        prevHash = "0"
+        prevHash = '0'
         for curBlock in self.chain[1:]:
             if curBlock.hash != curBlock.calculateHash(): #Check if hash is legitimate
                 print("Hash does not match data")
@@ -89,6 +89,8 @@ class Block:
             for transaction in self.transactions:
                 if transaction: #Handle genesis block
                     hashTransactions += transaction.transactionString
+                else:
+                    return '0'
             hashString = (f'{hashTransactions}{self.prev}{self.index}{self.nonce}{self.time}').encode()
             return hashlib.sha256(hashString).hexdigest()
 
