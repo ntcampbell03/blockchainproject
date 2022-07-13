@@ -107,7 +107,7 @@ class Transaction:
         self.transactionString = f'{self.sender.name} to {self.reciever.name}: {self.amount} at {self.time}'
         self.signature = self.getSignature()
 
-    def getSignature(self):
+    def getSignature(self): #encrypts transaction data
         encrypted_data = gpg.encrypt(
         self.transactionString,
         self.reciever.key.fingerprint,
