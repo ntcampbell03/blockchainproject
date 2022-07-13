@@ -32,7 +32,7 @@ def mine():
 @app.route("/mineblock/", methods=['GET', 'POST'])
 def mineblock():
     blockchainObj.addBlock()
-    return render_template('mine.html')
+    return render_template('mine.html', blockchain=blockchainObj)
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
