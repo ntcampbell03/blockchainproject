@@ -45,8 +45,11 @@ class Blockchain:
                 self.chain.append(newBlock)
                 self.newTransactions = []
                 self.numTransactions = 0
+                return self.miningReward
         else:
             print("No pending transactions")
+            return 0
+        
     
     def verifyBlockchain(self):
         prevHash = "0"
@@ -73,9 +76,9 @@ class Block:
         self.prev = prev
         self.hash = self.calculateHash()
 
-    def getPendingTransactions(self):
+    def getTransactions(self):
         for transaction in self.transactions:
-            print(f'{transaction.sender.name} to {transaction.reciever.name}: {transaction.amount}')
+            print(transaction.transactionString)
 
     def calculateHash(self):
         if not self.transactions: #deal with genesis block
@@ -109,6 +112,6 @@ class Transaction:
         self.transactionString,
         self.reciever.key.fingerprint,
         sign=self.sender.key.fingerprint,
-        passphrase = self.reciever.name)
+        passphrase=self.reciever.name)
         self.signature = encrypted_data
         return encrypted_data
