@@ -44,11 +44,12 @@ class Blockchain:
                 self.length += 1
                 self.chain.append(newBlock)
                 self.newTransactions = []
+                self.numTransactions = 0
         else:
             print("No pending transactions")
     
     def verifyBlockchain(self):
-        prevHash = 0
+        prevHash = "0"
         for curBlock in self.chain[1:]:
             if curBlock.hash != curBlock.calculateHash(): #Check if hash is legitimate
                 print("Hash does not match data")
@@ -78,7 +79,8 @@ class Block:
 
     def calculateHash(self):
         if not self.transactions: #deal with genesis block
-            return 0
+            self.prev = "None"
+            return "0"
         else:
             hashTransactions = ''
             for transaction in self.transactions:
