@@ -4,7 +4,7 @@ import time
 
 class Blockchain:
     def __init__(self):
-        self.chain = [Block(None, 0, '')]
+        self.chain = [Block(None, 0, "None")]
         self.length = 1
         self.difficulty = 1
         self.newTransactions = []
@@ -79,7 +79,6 @@ class Block:
 
     def calculateHash(self):
         if not self.transactions: #deal with genesis block
-            self.prev = "None"
             return "0"
         else:
             hashTransactions = ''
