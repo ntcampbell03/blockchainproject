@@ -18,7 +18,7 @@ class Wallet:
         self.balance = self.getBalance()
         self.futureBalance = self.balance
         self.input_data = gpg.gen_key_input(
-            name_real='hello',
+            name_real=self.name,
             no_protection=True,
             key_type='RSA',
             key_length=1024)
@@ -36,15 +36,10 @@ class Wallet:
     def getBalance(self):
         self.balance = self.recieved - self.sent + self.rewards
         return self.balance
-    
+
     def mineBlock(self, Blockchain):
         self.rewards = Blockchain.addBlock()
         self.balance = self.getBalance()
-
-    
-
-
-
 
 class godWallet:
     def __init__(self, balance):
