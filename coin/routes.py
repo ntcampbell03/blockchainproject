@@ -3,11 +3,10 @@ from flask import render_template, flash
 from flask import Flask, jsonify, request, render_template, url_for, flash, redirect
 from flask_login import login_user, current_user, logout_user, login_required
 from coin.forms import *
-from flask_bcrypt import bcrypt
 from datetime import datetime
 
 from blockchain import Transaction
-from . import app
+from . import app, bcrypt, db
 from coin import blockchainObj, Wallet, godWallet
 
 
@@ -40,7 +39,8 @@ def register():
     if form.validate_on_submit():
         #password hashing
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8');
-        keyGen = blockchainObj.generateKeys();
+        # keyGen = blockchainObj.generateKeys();
+        keyGen = 2
         user = User(name=form.name.data, username=form.username.data, email=form.email.data, password=hashed_password, key = keyGen);
         db.session.add(user);
         db.session.commit();
