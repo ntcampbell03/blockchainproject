@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}
+<p>Block Title</p>
+{% endblock %}
+
+{% block content %}
+<body>
+  <div class="contentbg">
+    <small>Hi {{ wallet.name }}<br><br></small> 
+    <small>Balance: {{ wallet.futureBalance }}</small> 
+  </div>
+  
+</body>
+{% endblock %}

@@ -5,7 +5,8 @@ from flask_login import login_user, current_user, logout_user, login_required
 from coin.forms import *
 from datetime import datetime
 
-from blockchain import Transaction
+from blockchain import *
+from wallet import *
 from . import app, bcrypt, db
 from coin import blockchainObj, Wallet, godWallet
 
@@ -38,38 +39,38 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         #password hashing
-        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8');
-        # keyGen = blockchainObj.generateKeys();
-        keyGen = 2
-        user = User(name=form.name.data, username=form.username.data, email=form.email.data, password=hashed_password, key = keyGen);
-        db.session.add(user);
-        db.session.commit();
-        login_user(user);
-        nextPage = request.args.get('next');
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        #wallet creating
+        newWallet = Wallet(form.username.data)
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password, wallet=newWallet)
+        db.session.add(user)
+        db.session.commit()
+        login_user(user)
+        nextPage = request.args.get('next')
         flash(f'Account created for @{form.username.data}! You are now logged in as well.', 'success')
-        return redirect(nextPage) if nextPage else redirect(url_for('home'));
+        return redirect(nextPage) if nextPage else redirect(url_for('home'))
     return render_template('register.html', form=form)
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first();
+        user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
-            login_user(user, remember=form.remember.data);
-            nextPage = request.args.get('next');
-            flash(f'Welcome! You are now logged in', 'success');
-            return redirect(nextPage) if nextPage else redirect(url_for('home'));
+            login_user(user, remember=form.remember.data)
+            nextPage = request.args.get('next')
+            flash(f'Welcome! You are now logged in', 'success')
+            return redirect(nextPage) if nextPage else redirect(url_for('home'))
         else:
-            flash('Login Unsuccessful. Please check email and password', 'danger');
+            flash('Login Unsuccessful. Please check email and password', 'danger')
             #return redirect(url_for('login'))
-    return render_template('login.html', form=form);
+    return render_template('login.html', form=form)
 
 @app.route("/logout")
 def logout():
-    logout_user();
-    return redirect(url_for('home'));
-    return render_template('mine.html', blockchain=blockchainObj)
+    logout_user()
+    return redirect(url_for('home'))
+    # return render_template('mine.html', blockchain=blockchainObj)
 
 @app.route("/transactions", methods=['GET', 'POST'])
 def transactions():
@@ -77,5 +78,10 @@ def transactions():
 
 @app.route("/transaction/", methods=['GET', 'POST'])
 def transaction():
-    blockchainObj.addTransaction(Transaction(godWallet(100), Wallet("me"), 5))
+    blockchainObj.addTransaction(Transaction(godWallet(100), current_user.wallet, 5))
     return render_template('transaction.html', blockchain=blockchainObj)
+
+@app.route("/wallet", methods=['GET', 'POST'])
+def wallet():
+    walletObj = current_user.wallet
+    return render_template('wallet.html', wallet=walletObj, blockchain=blockchainObj)

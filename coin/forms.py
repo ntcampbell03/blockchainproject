@@ -5,22 +5,19 @@ from coin.models import User
 
 class RegistrationForm(FlaskForm):
 
-	name = StringField('First Name', validators=[DataRequired()],
-							render_kw={"placeholder": "Name"});
-
 	username = StringField('Username', 
 						   validators=[DataRequired(), Length(min=4, max=15)],
-						   render_kw={"placeholder": "Username"});
+						   render_kw={"placeholder": "Username"})
 
 	email = StringField('Email', validators=[DataRequired(), Email()],
-						render_kw={"placeholder": "Email"});
+						render_kw={"placeholder": "Email"})
 
 	password = PasswordField('Password', validators=[DataRequired()],
-							 render_kw={"placeholder": "Password"});
+							 render_kw={"placeholder": "Password"})
 
 	confirmPassword = PasswordField('Confirm Password', 
 									validators=[DataRequired(), EqualTo('password')],
-									render_kw={"placeholder": "Confirm Password"});
+									render_kw={"placeholder": "Confirm Password"})
 
 	submit = SubmitField('Sign Up');
 

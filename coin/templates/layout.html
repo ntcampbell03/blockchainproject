@@ -16,8 +16,14 @@
             <a href="{{ url_for('blockchain') }}" class="sidenav-box">BLOCKS</a>
             <a href="{{ url_for('mine') }}" class="sidenav-box">MINE</a>
             <a href="{{ url_for('transactions') }}" class="sidenav-box">SEND MONEY</a>
-            <a href="{{ url_for('register') }}" class="sidenav-box">REGISTER</a>
-            <a href="{{ url_for('login') }}" class="sidenav-box">LOGIN</a>
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('wallet') }}" class="sidenav-box">WALLET</a>
+                <a href="{{ url_for('logout') }}" class="sidenav-box">LOGOUT</a>
+            {% else %}
+                <a href="{{ url_for('register') }}" class="sidenav-box">REGISTER</a>
+                <a href="{{ url_for('login') }}" class="sidenav-box">LOGIN</a>
+            {%endif%}
+            
         </div>
 
         <div class="body-content">

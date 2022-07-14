@@ -35,9 +35,9 @@ class Blockchain:
                     transaction.sender.sent += transaction.amount
                     transaction.reciever.recieved += transaction.amount
                     transaction.sender.getBalance()
-                    transaction.sender.futureBalance = transaction.sender.balance
+                    transaction.sender.futureBalance = transaction.sender.futureBalance
                     transaction.reciever.getBalance()
-                    transaction.reciever.futureBalance = transaction.reciever.balance
+                    transaction.reciever.futureBalance = transaction.reciever.futureBalance
             newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash)
             newBlock.mineBlock(self.difficulty)
             if self.getLastBlock().index <= newBlock.index:
