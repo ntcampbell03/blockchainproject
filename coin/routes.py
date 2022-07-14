@@ -39,7 +39,8 @@ def register():
     if form.validate_on_submit():
         #password hashing
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8');
-        keyGen = blockchainObj.generateKeys();
+        # keyGen = blockchainObj.generateKeys();
+        keyGen = 2
         user = User(name=form.name.data, username=form.username.data, email=form.email.data, password=hashed_password, key = keyGen);
         db.session.add(user);
         db.session.commit();
