@@ -19,6 +19,7 @@ class Blockchain:
 
     def addTransaction(self, transaction):
         try:
+            print(transaction.amount)
             if transaction.sender.futureBalance >= transaction.amount:
                 self.newTransactions.append(transaction)
                 transaction.sender.futureBalance -= transaction.amount
@@ -26,7 +27,7 @@ class Blockchain:
             else:
                 print('Wallet has insufficient balance!')
         except NameError:
-            print('Wallet does not exist!') #Try except doesnt work
+            print('Wallet does not exist!') #Tryblockchain.addTransaction(t) except doesnt work
             
     def addBlock(self):
         if self.newTransactions:

@@ -7,10 +7,8 @@
 <body>
   <div class="contentbg">
     {% if blockchain.numTransactions > 1 %}
-      <form action="/mineblock/" method="post">
-        <button name="mineblock" type="submit">Mine Block</button>
         <small>there are {{ blockchain.numTransactions }} transactions</small>
-      </form>
+        <a href="{{ url_for('mineblock') }}" style="color: white;">Mine Block</a>
     {% else %}
       <small> there arent enough transactions to mine a block</small>
     {% endif %}

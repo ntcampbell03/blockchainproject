@@ -4,11 +4,12 @@ from flask import Flask, jsonify, request, render_template, url_for, flash, redi
 from flask_login import login_user, current_user, logout_user, login_required
 from coin.forms import *
 from datetime import datetime
+from coin.models import *
 
 from blockchain import *
 from wallet import *
 from . import app, bcrypt, db
-from coin import blockchainObj, Wallet, godWallet
+from coin import blockchainObj, god
 
 
 @app.route("/")
@@ -32,6 +33,9 @@ def mine():
 @app.route("/mineblock/", methods=['GET', 'POST'])
 def mineblock():
     blockchainObj.addBlock()
+    print(god.balance)
+    print(current_user.wallet.balance)
+
     return render_template('mine.html', blockchain=blockchainObj)
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -78,7 +82,8 @@ def transactions():
 
 @app.route("/transaction/", methods=['GET', 'POST'])
 def transaction():
-    blockchainObj.addTransaction(Transaction(godWallet(100), current_user.wallet, 5))
+    blockchainObj.addTransaction(Transaction(god, current_user.wallet, 5))
+
     return render_template('transaction.html', blockchain=blockchainObj)
 
 @app.route("/wallet", methods=['GET', 'POST'])

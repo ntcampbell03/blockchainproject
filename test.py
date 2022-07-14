@@ -13,7 +13,9 @@ me = Wallet('me')
 you = Wallet('you')
 
 t = Transaction(god, me, 10)
+blockchain.addTransaction(t)
+blockchain.addBlock()
 
 print(me.balance)
-blockchain.addTransaction(t)
+
 
