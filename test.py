@@ -14,5 +14,6 @@ you = Wallet('you')
 
 t = Transaction(god, me, 10)
 
+print(me.balance)
 blockchain.addTransaction(t)
 

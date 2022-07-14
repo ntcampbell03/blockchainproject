@@ -16,7 +16,7 @@ small {
 .contentbg {
     width: 60%;
     height: 70%;
-    background-color: black;
+    background-color: brown;
     position: fixed;
     left: 30%;
     top: 15%;
@@ -77,7 +77,7 @@ small {
   /* The navigation menu links */
   .sidenav-box {
     text-align: center;
-    margin: 15% 20px;
+    margin: 10% 20px;
     padding: 20px 20px;
     box-shadow: 0px 2px 2px 1px #0F0F0F;
     border-radius: 15px;
