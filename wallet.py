@@ -1,5 +1,4 @@
 import gnupg
-import os
 from blockchain import *
 
 gpg = gnupg.GPG(gnupghome='/opt/homebrew/Cellar/gnupg')
@@ -38,7 +37,7 @@ class Wallet:
         return self.balance
 
     def mineBlock(self, Blockchain):
-        self.rewards = Blockchain.addBlock()
+        self.rewards += Blockchain.addBlock()
         self.balance = self.getBalance()
 
 class godWallet:

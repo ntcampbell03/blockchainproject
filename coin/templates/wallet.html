@@ -7,9 +7,12 @@
 <body>
   <div class="contentbg">
     <small>Hi {{ wallet.name }}<br><br></small> 
-    <small>Balance: {{ wallet.balance }}<br><br></small> 
+    <small>Balance: {{ balance }}<br><br></small> 
+    <small>Total Rewards: {{ wallet.rewards }}<br><br></small> 
     {% for trans in blockchain.newTransactions %}
-    <small>Trans: {{ trans.amount }}</small> 
+    <small>Trans: {{ trans.amount }}</small> <br>
+    <small>Sender: {{ trans.sender.name }}</small> <br>
+    <small>Reciever: {{ trans.reciever.name }}</small> 
       <br><br>
     {% endfor %}
     

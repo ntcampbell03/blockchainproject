@@ -12,7 +12,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 blockchainObj = Blockchain()
 # blockchainObj.difficulty = 5
-god = godWallet(1000)
 
 loginManager = LoginManager(app)
 loginManager.login_view = 'login'

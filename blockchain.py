@@ -4,7 +4,7 @@ import time
 
 class Blockchain:
     def __init__(self):
-        self.chain = [Block([None], 0, "None")]
+        self.chain = [self.GenesisBlock()]
         self.length = 1
         self.difficulty = 5
         self.newTransactions = []
@@ -33,6 +33,7 @@ class Blockchain:
         if self.newTransactions:
             for transaction in self.newTransactions:
                 if str(gpg.decrypt(str(transaction.signature), passphrase = transaction.reciever.name)) == transaction.transactionString:
+                    print()
                     transaction.sender.sent += transaction.amount
                     transaction.reciever.recieved += transaction.amount
                     transaction.sender.getBalance()
@@ -72,6 +73,22 @@ class Blockchain:
                     return False
         return True
 
+    def newGetBalance(self, wallet: Wallet):
+        balance = wallet.rewards
+        for block in self.chain:
+            for transaction in block.transactions:
+                if transaction.sender.name == wallet.name:
+                    balance -= transaction.amount
+                if transaction.reciever.name == wallet.name:
+                    balance += transaction.amount
+        return balance
+
+    def GenesisBlock(self):
+        tArray = [Transaction(godWallet(1), godWallet(0), 1)]
+        genesis = Block(tArray, 0, 0)
+        genesis.prev = "None"
+        return genesis
+
 class Block:
     def __init__(self, transactions, index, prev):
         self.nonce = 0
@@ -91,7 +108,7 @@ class Block:
                 if transaction: #Handle genesis block
                     hashTransactions += transaction.transactionString
                 else:
-                    return '0'
+                    return 0
             hashString = (f'{hashTransactions}{self.prev}{self.index}{self.nonce}{self.time}').encode()
             return hashlib.sha256(hashString).hexdigest()
 

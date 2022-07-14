@@ -7,9 +7,12 @@
 <body>
   <div class="contentbg">
     {% for block in blockchain.chain %}
-    <small>Hash: {{ block.hash[0:20] }} &nbsp;&nbsp; Prev: {{ block.prev[0:20] }}<br></small>
-    <small>Timestamp: {{ block.time[4:-4] }} &nbsp;&nbsp; Block#: {{ block.index }}<br></small>
-    <small>Transactions: {{ block.transactions }}</small>
+      <small>Hash: {{ block.hash[0:20] }} &nbsp;&nbsp; Prev: {{ block.prev[0:20] }}<br></small>
+      <small>Timestamp: {{ block.time[4:-4] }} &nbsp;&nbsp; Block#: {{ block.index }}<br></small>
+      {% for transaction in block.transactions %}
+        <small>{{ transaction.transactionString }}<br></small>
+      {% endfor %}
+      
     <br><br>
     {% endfor %}
   </div>
