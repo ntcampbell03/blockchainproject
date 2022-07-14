@@ -3,11 +3,10 @@ from flask import render_template, flash
 from flask import Flask, jsonify, request, render_template, url_for, flash, redirect
 from flask_login import login_user, current_user, logout_user, login_required
 from coin.forms import *
-from flask_bcrypt import bcrypt
 from datetime import datetime
 
 from blockchain import Transaction
-from . import app
+from . import app, bcrypt, db
 from coin import blockchainObj, Wallet, godWallet
 
 
