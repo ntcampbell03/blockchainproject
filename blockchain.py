@@ -34,6 +34,18 @@ class Blockchain:
                     balance -= transaction.amount
                 if transaction.reciever == wallet:
                     balance += transaction.amount
+        return balance
+    
+    def getPendingBalance(self, wallet):
+        if isinstance(wallet, godWallet):
+            return 100000000000000000000
+        balance = 0
+        for block in self.chain:
+            for transaction in block.transactions:
+                if transaction.sender == wallet:
+                    balance -= transaction.amount
+                if transaction.reciever == wallet:
+                    balance += transaction.amount
         for transaction in self.newTransactions:
             if transaction.sender == wallet:
                     balance -= transaction.amount
@@ -43,8 +55,8 @@ class Blockchain:
 
     def addTransaction(self, newTransaction):
         try:
-            senderCurBalance = self.getBalance(newTransaction.sender)
-            receiverCurBalance = self.getBalance(newTransaction.reciever)
+            senderCurBalance = self.getPendingBalance(newTransaction.sender)
+            receiverCurBalance = self.getPendingBalance(newTransaction.reciever)
             if senderCurBalance >= newTransaction.amount:
                 self.newTransactions.append(newTransaction)
                 self.numTransactions += 1
