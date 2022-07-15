@@ -44,7 +44,7 @@ def register():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         #wallet creating
         newWallet = Wallet(form.username.data)
-        user = User(username=form.username.data, email=form.email.data, password=hashed_password, wallet=newWallet)
+        user = User(username=form.username.data, password=hashed_password, wallet=newWallet)
         db.session.add(user)
         db.session.commit()
         login_user(user)
@@ -57,14 +57,14 @@ def register():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        user = User.query.filter_by(username=form.username.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
             nextPage = request.args.get('next')
             flash(f'Welcome! You are now logged in', 'success')
             return redirect(nextPage) if nextPage else redirect(url_for('home'))
         else:
-            flash('Login Unsuccessful. Please check email and password', 'danger')
+            flash('Login Unsuccessful. Please check username and password', 'danger')
             #return redirect(url_for('login'))
     return render_template('login.html', form=form)
 
