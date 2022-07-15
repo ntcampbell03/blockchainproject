@@ -1,9 +1,9 @@
 import gnupg
 from blockchain import *
 
-# gpg = gnupg.GPG(gnupghome='/opt/homebrew/Cellar/gnupg')
+gpg = gnupg.GPG(gnupghome='/opt/homebrew/Cellar/gnupg')
 # gpg = gnupg.GPG(gnupghome='/Users/noahcampbell/Desktop/CS/blockchainproject/env/lib/python3.10/site-packages')
-gpg = gnupg.GPG(gnupghome='/Users/nikhiljain/Desktop/blockchainproject/env/lib/python3.9/site-packages/')
+# gpg = gnupg.GPG(gnupghome='/Users/nikhiljain/Desktop/blockchainproject/env/lib/python3.9/site-packages/')
 # gpg = gnupg.GPG(gnupghome='/Users/rithwikbabu/Documents/appcode/blockchainproject/env/lib/python3.9/site-packages/')
 
 gpg.encoding = 'utf-8'

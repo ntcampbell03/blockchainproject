@@ -1,0 +1,26 @@
+/* start the tags with bl */
+.bl-row{
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .bl-card {
+    /*float: left;*/
+    width: 7.5vw;
+    height: 7.5vw;
+    background-color: white;
+    border-radius: 2vw;
+    border: 0;
+    flex-grow: 0;
+    flex-shrink: 0;
+    align-items: center;
+    text-align: center;
+    margin-right: 15px;
+  }
+  
+  .bl-card-text {
+    font-size: 85%;
+  }

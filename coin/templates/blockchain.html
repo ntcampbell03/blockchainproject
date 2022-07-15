@@ -7,6 +7,14 @@
 <body>
   <div class="contentbg darkbg"></div>
   <div class="contentbg">
+    <div class="bl-row">
+      {% for block in blockchain.chain %}
+      <div class="bl-card">
+        <p class="bl-card-text">{{block.index}}</p>
+      </div>
+      {% endfor %}
+    </div>
+  
     {% for block in blockchain.chain %}
       <small>Hash: {{ block.hash[0:20] }} &nbsp;&nbsp; Prev: {{ block.prev[0:20] }}<br></small>
       <small>Timestamp: {{ block.time[4:-4] }} &nbsp;&nbsp; Block#: {{ block.index }}<br></small>

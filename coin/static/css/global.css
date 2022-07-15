@@ -24,5 +24,7 @@ small {
     position: fixed;
     left: 27.5%;
     top: 10%;
+    border-radius: 50px;
+    padding: 20px;
 }
 
