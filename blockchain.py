@@ -138,3 +138,4 @@ class Transaction:
         passphrase=self.reciever.name)
         self.signature = encrypted_data
         return encrypted_data
+        
