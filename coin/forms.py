@@ -45,20 +45,10 @@ class LoginForm(FlaskForm):
 	submit = SubmitField('Login');
 
 class TransactionForm(FlaskForm):
-
-	sender = StringField('Sender', 
-						   validators=[DataRequired(), Length(min=4, max=15)]);
-
-
 	reciever = StringField('Reciever', 
 						   validators=[DataRequired(), Length(min=4, max=15)]);
 
 	amount = IntegerField('Amount', validators=[DataRequired()]);
-
-	key = StringField('Key', validators=[DataRequired()]);
-
-	dummy = StringField('Dummy');
-
 
 	submit = SubmitField('Make a Transaction!');
 

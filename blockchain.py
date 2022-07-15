@@ -24,6 +24,7 @@ class Blockchain:
                 self.newTransactions.append(transaction)
                 transaction.sender.futureBalance -= transaction.amount
                 self.numTransactions += 1
+                print('Transaction sucessfully added!')
             else:
                 print('Wallet has insufficient balance!')
         except NameError:
