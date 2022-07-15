@@ -1,21 +1,20 @@
 from blockchain import *
-from wallet import *
 
 import gnupg
 import os
 
-from blockchain import *
-
 blockchain =  Blockchain()
 
-god = godWallet(100)
+god = godWallet('god')
 me = Wallet('me')
 you = Wallet('you')
 
 t = Transaction(god, me, 10)
+u = Transaction(me, you, 5)
+v = Transaction(you, me, 5)
+
 blockchain.addTransaction(t)
 blockchain.addBlock()
 
-print(me.balance)
 
 
