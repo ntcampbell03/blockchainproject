@@ -13,13 +13,17 @@ small {
     color: white;
 }
 
+.darkbg {
+    background-color: black;
+    opacity: 50%;
+}
+
 .contentbg {
-    width: 60%;
-    height: 70%;
-    background-color: brown;
+    width: 65%;
+    height: 80%;
     position: fixed;
-    left: 30%;
-    top: 15%;
+    left: 27.5%;
+    top: 10%;
 }
 
 .overlay {
