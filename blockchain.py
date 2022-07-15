@@ -2,8 +2,8 @@ import hashlib
 import time
 import gnupg
 
-# gpg = gnupg.GPG(gnupghome='/opt/homebrew/Cellar/gnupg')
-gpg = gnupg.GPG(gnupghome='/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages')
+gpg = gnupg.GPG(gnupghome='/opt/homebrew/Cellar/gnupg')
+# gpg = gnupg.GPG(gnupghome='/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages')
 # gpg = gnupg.GPG(gnupghome='/Users/nikhiljain/Desktop/blockchainproject/env/lib/python3.9/site-packages/')
 # gpg = gnupg.GPG(gnupghome='/Users/rithwikbabu/Documents/appcode/blockchainproject/env/lib/python3.9/site-packages/')
 
@@ -26,7 +26,7 @@ class Blockchain:
 
     def getBalance(self, wallet): #Iterates through all confirmed blocks to determine the balance of a wallet
         if isinstance(wallet, godWallet):
-            return 100000000000000000000
+            return float('inf') #Infinite
         balance = 0
         for block in self.chain:
             for transaction in block.transactions:
@@ -38,7 +38,7 @@ class Blockchain:
     
     def getPendingBalance(self, wallet): #Also iterates through pending transactions
         if isinstance(wallet, godWallet):
-            return 100000000000000000000
+            return float('inf') #Infinite
         balance = 0
         for block in self.chain:
             for transaction in block.transactions:

@@ -8,7 +8,6 @@ from sqlalchemy.orm.attributes import flag_modified
 
 import copy
 from blockchain import *
-from wallet import *
 from . import app, bcrypt, db
 from coin import blockchainObj
 
@@ -91,6 +90,6 @@ def transaction():
 
 @app.route("/wallet", methods=['GET', 'POST'])
 def wallet():
-    balance = blockchainObj.newGetBalance(current_user.wallet)
+    balance = blockchainObj.getBalance(current_user.wallet)
     print(balance)
     return render_template('wallet.html', wallet=current_user.wallet, blockchain=blockchainObj, balance=balance)
