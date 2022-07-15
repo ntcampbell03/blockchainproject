@@ -175,3 +175,4 @@ class Transaction:
         signed_data = str(gpg.sign(self.transactionString, keyid = self.sender.key.fingerprint))
         self.signature = signed_data
         return signed_data
+        
