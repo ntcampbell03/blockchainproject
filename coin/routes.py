@@ -76,15 +76,18 @@ def logout():
 
 @app.route("/transactions", methods=['GET', 'POST'])
 def transactions():
-    return render_template('transaction.html', blockchain=blockchainObj)
+    form = TransactionForm()
+    if form.validate_on_submit():
+        reciever = User.query.filter(User.username == form.reciever.data).all()[0].wallet
+        t = Transaction(current_user.wallet, reciever, form.amount.data)
+        blockchainObj.addTransaction(t)
+    return render_template('transaction.html', blockchain=blockchainObj, form=form)
 
 @app.route("/transaction/", methods=['GET', 'POST'])
 def transaction():
-    god = godWallet(1000)
-    t = Transaction(god, current_user.wallet, 5)
-    blockchainObj.addTransaction(Transaction(god, current_user.wallet, 5))
-    
-    return render_template('transaction.html', blockchain=blockchainObj)
+    form = TransactionForm()
+    blockchainObj.addTransaction(Transaction(godWallet(1000), current_user.wallet, 10))
+    return render_template('transaction.html', blockchain=blockchainObj, form=form)
 
 @app.route("/wallet", methods=['GET', 'POST'])
 def wallet():
