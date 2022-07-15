@@ -15,26 +15,26 @@
     </head>
 
     <body>
-        <div class="overlay">
-            <video class="bgvideo" src="https://i.imgur.com/KEnwbfZ.mp4" muted autoPlay loop >
+        <div class="la-overlay">
+            <video class="la-bgvideo" src="https://i.imgur.com/KEnwbfZ.mp4" muted autoPlay loop >
         </div>
 
-        <div class="sidenav">
-            <a href="{{ url_for('home') }}" class="logo-bg" ><img src="../static/assets/logo.png" class="logo"></a>
-            <a href="{{ url_for('blockchain') }}" class="sidenav-box">BLOCKS</a>
-            <a href="{{ url_for('mine') }}" class="sidenav-box">MINE</a>
-            <a href="{{ url_for('transactions') }}" class="sidenav-box">SEND MONEY</a>
+        <div class="la-sidenav">
+            <a href="{{ url_for('home') }}" class="la-logo-bg" ><img src="../static/assets/logo.png" class="logo"></a>
+            <a href="{{ url_for('blockchain') }}" class="la-sidenav-box">BLOCKS</a>
+            <a href="{{ url_for('mine') }}" class="la-sidenav-box">MINE</a>
+            <a href="{{ url_for('transactions') }}" class="la-sidenav-box">SEND MONEY</a>
             {% if current_user.is_authenticated %}
-                <a href="{{ url_for('wallet') }}" class="sidenav-box">WALLET</a>
-                <a href="{{ url_for('logout') }}" class="sidenav-box">LOGOUT</a>
+                <a href="{{ url_for('wallet') }}" class="la-sidenav-box">WALLET</a>
+                <a href="{{ url_for('logout') }}" class="la-sidenav-box">LOGOUT</a>
             {% else %}
-                <a href="{{ url_for('register') }}" class="sidenav-box">REGISTER</a>
-                <a href="{{ url_for('login') }}" class="sidenav-box">LOGIN</a>
+                <a href="{{ url_for('register') }}" class="la-sidenav-box">REGISTER</a>
+                <a href="{{ url_for('login') }}" class="la-sidenav-box">LOGIN</a>
             {%endif%}
             
         </div>
 
-        <div class="body-content">
+        <div class="la-body-content">
             {% block content %}
             {% endblock %}
             <!-- <hr/>
