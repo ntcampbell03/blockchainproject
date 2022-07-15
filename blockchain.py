@@ -9,24 +9,6 @@ gpg = gnupg.GPG(gnupghome='/Library/Frameworks/Python.framework/Versions/3.10/li
 
 gpg.encoding = 'utf-8'
 
-class Wallet:
-    def __init__(self, name):
-        self.name = str(name)
-        self.input_data = gpg.gen_key_input(
-            name_real=self.name,
-            no_protection=True,
-            key_type='RSA',
-            key_length=1024)
-        self.key = gpg.gen_key(self.input_data)
-
-    def mineBlock(self, Blockchain):
-        reward = Blockchain.addBlock()
-        rewardTransaction = Transaction(godWallet(1), self, reward)
-        Blockchain.addTransaction(rewardTransaction)
-                
-class godWallet(Wallet):
-     pass
-
 class Blockchain:
     def __init__(self):
         self.chain = [self.GenesisBlock()]
@@ -42,7 +24,7 @@ class Blockchain:
     def getLastBlock(self):
         return self.chain[-1]
 
-    def getBalance(self, wallet: Wallet):
+    def getBalance(self, wallet):
         if isinstance(wallet, godWallet):
             return 100000000000000000000
         balance = 0
@@ -112,6 +94,24 @@ class Blockchain:
     def GenesisBlock(self):
         genesis = Block([], 0, "None")
         return genesis
+
+class Wallet:
+    def __init__(self, name):
+        self.name = str(name)
+        self.input_data = gpg.gen_key_input(
+            name_real=self.name,
+            no_protection=True,
+            key_type='RSA',
+            key_length=1024)
+        self.key = gpg.gen_key(self.input_data)
+
+    def mineBlock(self, Blockchain):
+        reward = Blockchain.addBlock()
+        rewardTransaction = Transaction(godWallet(1), self, reward)
+        Blockchain.addTransaction(rewardTransaction)
+                
+class godWallet(Wallet):
+     pass
 
 class Block:
     def __init__(self, transactions, index, prev):
