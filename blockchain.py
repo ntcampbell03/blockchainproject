@@ -24,7 +24,7 @@ class Blockchain:
     def getLastBlock(self):
         return self.chain[-1]
 
-    def getBalance(self, wallet):
+    def getBalance(self, wallet): #Iterates through all confirmed blocks to determine the balance of a wallet
         if isinstance(wallet, godWallet):
             return 100000000000000000000
         balance = 0
@@ -36,7 +36,7 @@ class Blockchain:
                     balance += transaction.amount
         return balance
     
-    def getPendingBalance(self, wallet):
+    def getPendingBalance(self, wallet): #Also iterates through pending transactions
         if isinstance(wallet, godWallet):
             return 100000000000000000000
         balance = 0
@@ -53,11 +53,11 @@ class Blockchain:
                 balance += transaction.amount
         return balance
 
-    def addTransaction(self, newTransaction):
+    def addTransaction(self, newTransaction): #Adds a transaction to self.newTransactions
         try:
             senderCurBalance = self.getPendingBalance(newTransaction.sender)
             receiverCurBalance = self.getPendingBalance(newTransaction.reciever)
-            if senderCurBalance >= newTransaction.amount:
+            if senderCurBalance >= newTransaction.amount: #Checks if balance is sufficient
                 self.newTransactions.append(newTransaction)
                 self.numTransactions += 1
             else:
@@ -65,7 +65,7 @@ class Blockchain:
         except NameError:
             print('Wallet does not exist!') #Tryblockchain.addTransaction(t) except doesnt work
             
-    def addBlock(self):
+    def addBlock(self): #Adds a block to the blockchain
         if self.newTransactions:
             for transaction in self.newTransactions:
                 if not gpg.verify(transaction.signature):
@@ -83,7 +83,7 @@ class Blockchain:
             return 0
         
     
-    def verifyBlockchain(self):
+    def verifyBlockchain(self): #Verifies hashes of the blocks and the signatures of the transactions
         prevHash = 0
         for i, curBlock in enumerate(self.chain[1:]):
             if curBlock.hash != curBlock.calculateHash(): #Check if hash is legitimate
@@ -98,12 +98,18 @@ class Blockchain:
                 return False
             prevHash = curBlock.hash
             for transaction in curBlock.transactions: #Check if transaction signatures are valid
+                rewardTransactions = 0
                 if not gpg.verify(transaction.signature):
                     print("Transaction signature is not valid")
                     return False
+                # if isinstance(transaction.sender, godWallet): #Checks to see how many reward transactions there are
+                #     rewardTransactions += 1
+                #     if rewardTransactions > 1:
+                #         print("Too many reward transactions")
+                #         return False
         return True
 
-    def GenesisBlock(self):
+    def GenesisBlock(self): #Creates genesis block
         genesis = Block([], 0, "None")
         return genesis
 
@@ -117,12 +123,12 @@ class Wallet:
             key_length=1024)
         self.key = gpg.gen_key(self.input_data)
 
-    def mineBlock(self, Blockchain):
+    def mineBlock(self, Blockchain): #Mines a block and adds a reward transaction to the pending transactions
         reward = Blockchain.addBlock()
         rewardTransaction = Transaction(godWallet(1), self, reward)
         Blockchain.addTransaction(rewardTransaction)
                 
-class godWallet(Wallet):
+class godWallet(Wallet): #Wallet with infinite balance
      pass
 
 class Block:
@@ -165,7 +171,7 @@ class Transaction:
         self.transactionString = f'{self.sender.name} to {self.reciever.name}: {self.amount} at {self.time}'
         self.signature = self.getSignature()
 
-    def getSignature(self): #signs transaction data
+    def getSignature(self): #Signs transaction data
         signed_data = str(gpg.sign(self.transactionString, keyid = self.sender.key.fingerprint))
         self.signature = signed_data
         return signed_data
