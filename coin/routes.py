@@ -30,7 +30,7 @@ def mine():
 
 @app.route("/mineblock/", methods=['GET', 'POST'])
 def mineblock():
-    blockchainObj.addBlock()
+    current_user.wallet.mineBlock(blockchainObj)
     flag_modified(current_user, "wallet")
     db.session.commit()
     return render_template('mine.html', blockchain=blockchainObj)
@@ -43,7 +43,7 @@ def register():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         #wallet creating
         newWallet = Wallet(form.username.data)
-        user = User(username=form.username.data, email=form.email.data, password=hashed_password, wallet=newWallet)
+        user = User(username=form.username.data, password=hashed_password, wallet=newWallet)
         db.session.add(user)
         db.session.commit()
         login_user(user)
@@ -56,14 +56,14 @@ def register():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        user = User.query.filter_by(username=form.username.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
             nextPage = request.args.get('next')
             flash(f'Welcome! You are now logged in', 'success')
             return redirect(nextPage) if nextPage else redirect(url_for('home'))
         else:
-            flash('Login Unsuccessful. Please check email and password', 'danger')
+            flash('Login Unsuccessful. Please check username and password', 'danger')
             #return redirect(url_for('login'))
     return render_template('login.html', form=form)
 
@@ -85,11 +85,11 @@ def transactions():
 @app.route("/transaction/", methods=['GET', 'POST'])
 def transaction():
     form = TransactionForm()
-    blockchainObj.addTransaction(Transaction(godWallet(1000), current_user.wallet, 10))
+    blockchainObj.addTransaction(Transaction(godWallet("hi"), current_user.wallet, 5))
+    
     return render_template('transaction.html', blockchain=blockchainObj, form=form)
 
 @app.route("/wallet", methods=['GET', 'POST'])
 def wallet():
     balance = blockchainObj.getBalance(current_user.wallet)
-    print(balance)
     return render_template('wallet.html', wallet=current_user.wallet, blockchain=blockchainObj, balance=balance)

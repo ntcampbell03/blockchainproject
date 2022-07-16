@@ -30,9 +30,9 @@ class Blockchain:
         balance = 0
         for block in self.chain:
             for transaction in block.transactions:
-                if transaction.sender == wallet:
+                if transaction.sender.name == wallet.name:
                     balance -= transaction.amount
-                if transaction.reciever == wallet:
+                if transaction.reciever.name == wallet.name:
                     balance += transaction.amount
         return balance
     
@@ -42,14 +42,14 @@ class Blockchain:
         balance = 0
         for block in self.chain:
             for transaction in block.transactions:
-                if transaction.sender == wallet:
+                if transaction.sender.name == wallet.name:
                     balance -= transaction.amount
-                if transaction.reciever == wallet:
+                if transaction.reciever.name == wallet.name:
                     balance += transaction.amount
         for transaction in self.newTransactions:
-            if transaction.sender == wallet:
+            if transaction.sender.name == wallet.name:
                     balance -= transaction.amount
-            if transaction.reciever == wallet:
+            if transaction.reciever.name == wallet.name:
                 balance += transaction.amount
         return balance
 
@@ -110,7 +110,7 @@ class Blockchain:
         return True
 
     def GenesisBlock(self): #Creates genesis block
-        genesis = Block([], 0, "None")
+        genesis = Block([Transaction(godWallet("1"), godWallet("2"), 0)], 0, "None")
         return genesis
 
 class Wallet:

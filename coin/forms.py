@@ -9,9 +9,6 @@ class RegistrationForm(FlaskForm):
 						   validators=[DataRequired(), Length(min=4, max=15)],
 						   render_kw={"placeholder": "Username"})
 
-	email = StringField('Email', validators=[DataRequired(), Email()],
-						render_kw={"placeholder": "Email"})
-
 	password = PasswordField('Password', validators=[DataRequired()],
 							 render_kw={"placeholder": "Password"})
 
@@ -19,50 +16,45 @@ class RegistrationForm(FlaskForm):
 									validators=[DataRequired(), EqualTo('password')],
 									render_kw={"placeholder": "Confirm Password"})
 
-	submit = SubmitField('Sign Up');
+	submit = SubmitField('Sign Up')
 
 	def validate_username(self, username):
 		user = User.query.filter_by(username = username.data).first()
 		if user:
-			raise ValidationError('Username already taken. Please choose another username');
-	def validate_email(self, email):
-		email = User.query.filter_by(email = email.data).first()
-		if email:
-			raise ValidationError('Email already taken. Please choose another username');
-
-
+			raise ValidationError('Username already taken. Please choose another username')
 
 class LoginForm(FlaskForm):
 
-	email = StringField('Email', validators=[DataRequired(), Email()],
-						render_kw={"placeholder": "Email"});
+	username = StringField('Username', 
+						   validators=[DataRequired(), Length(min=4, max=15)],
+						   render_kw={"placeholder": "Username"})
 
 	password = PasswordField('Password', validators=[DataRequired()],
-						render_kw={"placeholder": "Password"});
+						render_kw={"placeholder": "Password"})
 
-	remember = BooleanField('Remember Me');
+	remember = BooleanField('Remember Me')
 
-	submit = SubmitField('Login');
+	submit = SubmitField('Login')
 
 class TransactionForm(FlaskForm):
 	reciever = StringField('Reciever', 
-						   validators=[DataRequired(), Length(min=4, max=15)]);
+						   validators=[DataRequired(), Length(min=4, max=15)])
 
-	amount = IntegerField('Amount', validators=[DataRequired()]);
+	amount = IntegerField('Amount', validators=[DataRequired()])
 
-	submit = SubmitField('Make a Transaction!');
+	submit = SubmitField('Make a Transaction!')
 
 class TransactionFormNotLoggedIn(FlaskForm):
 
-	sender = StringField('Sender');
+	sender = StringField('Sender')
 
-	reciever = StringField('Reciever');
+	reciever = StringField('Reciever')
 
-	amount = StringField('Amount');
+	amount = StringField('Amount')
 
-	key = StringField('Key');
+	key = StringField('Key')
 
-	dummy = StringField('Dummy');
+	dummy = StringField('Dummy')
 
 
-	submit = SubmitField('Sign in to make a transaction!');
+	submit = SubmitField('Sign in to make a transaction!')

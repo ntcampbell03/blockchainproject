@@ -11,10 +11,13 @@ you = Wallet('you')
 
 t = Transaction(god, me, 10)
 u = Transaction(me, you, 5)
-v = Transaction(you, me, 5)
+
 
 blockchain.addTransaction(t)
+blockchain.addTransaction(u)
 blockchain.addBlock()
+
+print(blockchain.getBalance(me))
 
 
 
