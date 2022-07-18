@@ -26,3 +26,13 @@ small {
     top: 10%;
 }
 
+.minebg {
+    width: 65%;
+    height: 80%;
+    position: fixed;
+    left: 27.5%;
+    top: 10%;
+    align-items: left;
+    justify-content: flex-start;
+}
+

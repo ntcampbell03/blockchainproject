@@ -1,1 +1,15 @@
 /* start the tags with mi */
+.mi-button {
+    text-align: center;
+    padding: 20px 20px;
+    box-shadow: 0px 2px 2px 1px #0F0F0F;
+    border-radius: 15px;
+    text-decoration: none;
+    font-size: 30px;
+    color: white;
+    display: block;
+    background-color: #D6517d;
+    position: fixed;
+    left: 27.5%;
+    top: 15%;
+}
