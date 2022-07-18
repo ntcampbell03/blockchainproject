@@ -9,6 +9,7 @@
     {% if blockchain.numTransactions > 1 %}
         <small>there are {{ blockchain.numTransactions }} transactions</small>
         <a href="{{ url_for('mineblock') }}" style="color: white;" class="mi-button"> MINE BLOCK</a>
+        <br><small> Reward: 10</small>
     {% else %}
       <small> there arent enough transactions to mine a block</small>
     {% endif %}
