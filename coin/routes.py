@@ -60,7 +60,6 @@ def login():
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
             nextPage = request.args.get('next')
-            flash(f'Welcome! You are now logged in', 'success')
             return redirect(nextPage) if nextPage else redirect(url_for('home'))
         else:
             flash('Login Unsuccessful. Please check username and password', 'danger')
