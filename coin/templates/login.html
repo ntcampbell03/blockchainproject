@@ -37,11 +37,11 @@
         <form method = "POST", action = "">
           {{ form.hidden_tag() }}
 
-          <div class="form-group">
+          <div class="lo-labeltext" class="form-group">
             {% if form.username.errors  %}
               {{ form.username(class="form-control form-control-lg is-invalid") }}
 
-              <div class = "invalid-feedback">
+              <div class="lo-labeltext" class = "invalid-feedback">
                 {% for error in form.username.errors %}
                   <span> {{ error }} </span>
                 {% endfor %}
@@ -51,11 +51,11 @@
             {% endif %}
           </div>
 
-          <div class="form-group">
+          <div class="lo-labeltext" class="form-group">
             {% if form.password.errors  %}
               {{ form.password(class="form-control form-control-lg is-invalid") }}
 
-              <div class = "invalid-feedback">
+              <div class="lo-labeltext" class = "invalid-feedback">
                 {% for error in form.password.errors %}
                   <span> {{ error }} </span>
                 {% endfor %}
@@ -72,7 +72,7 @@
               {{ form.remember.label(class="form-check-label") }}
             </div>
           </div>
-          <div class="form-group">
+          <div class="lo-labeltext" class="form-group">
             {{ form.submit(class="btn btn-primary btn-block") }}
           </div>
         </form>
