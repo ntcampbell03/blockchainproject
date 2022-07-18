@@ -6,8 +6,56 @@
 {% block content %}
 <body>
   <div class="contentbg darkbg"></div>
-  <div class="contentbg">
-    {% for block in blockchain.chain %}
+  <div class="contentbg bc-content">
+    <div class="bl-titlecontainer">
+      <strong class="bl-title">BLOCKS</strong><br>
+      <strong class="bl-subtitle">CLICK ON A BLOCK TO VIEW MORE INFORMATION</strong>
+    </div>
+    
+    <div class="scroll">
+      
+      {% for block in blockchain.chain %}
+      <a href="{{ url_for('blockchain', idx=block.index) }}">
+        <div class="bc-numbercard">{{ block.index }}</div>
+      </a>
+      {% endfor %}
+    </div>
+    <div class="bg-scroll">
+      <div class="bc-emptnumbercard"></div>
+      <div class="bc-emptnumbercard"></div>
+    </div>
+
+    <div class="bc-blockdisplay">
+      <strong class="bl-subtitle" >BLOCKCHAIN INFO</strong><br><br>
+      <small>
+        Name: Unnamed Blockchain<br> 
+        Difficulty: {{ blockchain.difficulty }}<br>
+        Length: {{ blockchain.length }}<br>
+        Mining Reward: {{ blockchain.miningReward }}<br>
+        Pending Transactions: {{ blockchain.numTransactions }}<br>
+        Last Updated: {{ lastUpdated }}
+      </small>
+    </div>
+
+    <div class="bc-transdisplay">
+      <strong class="bl-subtitle" >TRANSACTION INFO</strong><br><br>
+      {% for transaction in selectedBlock.transactions %}
+        <small>{{ transaction.transactionString }}<br></small>
+      {% endfor %}
+    </div>
+    
+    <div class="bc-blockdisplay">
+      <strong class="bl-subtitle" >BLOCK INFO</strong><br><br>
+      <small>
+        Block#: {{ selectedBlock.index }}<br>
+        Hash: {{ selectedBlock.hash[0:20] }}<br> 
+        Prev: {{ selectedBlock.prev[0:20] }}<br>
+        Timestamp: {{ selectedBlock.time[4:-4] }}<br> 
+      </small>
+    </div>
+    
+
+    <!-- {% for block in blockchain.chain %}
       <small>Hash: {{ block.hash[0:20] }} &nbsp;&nbsp; Prev: {{ block.prev[0:20] }}<br></small>
       <small>Timestamp: {{ block.time[4:-4] }} &nbsp;&nbsp; Block#: {{ block.index }}<br></small>
       {% for transaction in block.transactions %}
@@ -15,7 +63,7 @@
       {% endfor %}
       
     <br><br>
-    {% endfor %}
+    {% endfor %} -->
   </div>
   
 </body>
