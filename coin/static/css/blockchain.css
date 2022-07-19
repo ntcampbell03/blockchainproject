@@ -1,0 +1,125 @@
+/* start the tags with bl */
+.bl-title {
+    color: #D6517d;
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 3vw;
+    text-shadow: 2px 2px 2px #0F0F0F;
+}
+
+.bl-subtitle {
+    color: white;
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5vw;
+    text-shadow: 0px 2px 2px #D6517d;
+    text-align: center;
+    width: max-content;
+}
+
+.bl-titlecontainer {
+    text-align: center;
+    padding-top: 1%;
+}
+
+.scroll {
+    width: 98%-15px;
+    margin: 1%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    border-radius: 15px;
+    padding: 0 7.5px;
+    border: #D6517d;
+    border-width: 5px;
+    border-style: ridge;
+}
+
+.bg-scroll {
+    width: 98%-15px;
+    opacity: 30%;
+    margin: 1%;
+    background-color: #D6517d;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    border-radius: 15px;
+    padding: 0 7.5px;
+    position: relative;
+    top: calc(-5vw - 20px - 1%);
+    z-index: -10;
+}
+
+.bffdg::after {
+    content:"";
+    border-width: 10px;
+    border-color: white;
+    width: 5vw;
+    height: 5vw;
+    margin: 5px 2.5px 5px 0;
+    background-color: rgba(0,0,0,0.9);
+    display: inline-block;
+    border-radius: 15px;
+}
+
+.bc-numbercard {
+    width: 5vw;
+    height: 5vw;
+    margin: 5px 2.5px 5px 0;
+    background-color: rgba(0,0,0,0.65);
+    display: inline-block;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 5vw;
+    font-size: 20px;
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: whitesmoke;
+}
+
+.bc-numbercard:hover {
+    background-color: rgba(0,0,0,.95);
+    font-size: 30px;
+    transition: all .4s ease;
+    cursor: pointer;
+}
+
+.bc-blockdisplay {
+    float: left;
+    position: relative;
+    width: calc((100% - 90px)/ 2);
+    height: calc(15vw - 1%);
+    margin: 1%;
+    margin-top: 0%;
+    border-radius: 15px;
+    padding: 0 7.5px;
+    border: #D6517d;
+    border-width: 5px;
+    border-style: ridge;
+    top: calc(-5vw - 20px);
+    background-color: rgba(214,81,125,0.1);
+}
+
+.bc-transdisplay {
+    float: right;
+    position: relative;
+    width: calc((100% - 90px)/ 2);
+    height: calc(30vw + 1%);
+    margin: 1%;
+    margin-top: 0%;
+    border-radius: 15px;
+    padding: 0 7.5px;
+    border: #D6517d;
+    border-width: 5px;
+    border-style: ridge;
+    top: calc(-5vw - 20px);
+    background-color: rgba(214,81,125,0.1);
+}
+
+.bc-emptnumbercard {
+    width: 5vw;
+    height: 5vw;
+    margin: 5px 2.5px 5px 0;
+    display: inline-block;
+    border-radius: 15px;
+}

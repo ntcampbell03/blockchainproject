@@ -3,11 +3,6 @@
     src: url('../assets/SYNNova-Bold.otf');
     font-weight: bold;
 }
-
-body {
-    background-color: black;
-}
-
 small {
     font-size: large;
     color: white;
@@ -24,6 +19,7 @@ small {
     position: fixed;
     left: 27.5%;
     top: 10%;
+    border-radius: 25px;
 }
 
 .minebg {
@@ -36,3 +32,4 @@ small {
     justify-content: flex-start;
 }
 
+#loadOverlay{display: none;}

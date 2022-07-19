@@ -16,12 +16,15 @@ from coin import blockchainObj
 def home():
     return render_template('home.html', blockchain=blockchainObj)
 
+@app.route('/blockchain/<idx>')
 @app.route("/blockchain")
-def blockchain():
+def blockchain(idx = 0):
     chain = []
     for blockObj in blockchainObj.chain:
         chain.append(blockObj.hash)
-    return render_template('blockchain.html', blockchain=blockchainObj, chain=chain)
+    selectedBlock = blockchainObj.getBlock(int(idx))
+    lastUpdated = blockchainObj.getBlock(blockchainObj.length-1).time
+    return render_template('blockchain.html', blockchain=blockchainObj, chain=chain, selectedBlock = selectedBlock, lastUpdated=lastUpdated)
 
 
 @app.route("/mine", methods=['GET', 'POST'])
