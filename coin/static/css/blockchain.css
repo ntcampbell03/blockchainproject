@@ -114,6 +114,7 @@
     border-style: ridge;
     top: calc(-5vw - 20px);
     background-color: rgba(214,81,125,0.1);
+    overflow-y: scroll;
 }
 
 .bc-emptnumbercard {
