@@ -70,23 +70,28 @@ class Blockchain:
             for transaction in self.newTransactions:
                 if not gpg.verify(transaction.signature):
                    raise ValueError("Transaction signature could not be verified")
-            newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash)
-            newBlock.mineBlock(self.difficulty)
+            if self.numTransactions > 10: # Adjusts the difficulty based on the number of transactions
+                newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash, self.difficulty - 1)
+            elif self.numTransactions > 25:
+                newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash, self.difficulty - 2)
+            else:
+                newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash, self.difficulty)
+            newBlock.mineBlock(newBlock.curDifficulty)
             if self.getLastBlock().index <= newBlock.index:
                 self.chain.append(newBlock)
                 self.length += 1
-                self.numTransactions = 0
-                if len(self.newTransactions) > 10: # Increases rewards for more transactions in a block
-                    self.newTransactions = []
+                self.newTransactions = []
+                if self.numTransactions > 10: # Increases rewards for more transactions in a block
+                    self.numTransactions = 0
                     return self.miningReward + 5
-                elif len(self.newTransactions) > 25:
-                    self.newTransactions = []
+                elif self.numTransactions > 25:
+                    self.numTransactions = 0
                     return self.miningReward + 10
-                elif len(self.newTransactions) > 100:
-                    self.newTransactions = []
+                elif self.numTransactions > 100:
+                    self.numTransactions = 0
                     return self.miningReward + 25
                 else:
-                    self.newTransactions = []
+                    self.numTransactions = 0
                     return self.miningReward
         else:
             print("No pending transactions")
@@ -94,13 +99,13 @@ class Blockchain:
         
     
     def verifyBlockchain(self): # Verifies hashes of the blocks and the signatures of the transactions
-        prevHash = 0
+        prevHash = '0'
         for i, curBlock in enumerate(self.chain[1:]):
             if curBlock.hash != curBlock.calculateHash(): # Check if hash is legitimate
                 print("Hash does not match data")
                 return False
-            for i in curBlock.hash[0:self.difficulty]: # Check if hash is acceptable
-                if i != '0':
+            for char in curBlock.hash[0:curBlock.curDifficulty]: # Check if hash is acceptable
+                if char != '0':
                     print("Hash does not meet requirements")
                     return False
             if curBlock.prev != prevHash: # Check if prev is acceptable
@@ -120,7 +125,7 @@ class Blockchain:
         return True
 
     def GenesisBlock(self): # Creates genesis block
-        genesis = Block([Transaction(godWallet("1"), godWallet("2"), 0)], 0, "None")
+        genesis = Block([Transaction(godWallet("1"), godWallet("2"), 0)], 0, None, 0)
         return genesis
 
 class Wallet:
@@ -142,13 +147,14 @@ class godWallet(Wallet): # Wallet with infinite balance
      pass
 
 class Block:
-    def __init__(self, transactions, index, prev):
+    def __init__(self, transactions, index, prev, curDifficulty):
         self.nonce = 0
         self.transactions = transactions
         self.index = index
         self.time = time.ctime()
         self.prev = prev
         self.hash = self.calculateHash()
+        self.curDifficulty = curDifficulty
 
     def getTransactions(self):
         for transaction in self.transactions:
@@ -156,11 +162,11 @@ class Block:
 
     def calculateHash(self):
             hashTransactions = ''
-            if self.transactions: # Handle genesis block
+            if self.prev: # Handle genesis block
                 for transaction in self.transactions:
                     hashTransactions += transaction.transactionString
             else:
-                return 0
+                return '0'
             hashString = (f'{hashTransactions}{self.prev}{self.index}{self.nonce}{self.time}').encode()
             return hashlib.sha256(hashString).hexdigest()
 
