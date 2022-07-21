@@ -316,6 +316,7 @@ input[type=checkbox]:checked + .mi-timer {
     font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.5vw;
     text-shadow: 0px 2px 2px #D6517d;
+    margin-bottom: 2vw;
 }
 
 .mi-rewardinfo {
@@ -359,4 +360,20 @@ input[type=checkbox]:checked + .mi-timer {
     text-shadow: 5px 10px 20px #D6517d;
     text-align: center;
     margin-top: 2vw;
+    margin-bottom: 2vw;
+}
+
+.mi-translist {
+    text-align: left;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.1vw;
+    margin-bottom: .5vh;
+    float: left;
+}
+
+.pending-box {
+    padding: 1.5vw;
+    overflow-y: scroll;
+    height: inherit;
 }
