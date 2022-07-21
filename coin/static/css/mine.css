@@ -6,7 +6,7 @@
     border-radius: 15px;
     text-decoration: none;
     font-size: 30px;
-    color: white;
+    color: whitesmoke;
     display: block;
     background-color: #D6517d;
     position: fixed;
@@ -37,7 +37,7 @@
     background: radial-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8), rgba(0,0,0,1));
     border-radius: 15vh;
     border: 5px #D6517d;
-    border-style:double;
+    border-style:outset;
     line-height: 8vw;
     font-size: 35px;
     font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -133,7 +133,7 @@ input[type=checkbox]:checked + .mi-timer {
     position: relative;
     font-size: 20px;
     font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #D0342C;
+    color: whitesmoke;
     text-shadow: 2px 2px 2px #0F0F0F;
     margin: 2.5vw;
     transform: scale(1);
@@ -148,7 +148,7 @@ input[type=checkbox]:checked + .mi-timer {
 
 	35% {
 		transform: scale(1);
-		text-shadow: 1px 0px 10px rgba(255,0,0,.7);
+		text-shadow: 1px 2px 10px rgba(255,0,0,.7);
 	}
 
     65% {
@@ -300,3 +300,63 @@ input[type=checkbox]:checked + .mi-timer {
 /* .mining-active {
     visibility: visible;
 } */
+
+.mi-subbox {
+    position: relative;
+    width: 26.75vw;
+    height: 49vh;
+    background: #f00;
+    top: 25vh;
+    padding-top: 1vh;
+    border-radius: 15px;
+    border: #D6517d;
+    border-width: 5px;
+    background-color: rgba(214,81,125,0.1);
+    color: white;
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5vw;
+    text-shadow: 0px 2px 2px #D6517d;
+}
+
+.mi-rewardinfo {
+    float: left;
+    text-align: left;
+    border-style: ridge;
+    background: 
+     radial-gradient(
+      circle 20vh at 27.75vw -5vh,
+      transparent 10vh,
+      #D6517d 10vh calc(10vh + 3px),
+      rgba(214,81,125,0.1) 10vh
+    ) border-box;
+    -webkit-mask-image: radial-gradient(circle 10vh at 27.75vw -5vh, transparent 0, transparent 10vh, black 10vh);
+    mask-image: radial-gradient(circle 10vh at 0 0, transparent 0, transparent 10vh, black 10vh);
+    margin-left: 3vw;
+    padding-left: 1vw;
+}
+
+.mi-pendinginfo {
+    float: right;
+    text-align: right;
+    border-style:groove;
+    background: 
+     radial-gradient(
+      circle 20vh at 0 -5vh,
+      transparent 10vh,
+      #D6517d 10vh calc(10vh + 3px),
+      rgba(214,81,125,0.1) 10vh
+    ) border-box;
+    -webkit-mask-image: radial-gradient(circle 10vh at 0 -5vh, transparent 0, transparent 10vh, black 10vh);
+    mask-image: radial-gradient(circle 10vh at 0 0, transparent 0, transparent 10vh, black 10vh);
+    margin-right: 3vw;
+    padding-right: 1vw;
+}
+
+.reward-text {
+    color: white;
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15vw;
+    text-shadow: 5px 10px 20px #D6517d;
+    text-align: center;
+    margin-top: 2vw;
+}

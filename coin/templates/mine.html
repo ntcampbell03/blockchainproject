@@ -44,23 +44,26 @@
       {% endif %}
     </div>
     {% if success %}
-      hi
+      <div class="success">
+        <!-- CODE FOR MINING SUCCESS POPUP -->
+      </div>
     {% endif %}
-    <!-- {% if blockchain.numTransactions > 1 %}
-        <small>there are {{ blockchain.numTransactions }} transactions</small>
-        <a href="{{ url_for('mineblock') }}" style="color: white;" class="mi-button"> MINE BLOCK</a>
-        {% if blockchain.numTransactions > 10 %}
-          <br><small> Reward: {{ blockchain.miningReward + 5 }}</small>
-        {% elif blockchain.numTransactions > 25 %}
-          <br><small> Reward: {{ blockchain.miningReward + 10 }}</small>
-        {% elif blockchain.numTransactions > 100 %}
-          <br><small> Reward: {{ blockchain.miningReward + 25 }}</small>
-        {% else %}
-          <br><small> Reward: {{ blockchain.miningReward}}</small>
-        {% endif %}
-    {% else %}
-      <small> there arent enough transactions to mine a block</small>
-    {% endif %} -->
+    
+    <div class="mi-subbox mi-rewardinfo">
+      <div class="mi-title">CURRENT REWARD</div>
+      {% if blockchain.numTransactions > 10 %}
+        <div class="reward-text">{{ blockchain.miningReward + 5 }}</div>
+      {% elif blockchain.numTransactions > 25 %}
+        <div class="reward-text">{{ blockchain.miningReward + 10 }}</div>
+      {% elif blockchain.numTransactions > 100 %}
+        <div class="reward-text">{{ blockchain.miningReward + 25 }}</div>
+      {% else %}
+        <div class="reward-text">{{ blockchain.miningReward }}</div>
+      {% endif %}
+    </div>
+    <div class="mi-subbox mi-pendinginfo">
+      <div class="mi-title">PENDING TRANSACTIONS</div>
+    </div>
   </div>
   
 
