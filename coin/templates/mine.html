@@ -11,12 +11,14 @@
     <div class="clock-container">
       <span class="count tenhr tens"></span>
       <span class="count onehr ones"></span>
+      <span class="count" id="colon">:</span>
       <span class="count tenmin tens"></span>
       <span class="count onemin ones"></span>
+      <span class="count" id="colon">:</span>
       <span class="count tensec tens"></span>
       <span class="count onesec ones"></span>
     </div>
-    <!-- END CLOCK  -->
+  <!-- END CLOCK  -->
     <div class="mi-designdiv">
       <input type="checkbox" id="toggle" class="visually-hidden" onclick="window.location.href='/mineblock/'">
       {% if 2 > blockchain.numTransactions %}
@@ -27,12 +29,18 @@
           MINE
         </label>
       {% else %}
-      <label for="toggle" class="mi-minebutton">
-        MINE
-      </label>
+        <label for="toggle" class="mine-label">
+          <div class="mi-minebutton">
+            MINE
+          </div>
+          <div class="mining-text">
+            MINING
+            <div class="dot-flashing"></div>
+          </div>
+        </label>
       {% endif %}
       {% if 2 > blockchain.numTransactions %}
-        <strong class="mi-warn left"> NEEDS MORE TRANSACTIONS </strong>
+        <strong class="mi-warn"> NEEDS MORE TRANSACTIONS </strong>
       {% endif %}
     </div>
     {% if success %}
@@ -55,5 +63,9 @@
     {% endif %} -->
   </div>
   
+
+  <script>
+  </script> 
+
 </body>
 {% endblock %}

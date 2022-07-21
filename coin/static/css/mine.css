@@ -90,7 +90,18 @@
     display: none;
 }
 
-input[type=checkbox]:checked + .mi-minebutton {
+.mine-label {
+    height: 20vh;
+    width: 20vh;
+    border-radius: 15vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+}
+
+input[type=checkbox]:checked + .mine-label .mi-minebutton {
     border: 8px solid rgba(214,81,125,0.25); /* Light grey */
     border-top: 8px solid #D6517d; /* Blue */
     border-radius: 50%;
@@ -103,6 +114,10 @@ input[type=checkbox]:checked + .mi-minebutton {
     box-sizing: border-box;         /* Opera/IE 8+ */
     color: rgba(214,81,125,0);
     text-shadow: 2px 2px 2px rgba(214,81,125,0);
+}
+
+input[type=checkbox]:checked + .mine-label .mining-text {
+    visibility: visible;
 }
 
 /* .mi-timer {
@@ -151,17 +166,24 @@ input[type=checkbox]:checked + .mi-timer {
     position: fixed;
     top: 300px;
     display: flex;
-    height: 200px;
-    width: 600px;
-    line-height: 200px;
+    height: 20vh;
+    width: 60vw;
+    line-height: 20vh;
+    display: none;
+}
+
+#colon {
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-right: -4vw;
 }
 
 .count {
-    background: red;
     height: 100%;
     width: 50%;
-    font-size: 12rem;
+    font-size: 17.5vh;
     overflow: hidden;
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: red;
 }
 
 .count.ones::after {
@@ -175,22 +197,22 @@ input[type=checkbox]:checked + .mi-timer {
 }
 
 .count.onesec::after {
-    animation: animate .01s steps(10) infinite;
+    animation: animate 10s steps(10) infinite;
 }
 .count.tensec::after {
-    animation: sanimate .06s steps(6) infinite;
+    animation: sanimate 60s steps(6) infinite;
 }
 .count.onemin::after {
-    animation: animate .36s steps(10) infinite;
+    animation: animate 360s steps(10) infinite;
 }
 .count.tenmin::after {
-    animation: sanimate 2.16s steps(6) infinite;
+    animation: sanimate 2160s steps(6) infinite;
 }
 .count.onehr::after {
-    animation: animate 25.92s steps(10) infinite;
+    animation: animate 21600s steps(10) infinite;
 }
 .count.tenhr::after {
-    animation: sanimate 200s steps(6) infinite;
+    animation: sanimate 129600s steps(6) infinite;
 }
 
 @keyframes animate{
@@ -198,7 +220,7 @@ input[type=checkbox]:checked + .mi-timer {
         top:0
     }
     100%{
-        top:-2000px
+        top:-200vh
     }
 }
 
@@ -207,6 +229,74 @@ input[type=checkbox]:checked + .mi-timer {
         top:0
     }
     100%{
-        top:-1200px
+        top:-120vh
     }
 }
+
+/* FLOAT DOT */
+.dot-flashing {
+    position: fixed;
+    top: 27vh;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #D6517d;
+    color: #D6517d;
+    animation: dotFlashing 1s infinite linear alternate;
+    animation-delay: .5s;
+  }
+  
+  .dot-flashing::before, .dot-flashing::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+  }
+  
+  .dot-flashing::before {
+    left: -15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #D6517d;
+    color: #D6517d;
+    animation: dotFlashing 1s infinite alternate;
+    animation-delay: 0s;
+  }
+  
+  .dot-flashing::after {
+    left: 15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #D6517d;
+    color: #D6517d;
+    animation: dotFlashing 1s infinite alternate;
+    animation-delay: 1s;
+  }
+  
+  @keyframes dotFlashing {
+    0% {
+        background-color: #D6517d;
+    }
+    50%,
+    100% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+  }
+
+ 
+.mining-text {
+    color: #D6517d;
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    position: fixed;
+    top: 22vh;
+    font-size: 3vh;
+    display: flex;
+    justify-content: center;
+    visibility: hidden;
+}
+
+/* .mining-active {
+    visibility: visible;
+} */
