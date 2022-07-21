@@ -162,7 +162,7 @@ class Block:
 
     def calculateHash(self):
             hashTransactions = ''
-            if self.prev: # Handle genesis block
+            if self.prev != "None": # Handle genesis block
                 for transaction in self.transactions:
                     hashTransactions += transaction.transactionString
             else:
