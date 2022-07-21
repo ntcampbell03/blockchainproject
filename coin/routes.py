@@ -29,14 +29,14 @@ def blockchain(idx = 0):
 
 @app.route("/mine", methods=['GET', 'POST'])
 def mine():
-    return render_template('mine.html', blockchain=blockchainObj)
+    return render_template('mine.html', blockchain=blockchainObj, success=False)
 
 @app.route("/mineblock/", methods=['GET', 'POST'])
 def mineblock():
     current_user.wallet.mineBlock(blockchainObj)
     flag_modified(current_user, "wallet")
     db.session.commit()
-    return render_template('mine.html', blockchain=blockchainObj)
+    return render_template('mine.html', blockchain=blockchainObj, success=True)
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():

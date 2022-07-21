@@ -5,8 +5,40 @@
 
 {% block content %}
 <body>
-  <div class="minebg">
-    {% if blockchain.numTransactions > 1 %}
+  <div class="contentbg darkbg"></div>
+  <div class="contentbg">
+  <!-- CLOCK -->
+    <div class="clock-container">
+      <span class="count tenhr tens"></span>
+      <span class="count onehr ones"></span>
+      <span class="count tenmin tens"></span>
+      <span class="count onemin ones"></span>
+      <span class="count tensec tens"></span>
+      <span class="count onesec ones"></span>
+    </div>
+    <!-- END CLOCK  -->
+    <div class="mi-designdiv">
+      <input type="checkbox" id="toggle" class="visually-hidden" onclick="window.location.href='/mineblock/'">
+      {% if 2 > blockchain.numTransactions %}
+        <strong class="mi-warn"> NEEDS MORE TRANSACTIONS </strong>
+      {% endif %}
+      {% if 2 > blockchain.numTransactions %}
+        <label class="mi-minebutton">
+          MINE
+        </label>
+      {% else %}
+      <label for="toggle" class="mi-minebutton">
+        MINE
+      </label>
+      {% endif %}
+      {% if 2 > blockchain.numTransactions %}
+        <strong class="mi-warn left"> NEEDS MORE TRANSACTIONS </strong>
+      {% endif %}
+    </div>
+    {% if success %}
+      hi
+    {% endif %}
+    <!-- {% if blockchain.numTransactions > 1 %}
         <small>there are {{ blockchain.numTransactions }} transactions</small>
         <a href="{{ url_for('mineblock') }}" style="color: white;" class="mi-button"> MINE BLOCK</a>
         {% if blockchain.numTransactions > 10 %}
@@ -20,7 +52,7 @@
         {% endif %}
     {% else %}
       <small> there arent enough transactions to mine a block</small>
-    {% endif %}
+    {% endif %} -->
   </div>
   
 </body>

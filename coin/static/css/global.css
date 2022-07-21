@@ -33,3 +33,31 @@ small {
 }
 
 #loadOverlay{display: none;}
+
+.loader {
+    border: 8px solid rgba(214,81,125,0.25); /* Light grey */
+    border-top: 8px solid #D6517d; /* Blue */
+    border-radius: 50%;
+    width: 15vh;
+    height: 15vh;
+    animation: spin .75s linear infinite;
+    border-style:double;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    display:none;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .loader:hover {
+    height: 17vh;
+    width: 17vh;
+    line-height: 9vw;
+    font-size: 40px;
+    transition: all .4s ease;
+    color: #D6517d;
+}

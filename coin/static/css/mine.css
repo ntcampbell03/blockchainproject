@@ -13,3 +13,200 @@
     left: 27.5%;
     top: 17.5%;
 }
+
+.mi-designdiv {
+    position: fixed;
+    top: 20vh;
+    width: inherit; 
+    height: 10vh;
+    background-image: linear-gradient(to right, rgba(214,81,125,0.05),rgba(214,81,125,0.25),rgba(214,81,125,0.50), rgba(214,81,125,0.75) ,rgba(214,81,125,0.50),rgba(214,81,125,0.25),rgba(214,81,125,0.05));
+    border-top: 5px #D6517d;
+    border-bottom: 5px #D6517d;
+    border-style:double;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mi-minebutton {
+    height: 15vh;
+    width: 15vh;
+    background: radial-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8), rgba(0,0,0,1));
+    border-radius: 15vh;
+    border: 5px #D6517d;
+    border-style:double;
+    line-height: 8vw;
+    font-size: 35px;
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: whitesmoke;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+    text-shadow: 2px 2px 2px #0F0F0F;
+}
+
+.mi-minebutton:hover {
+    height: 17vh;
+    width: 17vh;
+    line-height: 9vw;
+    font-size: 40px;
+    transition: all .4s ease;
+    color: #D6517d;
+}
+
+.loader {
+    border: 8px solid rgba(214,81,125,0.25); /* Light grey */
+    border-top: 8px solid #D6517d; /* Blue */
+    border-radius: 50%;
+    width: 15vh;
+    height: 15vh;
+    animation: spin .75s linear infinite;
+    border-style:double;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    display:none;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .loader:hover {
+    height: 17vh;
+    width: 17vh;
+    line-height: 9vw;
+    font-size: 40px;
+    transition: all .4s ease;
+    color: #D6517d;
+}
+
+.visually-hidden {
+    display: none;
+}
+
+input[type=checkbox]:checked + .mi-minebutton {
+    border: 8px solid rgba(214,81,125,0.25); /* Light grey */
+    border-top: 8px solid #D6517d; /* Blue */
+    border-radius: 50%;
+    width: 15vh;
+    height: 15vh;
+    animation: spin .75s linear infinite;
+    border-style:double;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    color: rgba(214,81,125,0);
+    text-shadow: 2px 2px 2px rgba(214,81,125,0);
+}
+
+/* .mi-timer {
+
+}
+
+input[type=checkbox]:checked + .mi-timer {
+
+} */
+
+.mi-warn {
+    /* line-height: 8vw; */
+    position: relative;
+    font-size: 20px;
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #D0342C;
+    text-shadow: 2px 2px 2px #0F0F0F;
+    margin: 2.5vw;
+    transform: scale(1);
+	animation: pulse 4s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		text-shadow: 1px 0px 10px rgba(0,0,0,.5);
+	}
+
+	35% {
+		transform: scale(1);
+		text-shadow: 1px 0px 10px rgba(255,0,0,.7);
+	}
+
+    65% {
+		transform: scale(1);
+		text-shadow: 1px 0px 10px rgba(255,0,0,.7);
+	}
+
+	100% {
+		transform: scale(0.95);
+		text-shadow: 1px 0px 10px rgba(0,0,0,.5);
+	}
+}
+
+.clock-container {
+    position: fixed;
+    top: 300px;
+    display: flex;
+    height: 200px;
+    width: 600px;
+    line-height: 200px;
+}
+
+.count {
+    background: red;
+    height: 100%;
+    width: 50%;
+    font-size: 12rem;
+    overflow: hidden;
+}
+
+.count.ones::after {
+    position: relative;
+    content: "0 1 2 3 4 5 6 7 8 9";
+}
+
+.count.tens::after {
+    position: relative;
+    content: "0 1 2 3 4 5";
+}
+
+.count.onesec::after {
+    animation: animate .01s steps(10) infinite;
+}
+.count.tensec::after {
+    animation: sanimate .06s steps(6) infinite;
+}
+.count.onemin::after {
+    animation: animate .36s steps(10) infinite;
+}
+.count.tenmin::after {
+    animation: sanimate 2.16s steps(6) infinite;
+}
+.count.onehr::after {
+    animation: animate 25.92s steps(10) infinite;
+}
+.count.tenhr::after {
+    animation: sanimate 200s steps(6) infinite;
+}
+
+@keyframes animate{
+    0%{
+        top:0
+    }
+    100%{
+        top:-2000px
+    }
+}
+
+@keyframes sanimate{
+    0%{
+        top:0
+    }
+    100%{
+        top:-1200px
+    }
+}
