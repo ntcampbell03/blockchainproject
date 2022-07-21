@@ -4,6 +4,7 @@ import gnupg
 import os
 
 blockchain =  Blockchain()
+blockchain.difficulty = 5
 
 god = godWallet('god')
 me = Wallet('me')
