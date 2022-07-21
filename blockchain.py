@@ -2,8 +2,8 @@ import hashlib
 import time
 import gnupg
 
-# gpg = gnupg.GPG(gnupghome='/opt/homebrew/Cellar/gnupg')
-gpg = gnupg.GPG(gnupghome='/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages')
+gpg = gnupg.GPG(gnupghome='/opt/homebrew/Cellar/gnupg')
+# gpg = gnupg.GPG(gnupghome='/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages')
 # gpg = gnupg.GPG(gnupghome='/Users/nikhiljain/Desktop/blockchainproject/env/lib/python3.9/site-packages/')
 # gpg = gnupg.GPG(gnupghome='/Users/rithwikbabu/Documents/appcode/blockchainproject/env/lib/python3.9/site-packages/')
 
@@ -125,7 +125,7 @@ class Blockchain:
         return True
 
     def GenesisBlock(self): # Creates genesis block
-        genesis = Block([Transaction(godWallet("1"), godWallet("2"), 0)], 0, None, 0)
+        genesis = Block([Transaction(godWallet("1"), godWallet("2"), 0)], 0, "None", 0)
         return genesis
 
 class Wallet:
