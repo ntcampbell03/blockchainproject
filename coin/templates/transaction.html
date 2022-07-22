@@ -6,7 +6,8 @@
 {% block content %}
 <body>
   <div class="contentbg darkbg"></div>
-  <div class="contentbg tr-subbox tr-floatLeft">
+  <div class="contentbg">
+  <div class="tr-subbox tr-floatLeft">
     <a href="{{ url_for('transaction') }}" style="color: white;">Send 5</a>
     <form method = "POST", action = "">
       {{ form.hidden_tag() }}
@@ -46,6 +47,7 @@
       <small>Transactions: {{ trans }}</small>
       <br><br>
     {% endfor %}
+  </div>
   </div>
   
 </body>

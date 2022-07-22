@@ -49,15 +49,25 @@
     background-color: #D6517d;
     border-radius: 10px;
     padding: 5px;
-    top: 27.5vh;
+    top: 35vh;
     position: fixed;
 }
 .wa-HistoryButton{
-    top: 35vh;
+    top: 42.5vh;
 }
 .wa-Button:hover{ 
     color: rgba(245, 245, 245, 0.77);
     box-shadow: 0px 2px 2px 1px #0F0F0F;
     transition: all .4s ease;
     background-color: #d6517dd3;
+}
+
+.wa-PendingTransactions{
+    display: none;
+    overflow-y: scroll;
+}
+
+.wa-TransactionHistory{
+    display: none;
+    overflow-y: scroll;
 }
