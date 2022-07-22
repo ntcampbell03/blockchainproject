@@ -5,16 +5,83 @@
 
 {% block content %}
 <body>
+  <div class="contentbg darkbg"></div>
   <div class="contentbg">
+  <div class="wa-subbox wa-floatLeft">
     <small>Hi {{ wallet.name }}<br><br></small> 
     <small>Balance: {{ balance }}<br><br></small> 
-    {% for trans in blockchain.newTransactions %}
-    <small>Trans: {{ trans.amount }}</small> <br>
-    <small>Sender: {{ trans.sender.name }}</small> <br>
-    <small>Reciever: {{ trans.reciever.name }}</small> 
       <br><br>
-    {% endfor %}
-    
+    <a onclick="showPending()" class="wa-Button">Pending Transactions</a>
+    <a onclick="showHistory()" class="wa-Button wa-HistoryButton">Transaction History</a>
   </div>
+  <div class="wa-subbox wa-floatRight wa-PendingTransactions">
+    Pending Transactions:
+    <br>
+    <br>
+    {%for trans in blockchain.newTransactions%}
+        {%if trans.sender.name == wallet.name%}
+        <small>Trans: {{ trans.amount }} </small>
+        <br>
+        <small>Sender: {{ trans.sender.name }} </small>
+        <br>
+        <small>Reciever: {{ trans.reciever.name }} </small>
+        <br>
+        <br>
+        {%endif%}
+        {%if trans.reciever.name == wallet.name%}
+        <small>Trans: {{ trans.amount }} </small>
+        <br>
+        <small>Sender: {{ trans.sender.name }} </small>
+        <br>
+        <small>Reciever: {{ trans.reciever.name }} </small>
+        <br>
+        <br>
+        {%endif%}
+    {%endfor%}
+  </div>
+  <div class="wa-subbox wa-floatRight wa-TransactionHistory">
+    Transaction History:
+    <br>
+    <br>
+    {%for block in blockchain.chain%}
+      {%for trans in block.transactions%}
+        {%if trans.sender.name == wallet.name%}
+        <small>Trans: {{ trans.amount }} </small>
+        <br>
+        <small>Sender: {{ trans.sender.name }} </small>
+        <br>
+        <small>Reciever: {{ trans.reciever.name }} </small>
+        <br>
+        <br>
+        {%endif%}
+        {%if trans.reciever.name == wallet.name%}
+        <small>Trans: {{ trans.amount }} </small>
+        <br>
+        <small>Sender: {{ trans.sender.name }} </small>
+        <br>
+        <small>Reciever: {{ trans.reciever.name }} </small>
+        <br>
+        <br>
+        {%endif%}
+      {%endfor%}
+    {%endfor%}
+  </div>
+  </div>
+<script>
+  function showPending() {
+    var pendingDiv = document.getElementsByClassName('wa-PendingTransactions')[0];
+    pendingDiv.style.setProperty("display", "block");
+    var historyDiv = document.getElementsByClassName('wa-TransactionHistory')[0];
+    historyDiv.style.setProperty("display", "none");
+  }
+</script>
+<script>
+  function showHistory() {
+    var historyDiv = document.getElementsByClassName('wa-TransactionHistory')[0];
+    historyDiv.style.setProperty("display", "block");
+    var pendingDiv = document.getElementsByClassName('wa-PendingTransactions')[0];
+    pendingDiv.style.setProperty("display", "none");
+  }
+</script>
 </body>
 {% endblock %}

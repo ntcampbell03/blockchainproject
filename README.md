@@ -19,3 +19,7 @@ sqlite3 db.sqlite3
 .tables
 
 if it works it will list the tables
+
+<small>Trans: {{ trans.amount }}</small> <br>
+<small>Sender: {{ trans.sender.name }}</small> <br>
+<small>Reciever: {{ trans.reciever.name }}</small> 

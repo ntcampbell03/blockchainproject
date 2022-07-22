@@ -11,6 +11,7 @@
     display: block;
     background-color: #D6517d;
     border-radius: 10px;
+    margin-top: 5px;
 }
 
 .tr-Button:hover{ 
@@ -50,7 +51,8 @@
     margin-left: 3vw;
     padding-left: 1vw;
     margin-right: 1.5vw;
-    top: 12.5vh;
+    top: 5vh;
+    overflow-y: scroll;
 }
 
 .tr-floatRight{

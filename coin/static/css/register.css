@@ -62,6 +62,7 @@
     display: block;
     background-color: #D6517d;
     border-radius: 10px;
+    margin-top: 5px;
 }
 
 .re-Button:hover{ 

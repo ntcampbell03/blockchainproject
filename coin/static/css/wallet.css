@@ -1,1 +1,73 @@
 /* start the tags with wa */
+.wa-subbox {
+    position: relative;
+    width: 26.75vw;
+    height: 49vh;
+    background: #f00;
+    padding-top: 1vh;
+    border-radius: 15px;
+    border: #D6517d;
+    border-width: 5px;
+    background-color: rgba(214,81,125,0.25);
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5vw;
+    text-shadow: 0px 2px 2px #D6517d;
+    margin-bottom: 2vw;
+}
+
+.wa-floatLeft{
+    float: left;
+    width: 40%;
+    text-align: left;
+    border-style: ridge;
+    margin-left: 3vw;
+    padding-left: 1vw;
+    margin-right: 1.5vw;
+    top: 12.5vh;
+}
+
+.wa-floatRight{
+    float: right;
+    width: 40%;
+    text-align: left;
+    border-style: ridge;
+    margin-left: 1.5vw;
+    padding-left: 1vw;
+    margin-right: 3vw;
+    top: 12.5vh;
+}
+
+.wa-Button{
+    text-align: center;
+    box-shadow: 0px 2px 2px 1px #0F0F0F;
+    text-decoration: none;
+    font-size: 30px;
+    width:fit-content;
+    color: whitesmoke;
+    display: block;
+    background-color: #D6517d;
+    border-radius: 10px;
+    padding: 5px;
+    top: 35vh;
+    position: fixed;
+}
+.wa-HistoryButton{
+    top: 42.5vh;
+}
+.wa-Button:hover{ 
+    color: rgba(245, 245, 245, 0.77);
+    box-shadow: 0px 2px 2px 1px #0F0F0F;
+    transition: all .4s ease;
+    background-color: #d6517dd3;
+}
+
+.wa-PendingTransactions{
+    display: none;
+    overflow-y: scroll;
+}
+
+.wa-TransactionHistory{
+    display: none;
+    overflow-y: scroll;
+}
