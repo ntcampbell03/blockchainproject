@@ -88,7 +88,7 @@
     float: left;
     position: relative;
     width: calc((100% - 90px)/ 2);
-    height: calc(15vw - 1%);
+    height: calc(25.25vh);
     margin: 1%;
     margin-top: 0%;
     border-radius: 15px;
@@ -104,7 +104,7 @@
     float: right;
     position: relative;
     width: calc((100% - 90px)/ 2);
-    height: calc(30vw + 1%);
+    height: calc(53vh);
     margin: 1%;
     margin-top: 0%;
     border-radius: 15px;
