@@ -75,3 +75,83 @@
     left: 0;
     position: fixed;
 }
+
+.la-superdiv {
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: -100;
+  top: 0;
+  background-color: transparent;
+  left: 0;
+  position: fixed;
+}
+
+/* Transation SCREEN START */
+
+:root {
+  --animation-time: 2s;
+}
+
+.container-left {
+  float: left;
+  width: 50%;
+  height: 100vh;
+}
+
+.container-right {
+  float: right;
+  width: 50%;
+  height: 100vh;
+  -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
+  -moz-transform: matrix(-1, 0, 0, 1, 0, 0);
+  -o-transform: matrix(-1, 0, 0, 1, 0, 0);
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  z-index: 0;
+}
+
+.time {
+  display: block;
+  background-color: #202124;
+  width: 0%;
+  height: 2%;
+  top: calc(var(--i) * 10%);
+}
+
+.close {
+  animation-name: expand;
+  animation-delay: var(--animation-delay);
+  animation-duration: var(--animation-time);
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+}
+
+
+@keyframes expand {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 200%;
+  }
+}
+
+.magic {
+  position: fixed;
+  top: -.5vh;
+  left: 95vw;
+  height: 5vw;
+  width: 5vw;
+  font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  font-size: 3vw;
+  color: #282C2F;
+  z-index: 1001;
+}
+
+/* TRANSITION SCREEN END */
