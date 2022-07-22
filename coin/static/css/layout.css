@@ -113,8 +113,8 @@
   display: block;
   background-color: #202124;
   width: 0%;
-  height: 2%;
   top: calc(var(--i) * 10%);
+  height: .4%;
 }
 
 .close {
@@ -153,3 +153,167 @@
 }
 
 /* TRANSITION SCREEN END */
+
+
+/* GLITCH TEXT */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: transparent;
+  font-size: 1.5rem;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  z-index: -100;
+}
+
+.right {
+  text-align: right;
+  width: 100%;
+}
+
+.stack {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.stack span {
+  font-weight: bold;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  font-size: 4rem;
+  font-family: Arial, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  --stack-height: calc(100% / var(--stacks) - 1px);
+  --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+  --clip-top: calc(var(--stack-height) * var(--index));
+  --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
+  clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+}
+
+.stack-ani {
+  animation: stack 340ms cubic-bezier(.46,.29,0,1.24) 1 backwards calc(var(--index) * 120ms), glitch 2s ease infinite 2s alternate-reverse;
+  color: whitesmoke;
+}
+
+.stack span:nth-child(odd) { --glitch-translate: 8px; }
+.stack span:nth-child(even) { --glitch-translate: -8px; }
+
+@keyframes stack {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+    text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+  };
+  60% {
+    opacity: 0.5;
+    transform: translateX(50%);
+  }
+  80% {
+    transform: none;
+    opacity: 1;
+    text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+    transform: translate(var(--glitch-translate));
+  }
+  2% {
+    text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+  }
+  4%, 100% {  text-shadow: none; transform: none; }
+}
+
+.glitchscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: whitesmoke;
+  background-color: #202124;
+  font-size: 1.5rem;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  z-index: -100;
+  display: none;
+}
+
+@keyframes shrink {
+  from {
+      transform: scale(1);
+  }
+  to {
+      transform: scale(.01);
+  }
+}
+
+.shrink {
+  animation-name: shrink;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+.exit-screen {
+  width: 0px;
+  height: 0px;
+  opacity: 0%;
+  background-color: whitesmoke;
+}
+
+@keyframes exit-wide {
+  from {
+      width: 1px;
+      height: 1px;
+      opacity: 100%;
+  }
+  to {
+      width: 100%;
+      height: 1px;
+      opacity: 100%;
+  }
+}
+
+.exit-wide {
+  animation-name: exit-wide;
+  animation-duration: 2s;
+  opacity: 100%;
+  animation-fill-mode: forwards;
+}
+
+@keyframes exit-expand {
+  0% {
+      width: 100%;
+      height: 1px;
+      opacity: 100%;
+  }
+  50% {
+    height: 100%;
+    opacity: 100%;
+  }
+  100% {
+      width: 100%;
+      height: 100%;
+      opacity: 0%;
+  }
+}
+
+.exit-expand {
+  animation-name: exit-expand;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
