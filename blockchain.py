@@ -1,7 +1,7 @@
 import hashlib
 import time
-import gnupg
 import math
+import gnupg
 
 gpg = gnupg.GPG(gnupghome='/opt/homebrew/Cellar/gnupg')
 # gpg = gnupg.GPG(gnupghome='/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages')
