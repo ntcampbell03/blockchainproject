@@ -9,7 +9,7 @@ class RegistrationForm(FlaskForm):
 						   validators=[DataRequired(), Length(min=4, max=15)],
 						   render_kw={"placeholder": "Username"})
 
-	password = PasswordField('Password', validators=[DataRequired()],
+	password = PasswordField('Password', validators=[DataRequired(), Length(min=4, max=15)],
 							 render_kw={"placeholder": "Password"})
 
 	confirmPassword = PasswordField('Confirm Password', 

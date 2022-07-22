@@ -125,7 +125,6 @@
   animation-timing-function: ease;
 }
 
-
 @keyframes expand {
   from {
     width: 0%;
@@ -151,7 +150,6 @@
   outline: none;
   font-size: 3vw;
   color: #282C2F;
-  z-index: 1001;
 }
 
 /* TRANSITION SCREEN END */
