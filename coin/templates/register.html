@@ -17,8 +17,9 @@
 </head>
 
 <body class="bg-dark">
+  <div class="contentbg darkbg"></div>
   <div class="contentbg">
-  <div class="container">
+  <div class="container re-floatLeft re-subbox re-loginBox">
     <div class="card card-register mx-auto mt-5">
       <div class="re-labeltext" class="card-header">Register an Account</div>
       <div class="card-body">
@@ -27,7 +28,7 @@
 
          <div class="re-labeltext" class="form-group">
             {% if form.username.errors  %}
-              {{ form.username(class="form-control form-control-lg is-invalid") }}
+              {{ form.username(class="form-control form-control-lg is-invalid re-loginBox") }}
 
               <div class="re-labeltext" class = "invalid-feedback">
                 {% for error in form.username.errors %}
@@ -35,12 +36,12 @@
                 {% endfor %}
               </div>
             {% else %}
-              {{ form.username(class="form-control form-control-lg")}}
+              {{ form.username(class="form-control form-control-lg re-loginBox")}}
             {% endif %}
           </div>
           <div class="re-labeltext" class="form-group">
             {% if form.password.errors  %}
-              {{ form.password(class="form-control form-control-lg is-invalid") }}
+              {{ form.password(class="form-control form-control-lg is-invalid re-loginBox") }}
 
               <div class="re-labeltext" class = "invalid-feedback">
                 {% for error in form.password.errors %}
@@ -48,13 +49,13 @@
                 {% endfor %}
               </div>
             {% else %}
-              {{ form.password(class="form-control form-control-lg")}}
+              {{ form.password(class="form-control form-control-lg re-loginBox")}}
             {% endif %}
           </div>
 
           <div class="re-labeltext" class="form-group">
             {% if form.confirmPassword.errors  %}
-              {{ form.confirmPassword(class="form-control form-control-lg is-invalid") }}
+              {{ form.confirmPassword(class="form-control form-control-lg is-invalid re-loginBox") }}
 
               <div class="re-labeltext" class = "invalid-feedback">
                 {% for error in form.confirmPassword.errors %}
@@ -62,34 +63,25 @@
                 {% endfor %}
               </div>
             {% else %}
-              {{ form.confirmPassword(class="form-control form-control-lg")}}
+              {{ form.confirmPassword(class="form-control form-control-lg re-loginBox")}}
             {% endif %}
           </div>
 
           <div class="re-labeltext" class="form-group">
-            {{ form.submit(class="btn btn-primary btn-block") }}
+            {{ form.submit(class="re-Button") }}
           </div>
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="{{ url_for('login') }}">Already Have An Account?</a>
+          <a class="re-forgot" href="{{ url_for('login') }}">Already Have An Account?</a>
         </div>
       </div>
     </div>
   </div>
+  <div class="re-subbox re-floatRight">
+    Username: 4-15 Characters
+    <br>
+    Password: 4-15 Characters
   </div>
-    <!-- Bootstrap core JavaScript-->
-
-  <script type = "text/javascript" 
-         src = "{{ url_for('static', filename = 'vendor/jquery/jquery.min.js') }}" ></script>
-
-  <script type = "text/javascript" 
-         src = "{{ url_for('static', filename = 'vendor/bootstrap/js/bootstrap.bundle.min.js') }}" ></script>
-
-  <!-- Core plugin JavaScript-->
-  <script type = "text/javascript" 
-         src = "{{ url_for('static', filename = 'vendor/jquery-easing/jquery.easing.min.js') }}" ></script>
-
-
-
+  </div>
 </body>
 {% endblock %}

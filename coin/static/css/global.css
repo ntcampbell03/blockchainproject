@@ -9,8 +9,7 @@ small {
 }
 
 .darkbg {
-    background-color: black;
-    opacity: 50%;
+    background-color: rgba(0,0,0,0.5);
 }
 
 .contentbg {

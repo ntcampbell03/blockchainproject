@@ -18,8 +18,10 @@
 </head>
 
 <body class="bg-dark">
+  <div class="contentbg darkbg">
+  </div>
   <div class="contentbg">
-  <div class="container">
+  <div class="lo-subbox lo-floatLeft">
     <div class="card card-login mx-auto mt-5">
       <div class="lo-labeltext" class="card-header">Login</div>
       <div class="card-body">
@@ -47,13 +49,13 @@
                 {% endfor %}
               </div>
             {% else %}
-              {{ form.username(class="form-control form-control-lg")}}
+              {{ form.username(class="form-control form-control-lg lo-loginBox")}}
             {% endif %}
           </div>
 
           <div class="lo-labeltext" class="form-group">
             {% if form.password.errors  %}
-              {{ form.password(class="form-control form-control-lg is-invalid") }}
+              {{ form.password(class="form-control form-control-lg is-invalid lo-loginBox") }}
 
               <div class="lo-labeltext" class = "invalid-feedback">
                 {% for error in form.password.errors %}
@@ -61,38 +63,34 @@
                 {% endfor %}
               </div>
             {% else %}
-              {{ form.password(class="form-control form-control-lg")}}
+              {{ form.password(class="form-control form-control-lg lo-loginBox")}}
             {% endif %}
             
           </div>
 
           <div class="form-group">
+            <div class="lo-labeltext" class="form-group">
+              {{ form.submit(class="lo-Button") }}
+            </div>
             <div class="lo-labeltext" class="form-check">
               {{ form.remember(class="form-check-input") }}
               {{ form.remember.label(class="form-check-label") }}
             </div>
           </div>
-          <div class="lo-labeltext" class="form-group">
-            {{ form.submit(class="btn btn-primary btn-block") }}
-          </div>
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="{{ url_for('register') }}">Don't Have An Account Yet?</a>
-          <a class="d-block small" href="#">Forgot Password?</a>
+          <a class="lo-forgot" href="{{ url_for('register') }}">Don't Have An Account Yet?</a>
+          <br>
+          <a class="lo-forgot" href="#">Forgot Password?</a>
         </div>
       </div>
     </div>
   </div>
+  <div class="lo-subbox lo-floatRight">
+    Username: 4-15 Characters
+    <br>
+    Password: 4-15 Characters
   </div>
-  <script type = "text/javascript" 
-         src = "{{ url_for('static', filename = 'vendor/jquery/jquery.min.js') }}" ></script>
-
-  <script type = "text/javascript" 
-         src = "{{ url_for('static', filename = 'vendor/bootstrap/js/bootstrap.bundle.min.js') }}" ></script>
-
-  <!-- Core plugin JavaScript-->
-  <script type = "text/javascript" 
-         src = "{{ url_for('static', filename = 'vendor/jquery-easing/jquery.easing.min.js') }}" ></script>
-
+  </div>
 </body>
 {% endblock %}
