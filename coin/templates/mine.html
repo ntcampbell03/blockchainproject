@@ -6,7 +6,7 @@
 {% block content %}
 <body>
   <div class="contentbg darkbg"></div>
-  <div class="contentbg">
+  <div class="contentbg">    
   <!-- CLOCK -->
     <div class="clock-container">
       <span class="count tenhr tens"></span>
@@ -43,15 +43,11 @@
         <strong class="mi-warn"> NEEDS MORE TRANSACTIONS </strong>
       {% endif %}
     </div>
-    {% if success %}
-      <div class="success">
-        <!-- CODE FOR MINING SUCCESS POPUP -->
-      </div>
-    {% endif %}
     
     <div class="mi-subbox mi-rewardinfo">
       <div class="mi-title">CURRENT REWARD</div>
-      {% if blockchain.numTransactions > 10 %}
+      <div class="reward-text">{{ blockchain.miningReward }}</div>
+      <!-- {% if blockchain.numTransactions > 10 %}
         <div class="reward-text">{{ blockchain.miningReward + 5 }}</div>
       {% elif blockchain.numTransactions > 25 %}
         <div class="reward-text">{{ blockchain.miningReward + 10 }}</div>
@@ -59,10 +55,10 @@
         <div class="reward-text">{{ blockchain.miningReward + 25 }}</div>
       {% else %}
         <div class="reward-text">{{ blockchain.miningReward }}</div>
-      {% endif %}
+      {% endif %} -->
     </div>
     <div class="mi-subbox mi-pendinginfo">
-      <div class="mi-title">PENDING TRANSACTIONS</div>
+      <div class="mi-title">PENDING TRANSACTIONS </div>
       <div class="pending-box">
         {% for transaction in blockchain.newTransactions %}
           <small class="mi-translist">{{ transaction.transactionString }}<br></small>
@@ -71,8 +67,11 @@
       
     </div>
   </div>
-  
-
+  {% if success %}
+  <label class="expand">
+    <!-- SUCCESS -->
+  </label>
+  {% endif %}
   <script>
   </script> 
 

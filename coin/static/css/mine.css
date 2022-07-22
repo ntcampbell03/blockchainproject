@@ -377,3 +377,51 @@ input[type=checkbox]:checked + .mi-timer {
     overflow-y: scroll;
     height: inherit;
 }
+
+.expand {
+    background: black;
+    width: 65%;
+    height: 80%;
+    position: fixed;
+    left: 27.5%;
+    top: 10%;
+    border-radius: 25px;
+    border: 5px #D6517d;
+    border-style:outset;
+    line-height: 8vw;
+    font-size: 35px;
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: whitesmoke;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+    text-shadow: 2px 2px 2px #0F0F0F;
+    animation-name: expand;
+    animation-duration: 1.5s;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+@keyframes expand {
+    0% { 
+        position: fixed;
+        top: 40vh;
+        left: 55.5vw;
+        height: 1vh;
+        width: 1vh;
+        border-radius: 100%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    20% {
+        border-radius: 100%;
+    }
+    100% { 
+        width: 65%;
+        height: 80%;
+    }
+  }

@@ -1,6 +1,7 @@
 import hashlib
 import time
 import gnupg
+import math
 
 gpg = gnupg.GPG(gnupghome='/opt/homebrew/Cellar/gnupg')
 # gpg = gnupg.GPG(gnupghome='/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages')
@@ -16,7 +17,7 @@ class Blockchain:
         self.difficulty = 5
         self.newTransactions = []
         self.numTransactions = 0
-        self.miningReward = 10
+        self.miningReward = 0
 
     def getBlock(self, n):
         return self.chain[n]
@@ -60,6 +61,7 @@ class Blockchain:
             if senderCurBalance >= newTransaction.amount: # Checks if balance is sufficient
                 self.newTransactions.append(newTransaction)
                 self.numTransactions += 1
+                self.miningReward = int(10 * math.log(.2 * self.numTransactions + 1) ** (1.2))
             else:
                 print('Wallet has insufficient balance!')
         except NameError:
@@ -81,18 +83,20 @@ class Blockchain:
                 self.chain.append(newBlock)
                 self.length += 1
                 self.newTransactions = []
-                if self.numTransactions > 10: # Increases rewards for more transactions in a block
-                    self.numTransactions = 0
-                    return self.miningReward + 5
-                elif self.numTransactions > 25:
-                    self.numTransactions = 0
-                    return self.miningReward + 10
-                elif self.numTransactions > 100:
-                    self.numTransactions = 0
-                    return self.miningReward + 25
-                else:
-                    self.numTransactions = 0
-                    return self.miningReward
+                self.numTransactions = 0
+                return self.miningReward
+                # if self.numTransactions > 10: # Increases rewards for more transactions in a block
+                #     self.numTransactions = 0
+                #     return self.miningReward + 5
+                # elif self.numTransactions > 25:
+                #     self.numTransactions = 0
+                #     return self.miningReward + 10
+                # elif self.numTransactions > 100:
+                #     self.numTransactions = 0
+                #     return self.miningReward + 25
+                # else:
+                #     self.numTransactions = 0
+                #     return self.miningReward
         else:
             print("No pending transactions")
             return 0
