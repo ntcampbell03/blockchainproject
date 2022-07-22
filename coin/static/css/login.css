@@ -2,3 +2,7 @@
 .lo-labeltext {
     color: white
 }
+.lo-forgot {
+    color: pink;
+    text-decoration: none;
+}

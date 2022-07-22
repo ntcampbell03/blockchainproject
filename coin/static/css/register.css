@@ -2,3 +2,8 @@
 .re-labeltext {
     color: white
 }
+
+.re-forgot {
+    color: pink;
+    text-decoration: none;
+}

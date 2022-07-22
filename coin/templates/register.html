@@ -17,6 +17,7 @@
 </head>
 
 <body class="bg-dark">
+  <div class="contentbg darkbg"></div>
   <div class="contentbg">
   <div class="container">
     <div class="card card-register mx-auto mt-5">
@@ -71,25 +72,11 @@
           </div>
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="{{ url_for('login') }}">Already Have An Account?</a>
+          <a class="re-forgot" href="{{ url_for('login') }}">Already Have An Account?</a>
         </div>
       </div>
     </div>
   </div>
   </div>
-    <!-- Bootstrap core JavaScript-->
-
-  <script type = "text/javascript" 
-         src = "{{ url_for('static', filename = 'vendor/jquery/jquery.min.js') }}" ></script>
-
-  <script type = "text/javascript" 
-         src = "{{ url_for('static', filename = 'vendor/bootstrap/js/bootstrap.bundle.min.js') }}" ></script>
-
-  <!-- Core plugin JavaScript-->
-  <script type = "text/javascript" 
-         src = "{{ url_for('static', filename = 'vendor/jquery-easing/jquery.easing.min.js') }}" ></script>
-
-
-
 </body>
 {% endblock %}
