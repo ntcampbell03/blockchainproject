@@ -5,15 +5,13 @@
 
 {% block content %}
 <body>
-  <div class="contentbg">
+  <div class="contentbg darkbg"></div>
+  <div class="contentbg wa-subbox wa-floatLeft">
     <small>Hi {{ wallet.name }}<br><br></small> 
     <small>Balance: {{ balance }}<br><br></small> 
-    {% for trans in blockchain.newTransactions %}
-    <small>Trans: {{ trans.amount }}</small> <br>
-    <small>Sender: {{ trans.sender.name }}</small> <br>
-    <small>Reciever: {{ trans.reciever.name }}</small> 
       <br><br>
-    {% endfor %}
+    <a href="{{ url_for('mine') }}" class="wa-Button">Pending Transactions</a>
+    <a href="{{ url_for('mine') }}" class="wa-Button wa-HistoryButton">Transaction History</a>
     
   </div>
 </body>
