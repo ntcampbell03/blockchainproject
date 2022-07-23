@@ -10,7 +10,7 @@
     background: transparent;
     overflow-x: hidden;
     padding-top: 2.25vh;
-    
+    overflow-y: hidden;
     font-size: 1em;
     font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }

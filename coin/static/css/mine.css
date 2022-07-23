@@ -32,13 +32,14 @@
 }
 
 .mi-minebutton {
-    height: 15vh;
-    width: 15vh;
+    position: fixed;
+    height: 123px;
+    width: 123px;
     background: radial-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8), rgba(0,0,0,1));
-    border-radius: 15vh;
+    border-radius: 100%;
     border: 5px #D6517d;
     border-style:outset;
-    line-height: 8vw;
+    line-height: 110px;
     font-size: 35px;
     font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: whitesmoke;
@@ -50,9 +51,9 @@
 }
 
 .mi-minebutton:hover {
-    height: 17vh;
-    width: 17vh;
-    line-height: 9vw;
+    height: 140px;
+    width: 140px;
+    line-height: 130px;
     font-size: 40px;
     transition: all .4s ease;
     color: #D6517d;
@@ -91,9 +92,9 @@
 }
 
 .mine-label {
-    height: 20vh;
-    width: 20vh;
-    border-radius: 15vh;
+    height: 164px;
+    width: 164px;
+    border-radius: 100%;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -130,7 +131,7 @@ input[type=checkbox]:checked + .mi-timer {
 } */
 
 .mi-warn {
-    /* line-height: 8vw; */
+    white-space: nowrap;
     position: relative;
     font-size: 20px;
     font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -139,6 +140,13 @@ input[type=checkbox]:checked + .mi-timer {
     margin: 2.5vw;
     transform: scale(1);
 	animation: pulse 4s infinite;
+}
+
+.left {
+    float: left;
+}
+.right {
+    float: right;
 }
 
 @keyframes pulse {
@@ -304,7 +312,7 @@ input[type=checkbox]:checked + .mi-timer {
 
 .mi-subbox {
     position: relative;
-    width: 26.75vw;
+    width: 27.75vw;
     height: 49vh;
     background: #f00;
     top: 25vh;

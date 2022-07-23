@@ -22,7 +22,7 @@
     <div class="mi-designdiv">
       <input type="checkbox" id="toggle" class="visually-hidden" onclick="window.location.href='/mineblock/'">
       {% if 2 > blockchain.numTransactions %}
-        <strong class="mi-warn"> NEEDS MORE TRANSACTIONS </strong>
+        <strong class="mi-warn left"> NEEDS MORE TRANSACTIONS </strong>
       {% endif %}
       {% if 2 > blockchain.numTransactions %}
         <label class="mi-minebutton">
@@ -40,7 +40,7 @@
         </label>
       {% endif %}
       {% if 2 > blockchain.numTransactions %}
-        <strong class="mi-warn"> NEEDS MORE TRANSACTIONS </strong>
+        <strong class="mi-warn right"> NEEDS MORE TRANSACTIONS </strong>
       {% endif %}
     </div>
     

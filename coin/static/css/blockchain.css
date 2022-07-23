@@ -2,14 +2,14 @@
 .bl-title {
     color: #D6517d;
     font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 3vw;
+    font-size: 42px;
     text-shadow: 2px 2px 2px #0F0F0F;
 }
 
 .bl-subtitle {
     color: white;
     font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 1.5vw;
+    font-size: 21px;
     text-shadow: 0px 2px 2px #D6517d;
     text-align: center;
     width: max-content;
@@ -22,9 +22,10 @@
 }
 
 .scroll {
-    max-height: 15vh;
+    height: 92.5px;
     width: 98%-15px;
     margin: 1%;
+    
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
@@ -36,10 +37,11 @@
 }
 
 .bg-scroll {
-    max-height: 15vh;
+    height: 92.5px;
     width: 98%-15px;
     opacity: 30%;
     margin: 1%;
+    margin-bottom: 0%;
     background-color: #D6517d;
     overflow-x: auto;
     overflow-y: hidden;
@@ -47,7 +49,7 @@
     border-radius: 15px;
     padding: 0 7.5px;
     position: relative;
-    top: calc(-5vw - 20px - 1%);
+    top: calc(-100px);
     z-index: -10;
 }
 
@@ -64,8 +66,8 @@
 }
 
 .bc-numbercard {
-    width: 5vw;
-    height: 5vw;
+    width: 72.5px;
+    height: 72.5px;
     margin: 5px 2.5px 5px 0;
     background-color: rgba(0,0,0,0.65);
     display: inline-block;
@@ -74,7 +76,7 @@
     justify-content: center;
     text-align: center;
     vertical-align: middle;
-    line-height: 5vw;
+    line-height: 72.5px;
     font-size: 20px;
     font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: whitesmoke;
