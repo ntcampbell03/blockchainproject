@@ -27,7 +27,7 @@
 
     <div class="bc-blockdisplay">
       <strong class="bl-subtitle" >BLOCKCHAIN INFO</strong><br><br>
-      <small>
+      <small class="bl-small">
         Name: Unnamed Blockchain<br> 
         Difficulty: {{ blockchain.difficulty }}<br>
         Length: {{ blockchain.length }}<br>
@@ -40,13 +40,13 @@
     <div class="bc-transdisplay">
       <strong class="bl-subtitle" >TRANSACTION INFO</strong><br><br>
       {% for transaction in selectedBlock.transactions %}
-        <small>{{ transaction.transactionString }}<br></small>
+        <small class="bl-small">{{ transaction.transactionString }}<br></small>
       {% endfor %}
     </div>
     
     <div class="bc-blockdisplay">
       <strong class="bl-subtitle" >BLOCK INFO</strong><br><br>
-      <small>
+      <small class="bl-small">
         Block#: {{ selectedBlock.index }}<br>
         Hash: {{ selectedBlock.hash[0:20] }}<br> 
         Prev: {{ selectedBlock.prev[0:20] }}<br>

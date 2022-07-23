@@ -16,11 +16,13 @@
 }
 
 .bl-titlecontainer {
+    max-height: 15vh;
     text-align: center;
     padding-top: 1%;
 }
 
 .scroll {
+    max-height: 15vh;
     width: 98%-15px;
     margin: 1%;
     overflow-x: auto;
@@ -34,6 +36,7 @@
 }
 
 .bg-scroll {
+    max-height: 15vh;
     width: 98%-15px;
     opacity: 30%;
     margin: 1%;
@@ -87,8 +90,8 @@
 .bc-blockdisplay {
     float: left;
     position: relative;
-    width: calc((100% - 90px)/ 2);
-    height: calc(25.25vh);
+    width: calc((100% - 4%) / 2);
+    height: calc(39vh - 100px);
     margin: 1%;
     margin-top: 0%;
     border-radius: 15px;
@@ -103,8 +106,8 @@
 .bc-transdisplay {
     float: right;
     position: relative;
-    width: calc((100% - 90px)/ 2);
-    height: calc(53vh);
+    width: calc((100% - 4%)/ 2);
+    height: calc(79vh - 200px);
     margin: 1%;
     margin-top: 0%;
     border-radius: 15px;
@@ -123,4 +126,8 @@
     margin: 5px 2.5px 5px 0;
     display: inline-block;
     border-radius: 15px;
+}
+
+.bl-small {
+    font-size: 2vh;
 }
