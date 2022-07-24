@@ -28,8 +28,7 @@
 
 .tr-subbox {
     position: relative;
-    width: 26.75vw;
-    height: 49vh;
+    height: 70vh;
     background: #f00;
     padding-top: 1vh;
     border-radius: 15px;
@@ -41,27 +40,28 @@
     font-size: 1.5vw;
     text-shadow: 0px 2px 2px #D6517d;
     margin-bottom: 2vw;
+    transition-duration: 1s;
 }
 
 .tr-floatLeft{
     float: left;
-    width: 40%;
+    width: calc(60vw - 1vw);
     text-align: left;
     border-style: ridge;
     margin-left: 3vw;
     padding-left: 1vw;
-    margin-right: 1.5vw;
     top: 5vh;
     overflow-y: scroll;
 }
 
 .tr-floatRight{
     float: right;
-    width: 40%;
+    width: 0vw;
+    visibility: hidden;
     text-align: left;
     border-style: ridge;
-    margin-left: 1.5vw;
-    padding-left: 1vw;
     margin-right: 3vw;
-    top: 12.5vh;
+    padding-left: 1vw;
+    top: 5vh;
+    overflow-y: scroll;
 }
