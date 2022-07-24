@@ -1,5 +1,7 @@
 /* start the tags with la */
-
+html {
+  background: #141414;
+}
 .la-sidenav {
     height: 100%;
     width: 300px;
@@ -58,7 +60,7 @@
 .la-bgvideo {
     min-width: 100vw;
     min-height: 100vh;
-    z-index: -2;
+    z-index: -1;
 }
 
 .la-logo {
@@ -71,14 +73,23 @@
 }
 
 .la-overlay {
-    opacity: 90%;
     min-width: 100vw;
     min-height: 100vh;
     z-index: -1;
     top: 0;
     background-color: white;
+    opacity: 20%;
     left: 0;
     position: fixed;
+}
+
+.la-underlay {
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  position: fixed;
 }
 
 .la-superdiv {
@@ -116,7 +127,7 @@
 
 .time {
   display: block;
-  background-color: #202124;
+  background-color: #2d2d2d;
   width: 0%;
   top: calc(var(--i) * 10%);
   height: .4%;
@@ -181,6 +192,17 @@
   z-index: -100;
 }
 
+.infotainer {
+  position: relative;
+  width: 90vw;
+  height: 75vh;
+  background-color: transparent;
+  display: none;
+  grid-template-areas:
+    'left left middle middle right right'
+    '. . leave leave . .';
+}
+
 .right {
   text-align: right;
   width: 100%;
@@ -192,16 +214,21 @@
 }
 
 .stack span {
-  font-weight: bold;
+  position: relative;
   grid-row-start: 1;
   grid-column-start: 1;
-  font-size: 4rem;
-  font-family: Arial, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  font-family: 'avenir','Trebuchet MS', Arial,'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   --stack-height: calc(100% / var(--stacks) - 1px);
   --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
   --clip-top: calc(var(--stack-height) * var(--index));
   --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
   clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+}
+
+.lve {
+  font-size: 4rem;
+  font-weight: bold;
 }
 
 .stack-ani {
@@ -248,7 +275,7 @@
   top: 0;
   left: 0;
   color: whitesmoke;
-  background-color: #202124;
+  background-color: #2d2d2d;
   font-size: 1.5rem;
   width: 100vw;
   height: 100vh;
@@ -259,17 +286,30 @@
 }
 
 @keyframes shrink {
-  from {
+  0% {
       transform: scale(1);
   }
-  to {
+  75% {
+      transform: scale(1.1);
+  }
+  90% {
+      width: 60vw;
+      height: 50vw;
+      border-radius: 0px;
+      background-color: transparent;
+  }
+  100% {
       transform: scale(.01);
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+      background-color: whitesmoke;
   }
 }
 
 .shrink {
   animation-name: shrink;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
@@ -321,4 +361,71 @@
   animation-name: exit-expand;
   animation-duration: 2s;
   animation-fill-mode: forwards;
+}
+
+.infobox {
+  background-color: transparent;
+  font-size: 2rem;
+  width: 30vw;
+  justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+}
+
+.github-link span {
+  line-height: 20px;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: 'avenir';
+  padding-top: 5px;
+}
+
+.leftinfo { grid-area: right; }
+
+.rightinfo { grid-area: left; }
+
+.middleinfo { grid-area: middle; }
+
+.leavebox { grid-area: leave; }
+
+.github-link {
+  align-items: center;
+  line-height: 20px;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: 'avenir';
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sublink {
+  color: #949596;
+}
+.gitlink {
+  margin-left: 7.5px;
+  color: #FFFFFF;
+}
+
+
+.sublink:visited { 
+  text-decoration: none; 
+  color: #949596;
+ }
+
+.github-link div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  background-color: #202124;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 7.5px;
+  padding: 0 10px;
+}
+
+i {
+  position:relative;
 }

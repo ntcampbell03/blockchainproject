@@ -315,7 +315,7 @@ input[type=checkbox]:checked + .mi-timer {
     width: 27.75vw;
     height: 49vh;
     background: #f00;
-    top: 25vh;
+    top: 26vh;
     padding-top: 1vh;
     border-radius: 15px;
     border: #D6517d;
@@ -332,32 +332,17 @@ input[type=checkbox]:checked + .mi-timer {
     float: left;
     text-align: left;
     border-style: ridge;
-    background: 
-     radial-gradient(
-      circle 20vh at 27.75vw -5vh,
-      transparent 10vh,
-      #D6517d 10vh calc(10vh + 3px),
-      rgba(214,81,125,0.1) 10vh
-    ) border-box;
-    -webkit-mask-image: radial-gradient(circle 10vh at 27.75vw -5vh, transparent 0, transparent 10vh, black 10vh);
-    mask-image: radial-gradient(circle 10vh at 0 0, transparent 0, transparent 10vh, black 10vh);
+    /* -webkit-mask-image: radial-gradient(circle 10vh at 27.75vw -5vh, transparent 0, transparent 10vh, black 10vh);
+    mask-image: radial-gradient(circle 10vh at 27.75vw -5vh, transparent 0, transparent 10vh, black 10vh); */
     margin-left: 3vw;
     padding-left: 1vw;
 }
-
 .mi-pendinginfo {
     float: right;
     text-align: right;
     border-style:groove;
-    background: 
-     radial-gradient(
-      circle 20vh at 0 -5vh,
-      transparent 10vh,
-      #D6517d 10vh calc(10vh + 3px),
-      rgba(214,81,125,0.1) 10vh
-    ) border-box;
-    -webkit-mask-image: radial-gradient(circle 10vh at 0 -5vh, transparent 0, transparent 10vh, black 10vh);
-    mask-image: radial-gradient(circle 10vh at 0 0, transparent 0, transparent 10vh, black 10vh);
+    /* -webkit-mask-image: radial-gradient(circle 10vh at 0 -5vh, transparent 0, transparent 10vh, black 10vh); */
+    /* mask-image: radial-gradient(circle 10vh at 0 0, transparent 0, transparent 10vh, black 10vh); */
     margin-right: 3vw;
     padding-right: 1vw;
 }

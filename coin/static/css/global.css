@@ -3,6 +3,11 @@
     src: url('../assets/SYNNova-Bold.otf');
     font-weight: bold;
 }
+@font-face{
+    font-family: avenir;
+    src: url('../assets/AvenirNextLTPro-Regular.otf');
+}
+
 small {
     font-size: large;
     color: white;
