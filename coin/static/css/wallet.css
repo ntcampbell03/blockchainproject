@@ -1,8 +1,8 @@
 /* start the tags with wa */
 .wa-subbox {
     position: relative;
-    width: 26.75vw;
-    height: 49vh;
+    width: 35vw;
+    height: 40vh;
     background: #f00;
     padding-top: 1vh;
     border-radius: 15px;
@@ -14,17 +14,14 @@
     font-size: 1.5vw;
     text-shadow: 0px 2px 2px #D6517d;
     margin-bottom: 2vw;
+    float: left;
 }
 
 .wa-floatLeft{
     float: left;
-    width: 40%;
     text-align: left;
     border-style: ridge;
-    margin-left: 3vw;
     padding-left: 1vw;
-    margin-right: 1.5vw;
-    top: 12.5vh;
 }
 
 .wa-floatRight{
@@ -32,10 +29,7 @@
     width: 40%;
     text-align: left;
     border-style: ridge;
-    margin-left: 1.5vw;
     padding-left: 1vw;
-    margin-right: 3vw;
-    top: 12.5vh;
 }
 
 .wa-Button{

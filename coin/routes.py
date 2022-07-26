@@ -89,9 +89,14 @@ def transaction():
     form = TransactionForm()
     blockchainObj.addTransaction(Transaction(godWallet("hi"), current_user.wallet, 5))
     
-    return render_template('transaction.html', blockchain=blockchainObj, form=form)
+    return render_template('wallet.html', blockchain=blockchainObj, form=form)
 
 @app.route("/wallet", methods=['GET', 'POST'])
 def wallet():
     balance = blockchainObj.getBalance(current_user.wallet)
-    return render_template('wallet.html', wallet=current_user.wallet, blockchain=blockchainObj, balance=balance)
+    form = TransactionForm()
+    if form.validate_on_submit():
+        reciever = User.query.filter(User.username == form.reciever.data).all()[0].wallet
+        t = Transaction(current_user.wallet, reciever, form.amount.data)
+        blockchainObj.addTransaction(t)
+    return render_template('wallet.html', wallet=current_user.wallet, blockchain=blockchainObj, balance=balance, form=form)

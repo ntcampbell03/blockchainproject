@@ -7,65 +7,96 @@
 <body>
   <div class="contentbg darkbg"></div>
   <div class="contentbg">
-  <div class="wa-subbox wa-floatLeft">
-    <small>Hi {{ wallet.name }}<br><br></small> 
-    <small>Balance: {{ balance }}<br><br></small> 
+    <div class="wa-subbox wa-floatLeft">
+      <small>Hi {{ wallet.name }}<br><br></small> 
+      <small>Balance: {{ balance }}<br><br></small> 
+        <br><br>
+      <a onclick="showPending()" class="wa-Button">Pending Transactions</a>
+      <a onclick="showHistory()" class="wa-Button wa-HistoryButton">Transaction History</a>
+    </div>
+    <div class="wa-subbox wa-floatLeft">
+      <form method = "POST", action = "">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+          <label class="tr-labeltext" for="reciever">Reciever:</label>
+          {% if form.reciever.errors  %}
+            {{ form.reciever(class="form-control form-control-lg is-invalid tr-loginBox") }}
+            <div class = "invalid-feedback">
+              {% for error in form.reciever.errors %}
+                <span> {{ error }} </span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.reciever(class="form-control form-control-lg tr-loginBox")}}
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label class="tr-labeltext" for="amount">Amount:</label>
+          {% if form.amount.errors  %}
+            {{ form.amount(class="form-control form-control-lg is-invalid tr-loginBox") }}
+            <div class = "invalid-feedback">
+              {% for error in form.amount.errors %}
+                <span> {{ error }} </span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.amount(class="form-control form-control-lg tr-loginBox", type = "number")}}
+          {% endif %}
+        </div>
+        <div class="form-group">
+          {{ form.submit(class="tr-Button") }}
+        </div>
+    </div>
+
+    <div class="wa-subbox wa-floatRight wa-PendingTransactions">
+      Pending Transactions:
       <br><br>
-    <a onclick="showPending()" class="wa-Button">Pending Transactions</a>
-    <a onclick="showHistory()" class="wa-Button wa-HistoryButton">Transaction History</a>
-  </div>
-  <div class="wa-subbox wa-floatRight wa-PendingTransactions">
-    Pending Transactions:
-    <br>
-    <br>
-    {%for trans in blockchain.newTransactions%}
+      {%for trans in blockchain.newTransactions%}
         {%if trans.sender.name == wallet.name%}
-        <small>Trans: {{ trans.amount }} </small>
-        <br>
-        <small>Sender: {{ trans.sender.name }} </small>
-        <br>
-        <small>Reciever: {{ trans.reciever.name }} </small>
-        <br>
-        <br>
+          <small>Trans: {{ trans.amount }} </small>
+          <br>
+          <small>Sender: {{ trans.sender.name }} </small>
+          <br>
+          <small>Reciever: {{ trans.reciever.name }} </small>
+          <br><br>
         {%endif%}
         {%if trans.reciever.name == wallet.name%}
-        <small>Trans: {{ trans.amount }} </small>
-        <br>
-        <small>Sender: {{ trans.sender.name }} </small>
-        <br>
-        <small>Reciever: {{ trans.reciever.name }} </small>
-        <br>
-        <br>
-        {%endif%}
-    {%endfor%}
-  </div>
-  <div class="wa-subbox wa-floatRight wa-TransactionHistory">
-    Transaction History:
-    <br>
-    <br>
-    {%for block in blockchain.chain%}
-      {%for trans in block.transactions%}
-        {%if trans.sender.name == wallet.name%}
-        <small>Trans: {{ trans.amount }} </small>
-        <br>
-        <small>Sender: {{ trans.sender.name }} </small>
-        <br>
-        <small>Reciever: {{ trans.reciever.name }} </small>
-        <br>
-        <br>
-        {%endif%}
-        {%if trans.reciever.name == wallet.name%}
-        <small>Trans: {{ trans.amount }} </small>
-        <br>
-        <small>Sender: {{ trans.sender.name }} </small>
-        <br>
-        <small>Reciever: {{ trans.reciever.name }} </small>
-        <br>
-        <br>
+          <small>Trans: {{ trans.amount }} </small>
+          <br>
+          <small>Sender: {{ trans.sender.name }} </small>
+          <br>
+          <small>Reciever: {{ trans.reciever.name }} </small>
+          <br>
+          <br>
         {%endif%}
       {%endfor%}
-    {%endfor%}
-  </div>
+    </div>
+    <div class="wa-subbox wa-floatRight wa-TransactionHistory">
+      Transaction History:
+      <br><br>
+      {%for block in blockchain.chain%}
+        {%for trans in block.transactions%}
+          {%if trans.sender.name == wallet.name%}
+            <small>Trans: {{ trans.amount }} </small>
+            <br>
+            <small>Sender: {{ trans.sender.name }} </small>
+            <br>
+            <small>Reciever: {{ trans.reciever.name }} </small>
+            <br>
+            <br>
+          {%endif%}
+          {%if trans.reciever.name == wallet.name%}
+            <small>Trans: {{ trans.amount }} </small>
+            <br>
+            <small>Sender: {{ trans.sender.name }} </small>
+            <br>
+            <small>Reciever: {{ trans.reciever.name }} </small>
+            <br>
+            <br>
+          {%endif%}
+        {%endfor%}
+      {%endfor%}
+    </div>
   </div>
 <script>
   function showPending() {
