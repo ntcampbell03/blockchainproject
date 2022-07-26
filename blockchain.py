@@ -2,6 +2,7 @@ import hashlib
 import time
 import math
 import gnupg
+import json
 
 gpg = gnupg.GPG(gnupghome='/usr/bin')
 # gpg = gnupg.GPG(gnupghome='/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages')
@@ -11,13 +12,22 @@ gpg = gnupg.GPG(gnupghome='/usr/bin')
 gpg.encoding = 'utf-8'
 
 class Blockchain:
-    def __init__(self):
-        self.chain = [self.GenesisBlock()]
-        self.length = 1
-        self.difficulty = 2
-        self.newTransactions = []
-        self.numTransactions = 0
-        self.miningReward = 0
+    def __init__(self, input=None):
+        if input:
+            data = json.loads(input)
+            self.chain = data['chain']
+            self.length = data['length']
+            self.difficulty = data['difficulty']
+            self.newTransactions = data['newTransactions']
+            self.numTransactions = data['numTransactions']
+            self.miningReward = data['miningReward']
+        else:
+            self.chain = [self.GenesisBlock()]
+            self.length = 1
+            self.difficulty = 2
+            self.newTransactions = []
+            self.numTransactions = 0
+            self.miningReward = 0
 
     def getBlock(self, n):
         return self.chain[n]
@@ -84,6 +94,7 @@ class Blockchain:
                 self.length += 1
                 self.newTransactions = []
                 self.numTransactions = 0
+
                 return self.miningReward
                 # if self.numTransactions > 10: # Increases rewards for more transactions in a block
                 #     self.numTransactions = 0
@@ -131,6 +142,9 @@ class Blockchain:
     def GenesisBlock(self): # Creates genesis block
         genesis = Block([Transaction(godWallet("1"), godWallet("2"), 0)], 0, "None", 0)
         return genesis
+
+    def exportChain(self):
+        return json.dumps(self.__dict__)
 
 class Wallet:
     def __init__(self, name):

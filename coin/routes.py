@@ -89,7 +89,7 @@ def transaction():
     form = TransactionForm()
     blockchainObj.addTransaction(Transaction(godWallet("hi"), current_user.wallet, 5))
     
-    return render_template('wallet.html', blockchain=blockchainObj, form=form)
+    return render_template('transaction.html', blockchain=blockchainObj, form=form)
 
 @app.route("/wallet", methods=['GET', 'POST'])
 def wallet():

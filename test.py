@@ -3,8 +3,8 @@ from blockchain import *
 import gnupg
 import os
 
-blockchain =  Blockchain()
-blockchain.difficulty = 5
+blockchain1 =  Blockchain()
+blockchain1.difficulty = 5
 
 god = godWallet('god')
 me = Wallet('me')
@@ -14,11 +14,14 @@ t = Transaction(god, me, 10)
 u = Transaction(me, you, 5)
 
 
-blockchain.addTransaction(t)
-blockchain.addTransaction(u)
-blockchain.addBlock()
+blockchain1.addTransaction(t)
+blockchain1.addTransaction(u)
+blockchain1.addBlock()
 
-print(blockchain.getBalance(me))
+expBlock = blockchain1.exportChain()
+print(expBlock)
 
+blockchain2 = Blockchain(expBlock)
+print(blockchain2.chain)
 
 
