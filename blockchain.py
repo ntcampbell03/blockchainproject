@@ -14,7 +14,7 @@ class Blockchain:
     def __init__(self):
         self.chain = [self.GenesisBlock()]
         self.length = 1
-        self.difficulty = 5
+        self.difficulty = 2
         self.newTransactions = []
         self.numTransactions = 0
         self.miningReward = 0
