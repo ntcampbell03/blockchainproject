@@ -18,10 +18,6 @@ blockchain1.addTransaction(t)
 blockchain1.addTransaction(u)
 blockchain1.addBlock()
 
-expBlock = blockchain1.exportChain()
-print(expBlock)
-
-blockchain2 = Blockchain(expBlock)
-print(blockchain2.chain)
+print(blockchain1.chain)
 
 
