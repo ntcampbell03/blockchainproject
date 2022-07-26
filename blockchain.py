@@ -83,9 +83,9 @@ class Blockchain:
                 if not gpg.verify(transaction.signature):
                    raise ValueError("Transaction signature could not be verified")
             if self.numTransactions > 10: # Adjusts the difficulty based on the number of transactions
-                newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash, self.difficulty - 1)
+                newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash, self.difficulty - 1 if self.difficulty - 1 >= 0 else 0)
             elif self.numTransactions > 25:
-                newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash, self.difficulty - 2)
+                newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash, self.difficulty - 2 if self.difficulty - 2 >= 0 else 0)
             else:
                 newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash, self.difficulty)
             newBlock.mineBlock(newBlock.curDifficulty)
@@ -195,6 +195,7 @@ class Block:
         while self.hash[0:difficulty] != target:
             self.nonce += 1
             self.hash = self.calculateHash()
+            time.sleep(0.5) # Slows down mining
 
 class Transaction:
     def __init__(self, sender, reciever, amount):
