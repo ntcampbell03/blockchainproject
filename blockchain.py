@@ -4,7 +4,7 @@ import math
 import gnupg
 
 # gpg = gnupg.GPG(gnupghome='~/.gnupg')
-gpg = gnupg.GPG(gnupghome='blockchainproject/env/lib/python3.9/site-packages')
+# gpg = gnupg.GPG(gnupghome='blockchainproject/env/lib/python3.9/site-packages')
 # gpg = gnupg.GPG(gnupghome='/Users/nikhiljain/Desktop/blockchainproject/env/lib/python3.9/site-packages/')
 # gpg = gnupg.GPG(gnupghome='/Users/rithwikbabu/Documents/appcode/blockchainproject/env/lib/python3.9/site-packages/')
 
