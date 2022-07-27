@@ -75,28 +75,23 @@ def logout():
     return redirect(url_for('home'))
     # return render_template('mine.html', blockchain=blockchainObj)
 
-@app.route("/transactions", methods=['GET', 'POST'])
-def transactions():
-    form = TransactionForm()
-    if form.validate_on_submit():
-        reciever = User.query.filter(User.username == form.reciever.data).all()[0].wallet
-        t = Transaction(current_user.wallet, reciever, form.amount.data)
-        blockchainObj.addTransaction(t)
-    return render_template('transaction.html', blockchain=blockchainObj, form=form)
-
-@app.route("/transaction/", methods=['GET', 'POST'])
-def transaction():
-    form = TransactionForm()
-    blockchainObj.addTransaction(Transaction(godWallet("hi"), current_user.wallet, 5))
-    
-    return render_template('transaction.html', blockchain=blockchainObj, form=form)
+@app.route("/node", methods=['GET', 'POST'])
+def node():
+    return render_template('node.html', blockchain=blockchainObj)
 
 @app.route("/wallet", methods=['GET', 'POST'])
 def wallet():
     balance = blockchainObj.getBalance(current_user.wallet)
     form = TransactionForm()
     if form.validate_on_submit():
-        reciever = User.query.filter(User.username == form.reciever.data).all()[0].wallet
-        t = Transaction(current_user.wallet, reciever, form.amount.data)
-        blockchainObj.addTransaction(t)
-    return render_template('wallet.html', wallet=current_user.wallet, blockchain=blockchainObj, balance=balance, form=form)
+        if form.reciever.data == "testaccount":
+            blockchainObj.addTransaction(Transaction(godWallet("Test Account"), current_user.wallet, form.amount.data))
+        else:
+            try:
+                reciever = User.query.filter(User.username == form.reciever.data).all()[0].wallet
+                t = Transaction(current_user.wallet, reciever, form.amount.data)
+                blockchainObj.addTransaction(t)
+            except:
+                print("INVALID RECIEVER")
+    date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    return render_template('wallet.html', wallet=current_user.wallet, blockchain=blockchainObj, balance=balance, form=form, date=date)
