@@ -51,7 +51,7 @@
     <div class="wa-subbox wa-floatRight wa-PendingTransactions">
       Pending Transactions:
       <br><br>
-      {%for trans in blockchain.newTransactions%}
+      {%for trans in blockchain.getTransactions()%}
         {%if trans.sender.name == wallet.name%}
           <small>Trans: {{ trans.amount }} </small>
           <br>

@@ -46,7 +46,7 @@
     
     <div class="mi-subbox mi-rewardinfo">
       <div class="mi-title">CURRENT REWARD</div>
-      <div class="reward-text">{{ blockchain.miningReward }}</div>
+      <div class="reward-text">{{ blockchain.getReward() }}</div>
       <!-- {% if blockchain.numTransactions > 10 %}
         <div class="reward-text">{{ blockchain.miningReward + 5 }}</div>
       {% elif blockchain.numTransactions > 25 %}
@@ -60,7 +60,7 @@
     <div class="mi-subbox mi-pendinginfo">
       <div class="mi-title">PENDING TRANSACTIONS </div>
       <div class="pending-box">
-        {% for transaction in blockchain.newTransactions %}
+        {% for transaction in blockchain.getTransactions() %}
           <small class="mi-translist">{{ transaction.transactionString }}<br></small>
         {% endfor %}
       </div>

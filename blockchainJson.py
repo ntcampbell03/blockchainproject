@@ -32,6 +32,14 @@ class Blockchain:
             self.miningReward = 0
             self.writeChain()
 
+    def getReward(self):
+        self.updateChain()
+        return self.miningReward
+
+    def getTransactions(self):
+        self.updateChain()
+        return self.newTransactions
+
     def getBlock(self, n):
         self.updateChain()
         return self.chain[n]
