@@ -29,7 +29,8 @@ def blockchain(idx = 0):
 
 @app.route("/mine", methods=['GET', 'POST'])
 def mine():
-    return render_template('mine.html', blockchain=blockchainObj, success=False)
+    reward = blockchainObj.getReward()
+    return render_template('mine.html', blockchain=blockchainObj, success=False, reward=reward)
 
 @app.route("/mineblock/", methods=['GET', 'POST'])
 def mineblock():

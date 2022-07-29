@@ -22,7 +22,7 @@ class Blockchain:
             self.difficulty = readChain.difficulty
             self.newTransactions = readChain.newTransactions
             self.numTransactions = readChain.numTransactions
-            self.miningReward = readChain.miningReward
+            self.miningReward = int(10 * math.log(.2 * len(self.newTransactions) + 1) ** (1.2))
         else:
             self.chain = [self.GenesisBlock()]
             self.length = 1
@@ -87,7 +87,7 @@ class Blockchain:
             if senderCurBalance >= newTransaction.amount: # Checks if balance is sufficient
                 self.newTransactions.append(newTransaction)
                 self.numTransactions += 1
-                self.miningReward = int(10 * math.log(.2 * self.numTransactions + 1) ** (1.2))
+                self.miningReward = int(10 * math.log(.2 * len(self.newTransactions) + 1) ** (1.2))
                 self.writeChain()
             else:
                 print('Wallet has insufficient balance!')
@@ -112,6 +112,7 @@ class Blockchain:
                 self.length += 1
                 self.newTransactions = []
                 self.numTransactions = 0
+                self.miningReward = 0
                 self.writeChain()
                 return self.miningReward
                 # if self.numTransactions > 10: # Increases rewards for more transactions in a block
