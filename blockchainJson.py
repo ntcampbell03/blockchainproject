@@ -2,6 +2,8 @@ import hashlib
 import time
 import math
 import gnupg
+import json
+import jsonpickle
 
 # gpg = gnupg.GPG(gnupghome='/usr/bin')
 gpg = gnupg.GPG()
@@ -12,21 +14,34 @@ gpg = gnupg.GPG()
 gpg.encoding = 'utf-8'
 
 class Blockchain:
-    def __init__(self):
+    def __init__(self, read=False):
+        if read:
+            readChain = self.readChain()
+            self.chain = readChain.chain
+            self.length = readChain.length
+            self.difficulty = readChain.difficulty
+            self.newTransactions = readChain.newTransactions
+            self.numTransactions = readChain.numTransactions
+            self.miningReward = readChain.miningReward
+        else:
             self.chain = [self.GenesisBlock()]
             self.length = 1
             self.difficulty = 0
             self.newTransactions = []
             self.numTransactions = 0
             self.miningReward = 0
+            self.writeChain()
 
     def getBlock(self, n):
+        self.updateChain()
         return self.chain[n]
 
     def getLastBlock(self):
+        self.updateChain()
         return self.chain[-1]
 
     def getBalance(self, wallet): # Iterates through all confirmed blocks to determine the balance of a wallet
+        self.updateChain()
         if isinstance(wallet, godWallet):
             return float('inf') # Infinite
         balance = 0
@@ -39,7 +54,8 @@ class Blockchain:
         return balance
     
     def getPendingBalance(self, wallet): # Also iterates through pending transactions
-        if isinstance(wallet, godWallet):
+        self.updateChain()
+        if wallet.name == "Test Account":
             return float('inf') # Infinite
         balance = 0
         for block in self.chain:
@@ -56,6 +72,7 @@ class Blockchain:
         return balance
 
     def addTransaction(self, newTransaction): # Adds a transaction to self.newTransactions
+        self.updateChain()
         try:
             senderCurBalance = self.getPendingBalance(newTransaction.sender)
             receiverCurBalance = self.getPendingBalance(newTransaction.reciever)
@@ -69,6 +86,7 @@ class Blockchain:
             print('Wallet does not exist!') # Tryblockchain.addTransaction(t) except doesnt work
             
     def addBlock(self): # Adds a block to the blockchain
+        self.updateChain()
         if self.newTransactions:
             for transaction in self.newTransactions:
                 if not gpg.verify(transaction.signature):
@@ -85,7 +103,7 @@ class Blockchain:
                 self.length += 1
                 self.newTransactions = []
                 self.numTransactions = 0
-
+                self.writeChain()
                 return self.miningReward
                 # if self.numTransactions > 10: # Increases rewards for more transactions in a block
                 #     self.numTransactions = 0
@@ -133,6 +151,24 @@ class Blockchain:
     def GenesisBlock(self): # Creates genesis block
         genesis = Block([Transaction(godWallet("1"), godWallet("2"), 0)], 0, "None", 0)
         return genesis
+
+    def writeChain(self):
+        with open("blockchain.json", "w") as outfile:
+            outfile.write(jsonpickle.encode(self))
+        return True
+
+    def readChain(self):
+        with open('blockchain.json', 'r') as openfile:
+            json_object = json.load(openfile)
+            json_object = json.dumps(json_object)
+        return jsonpickle.decode(json_object)
+
+    def updateChain(self):
+        readChain = self.readChain()
+        self.chain = readChain.chain
+        self.length = readChain.length
+        self.difficulty = readChain.difficulty
+        return True
 
 class Wallet:
     def __init__(self, name):
@@ -183,7 +219,7 @@ class Block:
         while self.hash[0:difficulty] != target:
             self.nonce += 1
             self.hash = self.calculateHash()
-            time.sleep(0.5) # Slows down mining
+            # time.sleep(0.5) # Slows down mining
 
 class Transaction:
     def __init__(self, sender, reciever, amount):

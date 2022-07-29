@@ -85,6 +85,7 @@ def wallet():
     form = TransactionForm()
     if form.validate_on_submit():
         if form.reciever.data == "testaccount":
+            print("HI")
             blockchainObj.addTransaction(Transaction(godWallet("Test Account"), current_user.wallet, form.amount.data))
         else:
             try:
