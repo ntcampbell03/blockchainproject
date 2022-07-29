@@ -80,6 +80,7 @@ class Blockchain:
                 self.newTransactions.append(newTransaction)
                 self.numTransactions += 1
                 self.miningReward = int(10 * math.log(.2 * self.numTransactions + 1) ** (1.2))
+                self.writeChain()
             else:
                 print('Wallet has insufficient balance!')
         except NameError:
@@ -168,6 +169,8 @@ class Blockchain:
         self.chain = readChain.chain
         self.length = readChain.length
         self.difficulty = readChain.difficulty
+        self.newTransactions = readChain.newTransactions
+        self.numTransactions = readChain.numTransactions
         return True
 
 class Wallet:
