@@ -34,7 +34,7 @@ class Blockchain:
 
     def getReward(self):
         self.updateChain()
-        return self.miningReward
+        return int(10 * math.log(.2 * len(self.newTransactions) + 1) ** (1.2))
 
     def getTransactions(self):
         self.updateChain()
