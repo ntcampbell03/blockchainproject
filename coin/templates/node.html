@@ -15,7 +15,7 @@ Tessaract - Node
             <input type="submit" value="Submit">
         </form>
         {% if pendingChain %}
-            {{ pendingChain.chain }}
+            {{ pendingChain.verifyBlockchain() }}
         {% endif %}
     </div>
 </body>
