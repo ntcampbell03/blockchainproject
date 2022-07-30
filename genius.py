@@ -10,7 +10,7 @@ for name in WalletNames:
 
 
 def getRandomWallet():
-    return WALLETS[random.randint(0, len(WALLETS)-1)]
+    return WALLETS[random.randint(0, len(WALLETS)-1)]   
 
 
 blocks = 442
