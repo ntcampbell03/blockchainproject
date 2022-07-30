@@ -232,6 +232,10 @@ class Blockchain:
         self.numTransactions = readChain.numTransactions
         return True
 
+    def updateJson(self):
+        with open("blockchain.json", "w") as outfile:
+            outfile.write(self.readPostgres())
+
     def readPostgres(self):
         conn = get_db_connection()
         cur = conn.cursor()
