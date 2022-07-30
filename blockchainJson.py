@@ -2,7 +2,14 @@ import hashlib
 import time
 import math
 import gnupg
-import json
+
+try:
+    import ujson as json
+except ImportError:
+    try:
+        import simplejson as json
+    except ImportError:
+        import json
 import jsonpickle
 from git import Repo
 
