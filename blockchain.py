@@ -3,7 +3,6 @@ import time
 import math
 import gnupg
 
-# gpg = gnupg.GPG(gnupghome='/usr/bin')
 gpg = gnupg.GPG()
 # gpg = gnupg.GPG(gnupghome='/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages')
 # gpg = gnupg.GPG(gnupghome='/Users/nikhiljain/Desktop/blockchainproject/env/lib/python3.9/site-packages/')

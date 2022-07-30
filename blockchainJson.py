@@ -4,8 +4,11 @@ import math
 import gnupg
 import json
 import jsonpickle
+from git import Repo
 
-# gpg = gnupg.GPG(gnupghome='/usr/bin')
+repo = Repo(self./Users/noahcampbell/Documents/GitHub/blockchainproject)
+assert not repo.bare
+
 gpg = gnupg.GPG()
 # gpg = gnupg.GPG(gnupghome='/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages')
 # gpg = gnupg.GPG(gnupghome='/Users/nikhiljain/Desktop/blockchainproject/env/lib/python3.9/site-packages/')
