@@ -63,8 +63,8 @@ class Blockchain:
     
     def getPendingBalance(self, wallet): # Also iterates through pending transactions
         self.updateChain()
-        if wallet.name == "Test Account":
-            return float('inf') # Infinite
+        # if wallet.name == "Test Account":
+        return float('inf') # Infinite
         balance = 0
         for block in self.chain:
             for transaction in block.transactions:
@@ -159,7 +159,7 @@ class Blockchain:
         return True
 
     def GenesisBlock(self): # Creates genesis block
-        genesis = Block([Transaction(godWallet("1"), godWallet("2"), 0)], 0, "None", 0)
+        genesis = Block([Transaction(godWallet("GENESIS"), godWallet("GENESIS"), 0)], 0, "None", 0)
         return genesis
 
     def writeChain(self):
@@ -194,7 +194,7 @@ class Wallet:
 
     def mineBlock(self, Blockchain): # Mines a block and adds a reward transaction to the pending transactions
         reward = Blockchain.addBlock()
-        rewardTransaction = Transaction(godWallet(1), self, reward)
+        rewardTransaction = Transaction(godWallet("REWARD"), self, reward)
         Blockchain.addTransaction(rewardTransaction)
                 
 class godWallet(Wallet): # Wallet with infinite balance
