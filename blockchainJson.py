@@ -27,6 +27,14 @@ def get_db_connection():
 class Blockchain:
     def __init__(self, read=False):
         if read:
+            conn = get_db_connection()
+            cur = conn.cursor()
+            postgreSQL_select_Query = "select * from blockchain where id = 1"
+            cur.execute(postgreSQL_select_Query)
+            bcjson = cur.fetchall()[0][1]
+            cur.close()
+            conn.close()
+            jsonpickle.decode(bcjson)
             readChain = self.readChain()
             self.chain = readChain.chain
             self.length = readChain.length
@@ -76,8 +84,8 @@ class Blockchain:
 
     def getPendingBalance(self, wallet):  # Also iterates through pending transactions
         self.updateChain()
-        # if wallet.name == "Test Account":
-        return float('inf')  # Infinite
+        if wallet.name == "Test Account":
+            return float('inf')  # Infinite
         balance = 0
         for block in self.chain:
             for transaction in block.transactions:
@@ -104,7 +112,6 @@ class Blockchain:
                 self.numTransactions += 1
                 self.miningReward = int(
                     10 * math.log(.2 * len(self.newTransactions) + 1) ** (1.2))
-                self.writeChain()
             else:
                 print('Wallet has insufficient balance!')
         except NameError:
@@ -186,25 +193,17 @@ class Blockchain:
         return genesis
 
     def writeChain(self):
-        conn = get_db_connection()
-        cur = conn.cursor()
-        sql_update_query = """Update blockchain set json = %s where id = %s"""
-        cur.execute(sql_update_query, (jsonpickle.encode(self), 1))
-        cur.close()
-        conn.close()
+        with open("blockchain.json", "w") as outfile:
+            outfile.write(jsonpickle.encode(self))
         return True
 
     def readChain(self):
-        conn = get_db_connection()
-        cur = conn.cursor()
-        postgreSQL_select_Query = "select * from blockchain where id = 1"
-
-        cur.execute(postgreSQL_select_Query)
-        bcjson = cur.fetchall()[0][1]
-        cur.close()
-        conn.close()
-        with open("blockchain.json", "w") as outfile:
-            outfile.write(bcjson)
+        # conn = get_db_connection()
+        # cur = conn.cursor()
+        # sql_update_query = """Update blockchain set json = %s where id = %s"""
+        # cur.execute(sql_update_query, (jsonpickle.encode(self), 1))
+        # cur.close()
+        # conn.close()
         with open('blockchain.json', 'r') as openfile:
             json_object = json.load(openfile)
             json_object = json.dumps(json_object)
