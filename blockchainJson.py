@@ -126,6 +126,7 @@ class Blockchain:
             else:
                 newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash, self.difficulty)
             newBlock.mineBlock(newBlock.curDifficulty)
+            reward = self.miningReward
             if self.getLastBlock().index <= newBlock.index:
                 self.chain.append(newBlock)
                 self.length += 1
@@ -134,7 +135,7 @@ class Blockchain:
                 self.miningReward = 0
                 self.writeChain()
 
-                return self.miningReward
+                return reward
                 # if self.numTransactions > 10: # Increases rewards for more transactions in a block
                 #     self.numTransactions = 0
                 #     return self.miningReward + 5
