@@ -4,6 +4,7 @@ import math
 import gnupg
 import json
 import jsonpickle
+import psycopg2
 
 # gpg = gnupg.GPG(gnupghome='/usr/bin')
 gpg = gnupg.GPG()
@@ -12,6 +13,16 @@ gpg = gnupg.GPG()
 # gpg = gnupg.GPG(gnupghome='/Users/rithwikbabu/Documents/appcode/blockchainproject/env/lib/python3.9/site-packages/')
 
 gpg.encoding = 'utf-8'
+
+
+def get_db_connection():
+    conn = psycopg2.connect(user="xpahdelqnuopvl",
+                    password="edcc7b324dd36ca1f59a3849bf503c52e1e3499cd64835f88ad7f96401d3d31c",
+                    host="ec2-100-26-39-41.compute-1.amazonaws.com",
+                    port="5432",
+                    database="d8lbeqdtcsvnma")
+    return conn
+
 
 class Blockchain:
     def __init__(self, read=False):
@@ -22,7 +33,8 @@ class Blockchain:
             self.difficulty = readChain.difficulty
             self.newTransactions = readChain.newTransactions
             self.numTransactions = readChain.numTransactions
-            self.miningReward = int(10 * math.log(.2 * len(self.newTransactions) + 1) ** (1.2))
+            self.miningReward = int(
+                10 * math.log(.2 * len(self.newTransactions) + 1) ** (1.2))
         else:
             self.chain = [self.GenesisBlock()]
             self.length = 1
@@ -48,10 +60,11 @@ class Blockchain:
         self.updateChain()
         return self.chain[-1]
 
-    def getBalance(self, wallet): # Iterates through all confirmed blocks to determine the balance of a wallet
+    # Iterates through all confirmed blocks to determine the balance of a wallet
+    def getBalance(self, wallet):
         self.updateChain()
         if isinstance(wallet, godWallet):
-            return float('inf') # Infinite
+            return float('inf')  # Infinite
         balance = 0
         for block in self.chain:
             for transaction in block.transactions:
@@ -60,11 +73,11 @@ class Blockchain:
                 if transaction.reciever.name == wallet.name:
                     balance += transaction.amount
         return balance
-    
-    def getPendingBalance(self, wallet): # Also iterates through pending transactions
+
+    def getPendingBalance(self, wallet):  # Also iterates through pending transactions
         self.updateChain()
         # if wallet.name == "Test Account":
-        return float('inf') # Infinite
+        return float('inf')  # Infinite
         balance = 0
         for block in self.chain:
             for transaction in block.transactions:
@@ -74,38 +87,46 @@ class Blockchain:
                     balance += transaction.amount
         for transaction in self.newTransactions:
             if transaction.sender.name == wallet.name:
-                    balance -= transaction.amount
+                balance -= transaction.amount
             if transaction.reciever.name == wallet.name:
                 balance += transaction.amount
         return balance
 
-    def addTransaction(self, newTransaction): # Adds a transaction to self.newTransactions
+    # Adds a transaction to self.newTransactions
+    def addTransaction(self, newTransaction):
         self.updateChain()
         try:
             senderCurBalance = self.getPendingBalance(newTransaction.sender)
-            receiverCurBalance = self.getPendingBalance(newTransaction.reciever)
-            if senderCurBalance >= newTransaction.amount: # Checks if balance is sufficient
+            receiverCurBalance = self.getPendingBalance(
+                newTransaction.reciever)
+            if senderCurBalance >= newTransaction.amount:  # Checks if balance is sufficient
                 self.newTransactions.append(newTransaction)
                 self.numTransactions += 1
-                self.miningReward = int(10 * math.log(.2 * len(self.newTransactions) + 1) ** (1.2))
+                self.miningReward = int(
+                    10 * math.log(.2 * len(self.newTransactions) + 1) ** (1.2))
                 self.writeChain()
             else:
                 print('Wallet has insufficient balance!')
         except NameError:
-            print('Wallet does not exist!') # Tryblockchain.addTransaction(t) except doesnt work
-            
-    def addBlock(self): # Adds a block to the blockchain
+            # Tryblockchain.addTransaction(t) except doesnt work
+            print('Wallet does not exist!')
+
+    def addBlock(self):  # Adds a block to the blockchain
         self.updateChain()
         if self.newTransactions:
             for transaction in self.newTransactions:
                 if not gpg.verify(transaction.signature):
-                   raise ValueError("Transaction signature could not be verified")
-            if self.numTransactions > 10: # Adjusts the difficulty based on the number of transactions
-                newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash, self.difficulty - 1 if self.difficulty - 1 >= 0 else 0)
+                    raise ValueError(
+                        "Transaction signature could not be verified")
+            if self.numTransactions > 10:  # Adjusts the difficulty based on the number of transactions
+                newBlock = Block(self.newTransactions, self.length, self.getLastBlock(
+                ).hash, self.difficulty - 1 if self.difficulty - 1 >= 0 else 0)
             elif self.numTransactions > 25:
-                newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash, self.difficulty - 2 if self.difficulty - 2 >= 0 else 0)
+                newBlock = Block(self.newTransactions, self.length, self.getLastBlock(
+                ).hash, self.difficulty - 2 if self.difficulty - 2 >= 0 else 0)
             else:
-                newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash, self.difficulty)
+                newBlock = Block(self.newTransactions, self.length,
+                                 self.getLastBlock().hash, self.difficulty)
             newBlock.mineBlock(newBlock.curDifficulty)
             if self.getLastBlock().index <= newBlock.index:
                 self.chain.append(newBlock)
@@ -130,23 +151,24 @@ class Blockchain:
         else:
             print("No pending transactions")
             return 0
-        
-    
-    def verifyBlockchain(self): # Verifies hashes of the blocks and the signatures of the transactions
+
+    # Verifies hashes of the blocks and the signatures of the transactions
+    def verifyBlockchain(self):
         prevHash = '0'
         for i, curBlock in enumerate(self.chain[1:]):
-            if curBlock.hash != curBlock.calculateHash(): # Check if hash is legitimate
+            if curBlock.hash != curBlock.calculateHash():  # Check if hash is legitimate
                 print("Hash does not match data")
                 return False
-            for char in curBlock.hash[0:curBlock.curDifficulty]: # Check if hash is acceptable
+            # Check if hash is acceptable
+            for char in curBlock.hash[0:curBlock.curDifficulty]:
                 if char != '0':
                     print("Hash does not meet requirements")
                     return False
-            if curBlock.prev != prevHash: # Check if prev is acceptable
+            if curBlock.prev != prevHash:  # Check if prev is acceptable
                 print("Previous hash does not match", i)
                 return False
             prevHash = curBlock.hash
-            for transaction in curBlock.transactions: # Check if transaction signatures are valid
+            for transaction in curBlock.transactions:  # Check if transaction signatures are valid
                 rewardTransactions = 0
                 if not gpg.verify(transaction.signature):
                     print("Transaction signature is not valid")
@@ -158,16 +180,31 @@ class Blockchain:
                 #         return False
         return True
 
-    def GenesisBlock(self): # Creates genesis block
-        genesis = Block([Transaction(godWallet("GENESIS"), godWallet("GENESIS"), 0)], 0, "None", 0)
+    def GenesisBlock(self):  # Creates genesis block
+        genesis = Block(
+            [Transaction(godWallet("GENESIS"), godWallet("GENESIS"), 0)], 0, "None", 0)
         return genesis
 
     def writeChain(self):
-        with open("blockchain.json", "w") as outfile:
-            outfile.write(jsonpickle.encode(self))
+        conn = get_db_connection()
+        cur = conn.cursor()
+        sql_update_query = """Update blockchain set json = %s where id = %s"""
+        cur.execute(sql_update_query, (jsonpickle.encode(self), 1))
+        cur.close()
+        conn.close()
         return True
 
     def readChain(self):
+        conn = get_db_connection()
+        cur = conn.cursor()
+        postgreSQL_select_Query = "select * from blockchain where id = 1"
+
+        cur.execute(postgreSQL_select_Query)
+        bcjson = cur.fetchall()[0][1]
+        cur.close()
+        conn.close()
+        with open("blockchain.json", "w") as outfile:
+            outfile.write(bcjson)
         with open('blockchain.json', 'r') as openfile:
             json_object = json.load(openfile)
             json_object = json.dumps(json_object)
@@ -182,6 +219,7 @@ class Blockchain:
         self.numTransactions = readChain.numTransactions
         return True
 
+
 class Wallet:
     def __init__(self, name):
         self.name = str(name)
@@ -192,13 +230,16 @@ class Wallet:
             key_length=1024)
         self.key = gpg.gen_key(self.input_data)
 
-    def mineBlock(self, Blockchain): # Mines a block and adds a reward transaction to the pending transactions
+    # Mines a block and adds a reward transaction to the pending transactions
+    def mineBlock(self, Blockchain):
         reward = Blockchain.addBlock()
         rewardTransaction = Transaction(godWallet("REWARD"), self, reward)
         Blockchain.addTransaction(rewardTransaction)
-                
-class godWallet(Wallet): # Wallet with infinite balance
-     pass
+
+
+class godWallet(Wallet):  # Wallet with infinite balance
+    pass
+
 
 class Block:
     def __init__(self, transactions, index, prev, curDifficulty):
@@ -215,14 +256,15 @@ class Block:
             print(transaction.transactionString)
 
     def calculateHash(self):
-            hashTransactions = ''
-            if self.prev != "None": # Handle genesis block
-                for transaction in self.transactions:
-                    hashTransactions += transaction.transactionString
-            else:
-                return '0'
-            hashString = (f'{hashTransactions}{self.prev}{self.index}{self.nonce}{self.time}').encode()
-            return hashlib.sha256(hashString).hexdigest()
+        hashTransactions = ''
+        if self.prev != "None":  # Handle genesis block
+            for transaction in self.transactions:
+                hashTransactions += transaction.transactionString
+        else:
+            return '0'
+        hashString = (
+            f'{hashTransactions}{self.prev}{self.index}{self.nonce}{self.time}').encode()
+        return hashlib.sha256(hashString).hexdigest()
 
     def mineBlock(self, difficulty):
         target = ''
@@ -233,6 +275,7 @@ class Block:
             self.hash = self.calculateHash()
             # time.sleep(0.5) # Slows down mining
 
+
 class Transaction:
     def __init__(self, sender, reciever, amount):
         self.sender = sender
@@ -242,9 +285,8 @@ class Transaction:
         self.transactionString = f'{self.sender.name} to {self.reciever.name}: {self.amount} at {self.time}'
         self.signature = self.getSignature()
 
-    def getSignature(self): # Signs transaction data
-        signed_data = str(gpg.sign(self.transactionString, keyid = self.sender.key.fingerprint))
+    def getSignature(self):  # Signs transaction data
+        signed_data = str(gpg.sign(self.transactionString,
+                          keyid=self.sender.key.fingerprint))
         self.signature = signed_data
         return signed_data
-
-

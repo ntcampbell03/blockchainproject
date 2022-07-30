@@ -13,7 +13,7 @@ def getRandomWallet():
     return WALLETS[random.randint(0, len(WALLETS)-1)]
 
 
-blocks = 442
+blocks = 2
 numTrans = 20
 
 bc = Blockchain()
