@@ -11,18 +11,8 @@ except ImportError:
     except ImportError:
         import json
 import jsonpickle
-from git import Repo
 
-def gitPush(file):
-    repo = Repo('/Users/noahcampbell/Documents/GitHub/blockchainproject/.git')
-    repo.index.add(file)
-    repo.index.commit('Updated JSON')
-    origin = repo.remote('origin')
-    origin.push()
-
-while True:
-    time.sleep(1800)
-    gitPush('/Users/noahcampbell/Documents/GitHub/blockchainproject/blockchain.json')
+import psycopg2
 
 # gpg = gnupg.GPG()
 gpg = gnupg.GPG(gnupghome='/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages')
@@ -31,9 +21,28 @@ gpg = gnupg.GPG(gnupghome='/Library/Frameworks/Python.framework/Versions/3.10/li
 
 gpg.encoding = 'utf-8'
 
+def get_db_connection():
+    conn = psycopg2.connect(user="xpahdelqnuopvl",
+                    password="edcc7b324dd36ca1f59a3849bf503c52e1e3499cd64835f88ad7f96401d3d31c",
+                    host="ec2-100-26-39-41.compute-1.amazonaws.com",
+                    port="5432",
+                    database="d8lbeqdtcsvnma")
+    return conn
+
+
 class Blockchain:
     def __init__(self, read=False):
         if read:
+            conn = get_db_connection()
+            cur = conn.cursor()
+            postgreSQL_select_Query = "select * from blockchain where id = 1"
+            cur.execute(postgreSQL_select_Query)
+            bcjson = cur.fetchall()[0][1]
+            cur.close()
+            conn.close()
+            with open("blockchain.json", "w") as outfile:
+                outfile.write(bcjson)
+
             readChain = self.readChain()
             self.chain = readChain.chain
             self.length = readChain.length
@@ -115,9 +124,11 @@ class Blockchain:
     def addBlock(self): # Adds a block to the blockchain
         self.updateChain()
         if self.newTransactions:
+            tempList = []
             for transaction in self.newTransactions:
-                if not gpg.verify(transaction.signature):
-                   raise ValueError("Transaction signature could not be verified")
+                if gpg.verify(transaction.signature):
+                   tempList.append(transaction)
+            self.newTransactions = tempList
             if self.numTransactions > 10: # Adjusts the difficulty based on the number of transactions
                 newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash, self.difficulty - 1 if self.difficulty - 1 >= 0 else 0)
             elif self.numTransactions > 25:
@@ -125,6 +136,7 @@ class Blockchain:
             else:
                 newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash, self.difficulty)
             newBlock.mineBlock(newBlock.curDifficulty)
+            reward = int(10 * math.log(.2 * len(self.newTransactions) + 1) ** (1.2))
             if self.getLastBlock().index <= newBlock.index:
                 self.chain.append(newBlock)
                 self.length += 1
@@ -132,7 +144,8 @@ class Blockchain:
                 self.numTransactions = 0
                 self.miningReward = 0
                 self.writeChain()
-                return self.miningReward
+
+                return reward
                 # if self.numTransactions > 10: # Increases rewards for more transactions in a block
                 #     self.numTransactions = 0
                 #     return self.miningReward + 5
@@ -147,7 +160,7 @@ class Blockchain:
                 #     return self.miningReward
         else:
             print("No pending transactions")
-            return 0
+            return 1
         
     
     def verifyBlockchain(self): # Verifies hashes of the blocks and the signatures of the transactions
@@ -183,6 +196,25 @@ class Blockchain:
     def writeChain(self):
         with open("blockchain.json", "w") as outfile:
             outfile.write(jsonpickle.encode(self))
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute('DROP TABLE IF EXISTS blockchain;')
+        cur.execute('CREATE TABLE blockchain (id INTEGER, json TEXT);')
+
+        # Insert data into the table
+        with open('blockchain.json', 'r') as openfile:
+                    json_object = json.load(openfile)
+                    json_object = json.dumps(json_object)
+        cur.execute('INSERT INTO blockchain (id, json)'
+                    'VALUES (%s, %s)',
+                    (
+                    1,
+                    json_object)
+                    )
+
+        conn.commit()
+        cur.close()
+        conn.close()
         return True
 
     def readChain(self):
