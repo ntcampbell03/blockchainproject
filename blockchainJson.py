@@ -6,11 +6,15 @@ import json
 import jsonpickle
 from git import Repo
 
-repo = Repo(self./Users/noahcampbell/Documents/GitHub/blockchainproject)
-assert not repo.bare
+def gitPush():
+    repo = Repo('/Users/noahcampbell/Documents/GitHub/blockchainproject/.git')
+    repo.index.add('/Users/noahcampbell/Documents/GitHub/blockchainproject/blockchain.json')
+    repo.index.commit('Updated JSON')
+    origin = repo.remote('origin')
+    origin.push()
 
-gpg = gnupg.GPG()
-# gpg = gnupg.GPG(gnupghome='/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages')
+# gpg = gnupg.GPG()
+gpg = gnupg.GPG(gnupghome='/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages')
 # gpg = gnupg.GPG(gnupghome='/Users/nikhiljain/Desktop/blockchainproject/env/lib/python3.9/site-packages/')
 # gpg = gnupg.GPG(gnupghome='/Users/rithwikbabu/Documents/appcode/blockchainproject/env/lib/python3.9/site-packages/')
 
