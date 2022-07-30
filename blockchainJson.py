@@ -200,16 +200,11 @@ class Blockchain:
         cur = conn.cursor()
         cur.execute('DROP TABLE IF EXISTS blockchain;')
         cur.execute('CREATE TABLE blockchain (id INTEGER, json TEXT);')
-
-        # Insert data into the table
-        with open('blockchain.json', 'r') as openfile:
-                    json_object = json.load(openfile)
-                    json_object = json.dumps(json_object)
         cur.execute('INSERT INTO blockchain (id, json)'
                     'VALUES (%s, %s)',
                     (
                     1,
-                    json_object)
+                    jsonpickle.encode(self))
                     )
 
         conn.commit()
