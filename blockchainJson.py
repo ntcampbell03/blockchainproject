@@ -33,7 +33,10 @@ class Blockchain:
             bcjson = cur.fetchall()[0][1]
             cur.close()
             conn.close()
-            readChain = jsonpickle.decode(bcjson)
+            with open("blockchain.json", "w") as outfile:
+                outfile.write(bcjson)
+
+            readChain = self.readChain()
             self.chain = readChain.chain
             self.length = readChain.length
             self.difficulty = readChain.difficulty
@@ -126,7 +129,7 @@ class Blockchain:
             else:
                 newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash, self.difficulty)
             newBlock.mineBlock(newBlock.curDifficulty)
-            reward = self.miningReward
+            reward = int(10 * math.log(.2 * len(self.newTransactions) + 1) ** (1.2))
             if self.getLastBlock().index <= newBlock.index:
                 self.chain.append(newBlock)
                 self.length += 1
@@ -150,7 +153,7 @@ class Blockchain:
                 #     return self.miningReward
         else:
             print("No pending transactions")
-            return 0
+            return 1
         
     
     def verifyBlockchain(self): # Verifies hashes of the blocks and the signatures of the transactions
