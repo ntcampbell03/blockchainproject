@@ -114,9 +114,11 @@ class Blockchain:
     def addBlock(self): # Adds a block to the blockchain
         self.updateChain()
         if self.newTransactions:
+            tempList = []
             for transaction in self.newTransactions:
-                if not gpg.verify(transaction.signature):
-                   raise ValueError("Transaction signature could not be verified")
+                if gpg.verify(transaction.signature):
+                   tempList.append(transaction)
+            self.newTransactions = tempList
             if self.numTransactions > 10: # Adjusts the difficulty based on the number of transactions
                 newBlock = Block(self.newTransactions, self.length, self.getLastBlock().hash, self.difficulty - 1 if self.difficulty - 1 >= 0 else 0)
             elif self.numTransactions > 25:
