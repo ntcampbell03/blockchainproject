@@ -2,6 +2,7 @@ from flask import Flask, redirect
 from flask import render_template, flash
 from flask import Flask, jsonify, request, render_template, url_for, flash, redirect
 from flask_login import login_user, current_user, logout_user, login_required
+import jsonpickle
 from coin.forms import *
 from coin.models import *
 from sqlalchemy.orm.attributes import flag_modified
@@ -76,9 +77,7 @@ def logout():
     return redirect(url_for('home'))
     # return render_template('mine.html', blockchain=blockchainObj)
 
-@app.route("/node", methods=['GET', 'POST'])
-def node():
-    return render_template('node.html', blockchain=blockchainObj)
+
 
 @app.route("/wallet", methods=['GET', 'POST'])
 def wallet():
@@ -97,3 +96,18 @@ def wallet():
                 print("INVALID RECIEVER")
     date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return render_template('wallet.html', wallet=current_user.wallet, blockchain=blockchainObj, balance=balance, form=form, date=date)
+
+@app.route("/export")
+def export():
+    blockchainObj.writeChain()
+    return blockchainObj.readPostgres()
+
+@app.route("/node", methods=['GET', 'POST'])
+def node():
+    return render_template('node.html', blockchain=blockchainObj)
+
+@app.route("/import", methods=['GET', 'POST'])
+def importbc():
+    jsonfile = request.args['json']
+    pendingChain = jsonpickle.decode(jsonfile)
+    return render_template('node.html', blockchain=blockchainObj, pendingChain=pendingChain)

@@ -232,6 +232,16 @@ class Blockchain:
         self.numTransactions = readChain.numTransactions
         return True
 
+    def readPostgres(self):
+        conn = get_db_connection()
+        cur = conn.cursor()
+        postgreSQL_select_Query = "select * from blockchain where id = 1"
+        cur.execute(postgreSQL_select_Query)
+        bcjson = cur.fetchall()[0][1]
+        cur.close()
+        conn.close()
+        return bcjson
+
 class Wallet:
     def __init__(self, name):
         self.name = str(name)

@@ -5,5 +5,18 @@ Tessaract - Node
 
 {% block content %}
 <body>
+    <div class="contentbg darkbg"></div>
+    <div class="contentbg">
+        Export Node
+        <a href="{{ url_for('export') }}">Download</a><br>
+        <form action="/import">
+            <label for="fname">Import Node:</label>
+            <input type="text" id="fname" name="json"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        {% if pendingChain %}
+            {{ pendingChain.chain }}
+        {% endif %}
+    </div>
 </body>
 {% endblock %}
