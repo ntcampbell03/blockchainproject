@@ -97,17 +97,8 @@ def wallet():
     date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return render_template('wallet.html', wallet=current_user.wallet, blockchain=blockchainObj, balance=balance, form=form, date=date)
 
-@app.route("/export")
-def export():
-    blockchainObj.writeChain()
-    return blockchainObj.readPostgres()
+
 
 @app.route("/node", methods=['GET', 'POST'])
 def node():
     return render_template('node.html', blockchain=blockchainObj)
-
-@app.route("/import", methods=['GET', 'POST'])
-def importbc():
-    jsonfile = request.args['json']
-    pendingChain = jsonpickle.decode(jsonfile)
-    return render_template('node.html', blockchain=blockchainObj, pendingChain=pendingChain)

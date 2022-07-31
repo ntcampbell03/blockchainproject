@@ -90,8 +90,8 @@ class Blockchain:
     
     def getPendingBalance(self, wallet): # Also iterates through pending transactions
         self.updateChain()
-        # if wallet.name == "Test Account":
-        return float('inf') # Infinite
+        if wallet.name == "Test Account":
+            return float('inf') # Infinite
         balance = 0
         for block in self.chain:
             for transaction in block.transactions:
