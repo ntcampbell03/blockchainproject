@@ -11,7 +11,7 @@ except ImportError:
     except ImportError:
         import json
 import jsonpickle
-
+import os
 import psycopg2
 
 gpg = gnupg.GPG()
@@ -26,8 +26,13 @@ def get_db_connection():
                     password="edcc7b324dd36ca1f59a3849bf503c52e1e3499cd64835f88ad7f96401d3d31c",
                     host="ec2-100-26-39-41.compute-1.amazonaws.com",
                     port="5432",
-                    database="d8lbeqdtcsvnma")
+                    database="d8lbeqdtcsvnma",
+                    sslmode="require")
     return conn
+
+    
+
+    
 
 class Blockchain:
     def __init__(self, read=False):
