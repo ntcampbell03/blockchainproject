@@ -17,7 +17,7 @@ def init_bc():
     cur.execute('CREATE TABLE blockchain (id INTEGER, json TEXT);')
 
     # Insert data into the table
-    with open('blockchain.json', 'r') as openfile:
+    with open('./blockchain.json', 'r') as openfile:
                 json_object = json.load(openfile)
                 json_object = json.dumps(json_object)
     cur.execute('INSERT INTO blockchain (id, json)'
@@ -36,8 +36,8 @@ def init_ac():
     cur = conn.cursor()
 
     # Execute a command: this creates a new table
-    cur.execute('DROP TABLE IF EXISTS user;')
-    cur.execute('CREATE TABLE user (id INTEGER, json TEXT);')
+    cur.execute('DROP TABLE IF EXISTS users;')
+    cur.execute('CREATE TABLE users (id INTEGER, json TEXT);')
 
     # Insert data into the table
     with open('blockchain.json', 'r') as openfile:
@@ -54,3 +54,5 @@ def init_ac():
 
     cur.close()
     conn.close()
+
+init_ac()

@@ -15,7 +15,7 @@ Tessaract - Wallet
     </div>
     <div class="wa-subbox wa-userpage">
       <div class="bl-titlecontainer">
-        <strong class="bl-title">Welcome {{ wallet.name }}!</strong><br>
+        <strong class="bl-title">Welcome {{ current_user.wallet.name }}!</strong><br>
         <strong class="bl-subtitle">Local time: {{ date }}</strong><br><br>
         <strong class="bl-subtitle">Balance: {{ balance }}</strong>
       </div>
@@ -26,7 +26,7 @@ Tessaract - Wallet
       <br><br>
       {%for block in blockchain.chain%}
         {%for trans in block.transactions%}
-          {%if trans.sender.name == wallet.name%}
+          {%if trans.sender.name == current_user.wallet.name%}
             <small>Trans: {{ trans.amount }} </small>
             <br>
             <small>Sender: {{ trans.sender.name }} </small>
@@ -35,7 +35,7 @@ Tessaract - Wallet
             <br>
             <br>
           {%endif%}
-          {%if trans.reciever.name == wallet.name%}
+          {%if trans.reciever.name == current_user.wallet.name%}
             <small>Trans: {{ trans.amount }} </small>
             <br>
             <small>Sender: {{ trans.sender.name }} </small>
@@ -52,7 +52,7 @@ Tessaract - Wallet
       Pending Transactions:
       <br><br>
       {%for trans in blockchain.getTransactions()%}
-        {%if trans.sender.name == wallet.name%}
+        {%if trans.sender.name == current_user.wallet.name%}
           <small>Trans: {{ trans.amount }} </small>
           <br>
           <small>Sender: {{ trans.sender.name }} </small>
@@ -60,7 +60,7 @@ Tessaract - Wallet
           <small>Reciever: {{ trans.reciever.name }} </small>
           <br><br>
         {%endif%}
-        {%if trans.reciever.name == wallet.name%}
+        {%if trans.reciever.name == current_user.wallet.name%}
           <small>Trans: {{ trans.amount }} </small>
           <br>
           <small>Sender: {{ trans.sender.name }} </small>

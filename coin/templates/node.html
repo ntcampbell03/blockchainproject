@@ -7,10 +7,10 @@ Tessaract - Node
 <body>
     <div class="contentbg darkbg"></div>
     <div class="contentbg">
-        
-        {% if pendingChain %}
-            {{ pendingChain.verifyBlockchain() }}
-        {% endif %}
+        {% for node in nodesDict %}
+            Node #{{ node }}: {{ nodesDict[node] }} users
+            <br>
+        {% endfor %}
     </div>
 </body>
 {% endblock %}

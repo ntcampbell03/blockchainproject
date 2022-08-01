@@ -29,20 +29,10 @@ def get_db_connection():
                     database="d8lbeqdtcsvnma")
     return conn
 
-
 class Blockchain:
     def __init__(self, read=False):
+        self.curchain = 1
         if read:
-            conn = get_db_connection()
-            cur = conn.cursor()
-            postgreSQL_select_Query = "select * from blockchain where id = 1"
-            cur.execute(postgreSQL_select_Query)
-            bcjson = cur.fetchall()[0][1]
-            cur.close()
-            conn.close()
-            with open("blockchain.json", "w") as outfile:
-                outfile.write(bcjson)
-
             readChain = self.readChain()
             self.chain = readChain.chain
             self.length = readChain.length
@@ -57,28 +47,26 @@ class Blockchain:
             self.newTransactions = []
             self.numTransactions = 0
             self.miningReward = 0
-            self.writeChain()
+            self.initChain()
 
     def getReward(self):
-        self.updateChain()
+        # self.updateChain()
         return int(10 * math.log(.2 * len(self.newTransactions) + 1) ** (1.2))
 
     def getTransactions(self):
-        self.updateChain()
+        # self.updateChain()
         return self.newTransactions
 
     def getBlock(self, n):
-        self.updateChain()
+        # self.updateChain()
         return self.chain[n]
 
     def getLastBlock(self):
-        self.updateChain()
+        # self.updateChain()
         return self.chain[-1]
 
     def getBalance(self, wallet): # Iterates through all confirmed blocks to determine the balance of a wallet
-        self.updateChain()
-        if isinstance(wallet, godWallet):
-            return float('inf') # Infinite
+        # self.updateChain()
         balance = 0
         for block in self.chain:
             for transaction in block.transactions:
@@ -89,8 +77,8 @@ class Blockchain:
         return balance
     
     def getPendingBalance(self, wallet): # Also iterates through pending transactions
-        self.updateChain()
-        if wallet.name == "Test Account":
+        # self.updateChain()
+        if wallet.name == "Test Account" or wallet.name == "REWARD" or wallet.name == "GENESIS":
             return float('inf') # Infinite
         balance = 0
         for block in self.chain:
@@ -107,7 +95,7 @@ class Blockchain:
         return balance
 
     def addTransaction(self, newTransaction): # Adds a transaction to self.newTransactions
-        self.updateChain()
+        # self.updateChain()
         try:
             senderCurBalance = self.getPendingBalance(newTransaction.sender)
             receiverCurBalance = self.getPendingBalance(newTransaction.reciever)
@@ -122,7 +110,7 @@ class Blockchain:
             print('Wallet does not exist!') # Tryblockchain.addTransaction(t) except doesnt work
             
     def addBlock(self): # Adds a block to the blockchain
-        self.updateChain()
+        # self.updateChain()
         if self.newTransactions:
             tempList = []
             for transaction in self.newTransactions:
@@ -190,20 +178,17 @@ class Blockchain:
         return True
 
     def GenesisBlock(self): # Creates genesis block
-        genesis = Block([Transaction(godWallet("GENESIS"), godWallet("GENESIS"), 0)], 0, "None", 0)
+        genesis = Block([Transaction(Wallet("GENESIS"), Wallet("GENESIS"), 0)], 0, "None", 0)
         return genesis
 
-    def writeChain(self):
-        with open("blockchain.json", "w") as outfile:
-            outfile.write(jsonpickle.encode(self))
+    def initChain(self):
         conn = get_db_connection()
         cur = conn.cursor()
-        cur.execute('DROP TABLE IF EXISTS blockchain;')
-        cur.execute('CREATE TABLE blockchain (id INTEGER, json TEXT);')
+        cur.execute('CREATE TABLE IF NOT EXISTS blockchain (id INTEGER, json TEXT, PRIMARY KEY (id));')
         cur.execute('INSERT INTO blockchain (id, json)'
                     'VALUES (%s, %s)',
                     (
-                    1,
+                    self.curchain,
                     jsonpickle.encode(self))
                     )
 
@@ -212,13 +197,37 @@ class Blockchain:
         conn.close()
         return True
 
-    def readChain(self):
-        with open('blockchain.json', 'r') as openfile:
-            json_object = json.load(openfile)
-            json_object = json.dumps(json_object)
-        return jsonpickle.decode(json_object)
+    def writeChain(self):
+        conn = get_db_connection()
+        cur = conn.cursor()
+        print("WRITING1")
+        cur.execute("""
+            UPDATE blockchain
+            SET json=%s
+            WHERE id=%s
+        """, (jsonpickle.encode(self), self.curchain))
 
-    def updateChain(self):
+        conn.commit()
+        cur.close()
+        conn.close()
+        return True
+
+    def readPostgres(self):
+        conn = get_db_connection()
+        cur = conn.cursor()
+        postgreSQL_select_Query = "select * from blockchain where id = (%s)"%(self.curchain,)
+        cur.execute(postgreSQL_select_Query)
+        bcjson = cur.fetchall()[0][1]
+        cur.close()
+        conn.close()
+        return bcjson
+        
+    def readChain(self):
+        bcjson = self.readPostgres()
+        return jsonpickle.decode(bcjson)
+
+    def updateChain(self, input=1):
+        self.curchain = input
         readChain = self.readChain()
         self.chain = readChain.chain
         self.length = readChain.length
@@ -226,20 +235,6 @@ class Blockchain:
         self.newTransactions = readChain.newTransactions
         self.numTransactions = readChain.numTransactions
         return True
-
-    def updateJson(self):
-        with open("blockchain.json", "w") as outfile:
-            outfile.write(self.readPostgres())
-
-    def readPostgres(self):
-        conn = get_db_connection()
-        cur = conn.cursor()
-        postgreSQL_select_Query = "select * from blockchain where id = 1"
-        cur.execute(postgreSQL_select_Query)
-        bcjson = cur.fetchall()[0][1]
-        cur.close()
-        conn.close()
-        return bcjson
 
 class Wallet:
     def __init__(self, name):
@@ -253,11 +248,13 @@ class Wallet:
 
     def mineBlock(self, Blockchain): # Mines a block and adds a reward transaction to the pending transactions
         reward = Blockchain.addBlock()
-        rewardTransaction = Transaction(godWallet("REWARD"), self, reward)
+        RewardWallet = Wallet("REWARD")
+        rewardTransaction = Transaction(RewardWallet, self, reward)
         Blockchain.addTransaction(rewardTransaction)
                 
-class godWallet(Wallet): # Wallet with infinite balance
-     pass
+# class godWallet(Wallet): # Wallet with infinite balance
+#     def __init__(self, name):
+#         Wallet.__init__(self, name)
 
 class Block:
     def __init__(self, transactions, index, prev, curDifficulty):

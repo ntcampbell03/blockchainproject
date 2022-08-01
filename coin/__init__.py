@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from blockchainJson import *
+from nodedistributor import *
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 
@@ -11,6 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://xpahdelqnuopvl:edcc7b324dd
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 blockchainObj = Blockchain(True)
+distributorObj = NodeDistributor()
 # blockchainObj.difficulty = 5
 
 loginManager = LoginManager(app)

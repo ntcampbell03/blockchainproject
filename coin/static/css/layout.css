@@ -429,3 +429,17 @@ html {
 i {
   position:relative;
 }
+
+.la-nodetext {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  font-size: 2vw;
+  background-color: #141414;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: gainsboro;
+}

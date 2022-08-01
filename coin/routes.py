@@ -8,9 +8,13 @@ from coin.models import *
 from sqlalchemy.orm.attributes import flag_modified
 
 import copy
-from blockchain import *
+from blockchainJson import *
 from . import app, bcrypt, db
-from coin import blockchainObj
+from coin import blockchainObj, distributorObj
+
+from collections import Counter
+
+import psycopg2
 
 @app.route("/")
 @app.route("/home")
@@ -20,6 +24,7 @@ def home():
 @app.route('/blockchain/<idx>')
 @app.route("/blockchain")
 def blockchain(idx = 0):
+    distributorObj.setUserCount(len(User.query.filter().all()))
     chain = []
     for blockObj in blockchainObj.chain:
         chain.append(blockObj.hash)
@@ -30,6 +35,7 @@ def blockchain(idx = 0):
 
 @app.route("/mine", methods=['GET', 'POST'])
 def mine():
+    blockchainObj.updateChain(current_user.node)
     reward = blockchainObj.getReward()
     return render_template('mine.html', blockchain=blockchainObj, success=False, reward=reward)
 
@@ -48,10 +54,11 @@ def register():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         #wallet creating
         newWallet = Wallet(form.username.data)
-        user = User(username=form.username.data, password=hashed_password, wallet=newWallet)
+        user = User(username=form.username.data, password=hashed_password, wallet=newWallet, node=distributorObj.randomNode())
         db.session.add(user)
         db.session.commit()
         login_user(user)
+        distributorObj.setUserCount(len(User.query.filter().all()))
         nextPage = request.args.get('next')
         flash(f'Account created for @{form.username.data}! You are now logged in as well.', 'success')
         return redirect(nextPage) if nextPage else redirect(url_for('home'))
@@ -60,11 +67,13 @@ def register():
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    distributorObj.setUserCount(db.session.query(User).count())
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
             nextPage = request.args.get('next')
+            blockchainObj.updateChain(current_user.node)
             return redirect(nextPage) if nextPage else redirect(url_for('home'))
         else:
             flash('Login Unsuccessful. Please check username and password', 'danger')
@@ -81,12 +90,14 @@ def logout():
 
 @app.route("/wallet", methods=['GET', 'POST'])
 def wallet():
+    blockchainObj.updateChain(current_user.node)
+    distributorObj.setUserCount(len(User.query.filter().all()))
     balance = blockchainObj.getBalance(current_user.wallet)
     form = TransactionForm()
     if form.validate_on_submit():
         if form.reciever.data == "testaccount":
             print("HI")
-            blockchainObj.addTransaction(Transaction(godWallet("Test Account"), current_user.wallet, form.amount.data))
+            blockchainObj.addTransaction(Transaction(Wallet("Test Account"), current_user.wallet, form.amount.data))
         else:
             try:
                 reciever = User.query.filter(User.username == form.reciever.data).all()[0].wallet
@@ -95,10 +106,26 @@ def wallet():
             except:
                 print("INVALID RECIEVER")
     date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    return render_template('wallet.html', wallet=current_user.wallet, blockchain=blockchainObj, balance=balance, form=form, date=date)
-
-
+    return render_template('wallet.html', blockchain=blockchainObj, balance=balance, form=form, date=date)
 
 @app.route("/node", methods=['GET', 'POST'])
 def node():
+    def zoomList(item):
+        return item[0]
+
+    distributorObj.setUserCount(len(User.query.filter().all()))
+    nodes = User.query.with_entities(User.node).all()
+    nodes = map(zoomList, nodes)
+    nodesDict = dict(Counter(sorted(nodes)).items())
+    return render_template('node.html', blockchain=blockchainObj, nodesDict=nodesDict, lent=len(User.query.filter().all()))
+
+@app.route("/delete/<int:id>")
+def delete(id):
+    user_to_delete = User.query.get_or_404(id)
+    db.session.delete(user_to_delete)
+    db.session.commit()
     return render_template('node.html', blockchain=blockchainObj)
+
+@app.context_processor
+def inject_menu():
+    return dict(current_user=current_user)
