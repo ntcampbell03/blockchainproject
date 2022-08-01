@@ -22,12 +22,9 @@ gpg = gnupg.GPG()
 gpg.encoding = 'utf-8'
 
 def get_db_connection():
-    conn = psycopg2.connect(user="xpahdelqnuopvl",
-                    password="edcc7b324dd36ca1f59a3849bf503c52e1e3499cd64835f88ad7f96401d3d31c",
-                    host="ec2-100-26-39-41.compute-1.amazonaws.com",
-                    port="5432",
-                    database="d8lbeqdtcsvnma",
-                    sslmode="require")
+    DATABASE_URL = os.environ["DATABASE_URL"]
+
+    conn = psycopg2.connect(DATABASE_URL)
     return conn
 
     
