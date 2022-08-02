@@ -19,6 +19,7 @@ html {
     --borderstyle3: groove;
     --borderstyle4: outset;
     --bgvid: url("https://i.imgur.com/KEnwbfZ.mp4");
+    --toggleVisibility: visible;
 
     /* --primary-color: gray;
     --primary-transparent: gray;
@@ -30,6 +31,7 @@ html {
     --borderstyle3: solid;
     --borderstyle4: solid;
     --bgvid: none; */
+    --toggleVisibility: hidden;
 }
 
 small {
