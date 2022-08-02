@@ -20,7 +20,7 @@ html {
     --borderstyle4: outset;
     --bgvid: url("https://i.imgur.com/KEnwbfZ.mp4");
 
-    --primary-color: gray;
+    /* --primary-color: gray;
     --primary-transparent: gray;
     --color1: gray;
     --color2: gray;
@@ -29,7 +29,7 @@ html {
     --borderstyle2: solid;
     --borderstyle3: solid;
     --borderstyle4: solid;
-    --bgvid: none;
+    --bgvid: none; */
 }
 
 small {
