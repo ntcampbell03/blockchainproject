@@ -22,13 +22,11 @@ gpg = gnupg.GPG()
 gpg.encoding = 'utf-8'
 
 def get_db_connection():
-    DATABASE_URL = os.environ["DATABASE_URL"]
-
-    conn = psycopg2.connect(DATABASE_URL)
+    url = os.environ["DATABASE_URL"]
+    url = os.environ["DATABASE_URL"]
+    url = url[:8] + "ql" + url[8:]
+    conn = psycopg2.connect(url)
     return conn
-
-    
-
     
 
 class Blockchain:

@@ -9,7 +9,9 @@ import os
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'i like boys'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["DATABASE_URL"]
+url = os.environ["DATABASE_URL"]
+url = url[:8] + "ql" + url[8:]
+app.config['SQLALCHEMY_DATABASE_URI'] = url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 blockchainObj = Blockchain(True)
