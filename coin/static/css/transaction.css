@@ -55,7 +55,7 @@
     float: left;
     width: calc(60vw - 1vw);
     text-align: left;
-    border-style: ridge;
+    border-style: var(--borderstyle1);
     margin-left: 3vw;
     padding-left: 1vw;
     top: 5vh;
@@ -67,7 +67,7 @@
     width: 0vw;
     visibility: hidden;
     text-align: left;
-    border-style: ridge;
+    border-style: var(--borderstyle1);
     margin-right: 3vw;
     padding-left: 1vw;
     top: 5vh;

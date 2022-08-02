@@ -15,13 +15,17 @@ html {
     --color2: linear-gradient(to right, rgba(214,81,125,0.05),rgba(214,81,125,0.25),rgba(214,81,125,0.50), rgba(214,81,125,0.75) ,rgba(214,81,125,0.50),rgba(214,81,125,0.25),rgba(214,81,125,0.05));
     --cringefont: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     --borderstyle1: ridge;
+    --borderstyle2: double;
+    --borderstyle3: groove;
 
     --primary-color: gray;
     --primary-transparent: gray;
     --color1: gray;
     --color2: gray;
     --cringefont: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    border-style: none !important; 
+    --borderstyle1: none; 
+    --borderstyle2: none;
+    --borderstyle3: none;
 }
 
 small {

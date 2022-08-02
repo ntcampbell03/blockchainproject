@@ -22,7 +22,7 @@
     background-image: var(--color2);
     border-top: 5px var(--primary-color);
     border-bottom: 5px var(--primary-color);
-    border-style:double;
+    border-style:var(--borderstyle2);
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
@@ -66,7 +66,7 @@
     width: 15vh;
     height: 15vh;
     animation: spin .75s linear infinite;
-    border-style:double;
+    border-style:var(--borderstyle2);
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
@@ -110,7 +110,7 @@ input[type=checkbox]:checked + .mine-label .mi-minebutton {
     width: 15vh;
     height: 15vh;
     animation: spin .75s linear infinite;
-    border-style:double;
+    border-style:var(--borderstyle2);
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
@@ -331,7 +331,7 @@ input[type=checkbox]:checked + .mi-timer {
 .mi-rewardinfo {
     float: left;
     text-align: left;
-    border-style: ridge;
+    border-style: var(--borderstyle1);
     /* -webkit-mask-image: radial-gradient(circle 10vh at 27.75vw -5vh, transparent 0, transparent 10vh, black 10vh);
     mask-image: radial-gradient(circle 10vh at 27.75vw -5vh, transparent 0, transparent 10vh, black 10vh); */
     margin-left: 3vw;
@@ -340,7 +340,7 @@ input[type=checkbox]:checked + .mi-timer {
 .mi-pendinginfo {
     float: right;
     text-align: right;
-    border-style:groove;
+    border-style:var(--borderstyle3);
     /* -webkit-mask-image: radial-gradient(circle 10vh at 0 -5vh, transparent 0, transparent 10vh, black 10vh); */
     /* mask-image: radial-gradient(circle 10vh at 0 0, transparent 0, transparent 10vh, black 10vh); */
     margin-right: 3vw;

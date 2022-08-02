@@ -26,7 +26,7 @@
 .wa-floatLeft{
     float: left;
     text-align: left;
-    border-style: ridge;
+    border-style: var(--borderstyle1);
     height: 75%;
     border-width: 5px;
     background-color: var(--waswitchrgb);
@@ -39,7 +39,7 @@
     height: 100%;
     width: 40%;
     text-align: left;
-    border-style: ridge;
+    border-style: var(--borderstyle1);
     padding-left: 1vw;
     margin-left: 1%;
     border-width: 5px;
@@ -49,7 +49,7 @@
 .wa-userpage{
     float: left;
     text-align: left;
-    border-style: ridge;
+    border-style: var(--borderstyle1);
     padding-left: 1vw;
     height: 25%;
 }

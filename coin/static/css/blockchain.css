@@ -33,7 +33,7 @@
     padding: 0 7.5px;
     border: var(--primary-color);
     border-width: 5px;
-    border-style: ridge;
+    border-style: var(--borderstyle1);
 }
 
 .bg-scroll {
@@ -99,7 +99,7 @@
     padding: 0 7.5px;
     border: var(--primary-color);
     border-width: 5px;
-    border-style: ridge;
+    border-style: var(--borderstyle1);
     top: calc(-5vw - 20px);
     background-color: var(--primary-transparent);
 }
@@ -115,7 +115,7 @@
     padding: 0 7.5px;
     border: var(--primary-color);
     border-width: 5px;
-    border-style: ridge;
+    border-style: var(--borderstyle1);
     top: calc(-5vw - 20px);
     background-color: var(--primary-transparent);
     overflow-y: scroll;

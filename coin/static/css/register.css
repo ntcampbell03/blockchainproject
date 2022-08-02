@@ -30,7 +30,7 @@
     float: left;
     width: 40%;
     text-align: left;
-    border-style: ridge;
+    border-style: var(--borderstyle1);
     margin-left: 3vw;
     padding-left: 1vw;
     margin-right: 1.5vw;
@@ -41,7 +41,7 @@
     float: right;
     width: 40%;
     text-align: left;
-    border-style: ridge;
+    border-style: var(--borderstyle1);
     margin-left: 1.5vw;
     padding-left: 1vw;
     margin-right: 3vw;
