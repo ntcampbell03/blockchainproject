@@ -17,6 +17,7 @@ html {
     --borderstyle1: ridge;
     --borderstyle2: double;
     --borderstyle3: groove;
+    --bgvid: url("https://i.imgur.com/KEnwbfZ.mp4");
 
     --primary-color: gray;
     --primary-transparent: gray;
@@ -26,6 +27,7 @@ html {
     --borderstyle1: none; 
     --borderstyle2: none;
     --borderstyle3: none;
+    --bgvid: none;
 }
 
 small {
