@@ -130,3 +130,7 @@ def delete(id):
 @app.context_processor
 def inject_menu():
     return dict(current_user=current_user)
+
+@app.route("/addcoins")
+def addcoins():
+    blockchainObj.addTransaction(Transaction(Wallet("Test Account"), current_user.wallet, 20))
