@@ -18,7 +18,7 @@ html {
     --borderstyle2: double;
     --borderstyle3: groove;
     --borderstyle4: outset;
-    --bgvid: url("https://i.imgur.com/KEnwbfZ.mp4");
+    --bgvid: ;
     --toggleVisibility: visible;
 
     /* --primary-color: gray;
@@ -30,8 +30,8 @@ html {
     --borderstyle2: solid;
     --borderstyle3: solid;
     --borderstyle4: solid;
-    --bgvid: none; */
-    --toggleVisibility: hidden;
+    --bgvid: none;
+    --toggleVisibility: hidden; */
 }
 
 small {
