@@ -1,112 +1,71 @@
 {% extends "layout.html" %}
 {% block title %}
-Tessaract - Wallet
+<p>Block Title</p>
 {% endblock %}
 
 {% block content %}
 <body>
   <div class="contentbg darkbg"></div>
-  <div class="contentbg wa-content">
-    <div class="switchbox">
-      <label class="switch">
-        <input type="checkbox" id="toggleWA" onchange="toggleCheck()">
-        <span class="slider"></span>
-      </label>
-    </div>
-    <div class="wa-subbox wa-userpage">
-      <div class="bl-titlecontainer">
-        <strong class="bl-title">Welcome {{ current_user.wallet.name }}!</strong><br>
-        <strong class="bl-subtitle">Local time: {{ date }}</strong><br><br>
-        <strong class="bl-subtitle">Balance: {{ balance }}</strong>
-      </div>
-    </div>
-
-    <div class="wa-subbox wa-floatRight wa-TransactionHistory">
-      Transaction History:
+  <div class="contentbg">
+  <div class="wa-subbox wa-floatLeft">
+    <small>Hi {{ wallet.name }}<br><br></small> 
+    <small>Balance: {{ balance }}<br><br></small> 
       <br><br>
-      {%for block in blockchain.chain%}
-        {%for trans in block.transactions%}
-          {%if trans.sender.name == current_user.wallet.name%}
-            <small>Trans: {{ trans.amount }} </small>
-            <br>
-            <small>Sender: {{ trans.sender.name }} </small>
-            <br>
-            <small>Reciever: {{ trans.reciever.name }} </small>
-            <br>
-            <br>
-          {%endif%}
-          {%if trans.reciever.name == current_user.wallet.name%}
-            <small>Trans: {{ trans.amount }} </small>
-            <br>
-            <small>Sender: {{ trans.sender.name }} </small>
-            <br>
-            <small>Reciever: {{ trans.reciever.name }} </small>
-            <br>
-            <br>
-          {%endif%}
-        {%endfor%}
-      {%endfor%}
-    </div>
-
-    <div class="wa-subbox wa-floatRight wa-PendingTransactions">
-      Pending Transactions:
-      <br><br>
-      {%for trans in blockchain.getTransactions()%}
-        {%if trans.sender.name == current_user.wallet.name%}
-          <small>Trans: {{ trans.amount }} </small>
-          <br>
-          <small>Sender: {{ trans.sender.name }} </small>
-          <br>
-          <small>Reciever: {{ trans.reciever.name }} </small>
-          <br><br>
+    <a onclick="showPending()" class="wa-Button">Pending Transactions</a>
+    <a onclick="showHistory()" class="wa-Button wa-HistoryButton">Transaction History</a>
+  </div>
+  <div class="wa-subbox wa-floatRight wa-PendingTransactions">
+    Pending Transactions:
+    <br>
+    <br>
+    {%for trans in blockchain.newTransactions%}
+        {%if trans.sender.name == wallet.name%}
+        <small>Trans: {{ trans.amount }} </small>
+        <br>
+        <small>Sender: {{ trans.sender.name }} </small>
+        <br>
+        <small>Reciever: {{ trans.reciever.name }} </small>
+        <br>
+        <br>
         {%endif%}
-        {%if trans.reciever.name == current_user.wallet.name%}
-          <small>Trans: {{ trans.amount }} </small>
-          <br>
-          <small>Sender: {{ trans.sender.name }} </small>
-          <br>
-          <small>Reciever: {{ trans.reciever.name }} </small>
-          <br>
-          <br>
+        {%if trans.reciever.name == wallet.name%}
+        <small>Trans: {{ trans.amount }} </small>
+        <br>
+        <small>Sender: {{ trans.sender.name }} </small>
+        <br>
+        <small>Reciever: {{ trans.reciever.name }} </small>
+        <br>
+        <br>
+        {%endif%}
+    {%endfor%}
+  </div>
+  <div class="wa-subbox wa-floatRight wa-TransactionHistory">
+    Transaction History:
+    <br>
+    <br>
+    {%for block in blockchain.chain%}
+      {%for trans in block.transactions%}
+        {%if trans.sender.name == wallet.name%}
+        <small>Trans: {{ trans.amount }} </small>
+        <br>
+        <small>Sender: {{ trans.sender.name }} </small>
+        <br>
+        <small>Reciever: {{ trans.reciever.name }} </small>
+        <br>
+        <br>
+        {%endif%}
+        {%if trans.reciever.name == wallet.name%}
+        <small>Trans: {{ trans.amount }} </small>
+        <br>
+        <small>Sender: {{ trans.sender.name }} </small>
+        <br>
+        <small>Reciever: {{ trans.reciever.name }} </small>
+        <br>
+        <br>
         {%endif%}
       {%endfor%}
-    </div>
-
-    <div class="wa-subbox wa-floatLeft wa-Trans">
-      <form method = "POST", action = "">
-        {{ form.hidden_tag() }}
-        <div class="form-group">
-          <br><label class="tr-labeltext" for="reciever">Reciever:</label><br>
-          {% if form.reciever.errors  %}
-            {{ form.reciever(class="form-control form-control-lg is-invalid tr-loginBox") }}
-            <div class = "invalid-feedback">
-              {% for error in form.reciever.errors %}
-                <span> {{ error }} </span>
-              {% endfor %}
-            </div>
-          {% else %}
-            {{ form.reciever(class="form-control form-control-lg tr-loginBox")}}
-          {% endif %}
-        </div>
-        <div class="form-group">
-          <br><br><label class="tr-labeltext" for="amount">Amount:</label><br>
-          {% if form.amount.errors  %}
-            {{ form.amount(class="form-control form-control-lg is-invalid tr-loginBox") }}
-            <div class = "invalid-feedback">
-              {% for error in form.amount.errors %}
-                <span> {{ error }} </span>
-              {% endfor %}
-            </div>
-          {% else %}
-            {{ form.amount(class="form-control form-control-lg tr-loginBox", type = "number")}}
-          {% endif %}
-        </div>
-        <div class="form-group">
-          <br>{{ form.submit(class="tr-Button") }}
-        </div>
-        <strong class="wa-warn">* transactions will not be added if the wallet has insufficient balance.</strong>
-    </div>
-
+    {%endfor%}
+  </div>
   </div>
 <script>
   function showPending() {
@@ -122,20 +81,6 @@ Tessaract - Wallet
     historyDiv.style.setProperty("display", "block");
     var pendingDiv = document.getElementsByClassName('wa-PendingTransactions')[0];
     pendingDiv.style.setProperty("display", "none");
-  }
-
-  var r = document.querySelector(':root');
-  function toggleCheck() {
-    if(document.getElementById("toggleWA").checked === true){
-      showPending();
-      // r.style.setProperty('--waswitch', '#1b3f54');
-      // r.style.setProperty('--waswitchrgb', 'rgba(27,63,84,.25)');
-      
-    } else {
-      showHistory();
-      // r.style.setProperty('--waswitch', '#D6517d');
-      // r.style.setProperty('--waswitchrgb', 'rgba(214,81,125,0.25)');
-    }
   }
 </script>
 </body>

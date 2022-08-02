@@ -1,57 +1,41 @@
 /* start the tags with wa */
-:root {
-    --waswitch: var(--primary-color);
-    --waswitchrgb: var(--color1);
- }
-
- .wa-content {
-     padding: 1%;
- }
-
 .wa-subbox {
     position: relative;
-    width: 59%;
-    height: 40vh;
+    width: 26.75vw;
+    height: 49vh;
+    background: #f00;
     padding-top: 1vh;
     border-radius: 15px;
-    border: var(--waswitch);
-    border-width: 0px;
+    border: #D6517d;
+    border-width: 5px;
+    background-color: rgba(214,81,125,0.25);
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.5vw;
-    text-shadow: 0px 2px 2px var(--waswitch);
-    float: left;
+    text-shadow: 0px 2px 2px #D6517d;
+    margin-bottom: 2vw;
 }
 
 .wa-floatLeft{
     float: left;
+    width: 40%;
     text-align: left;
-    border-style: var(--borderstyle1);
-    height: 75%;
-    border-width: 5px;
-    background-color: var(--waswitchrgb);
-    display: flex;
-    justify-content: center;
+    border-style: ridge;
+    margin-left: 3vw;
+    padding-left: 1vw;
+    margin-right: 1.5vw;
+    top: 12.5vh;
 }
 
 .wa-floatRight{
     float: right;
-    height: 100%;
     width: 40%;
     text-align: left;
-    border-style: var(--borderstyle1);
+    border-style: ridge;
+    margin-left: 1.5vw;
     padding-left: 1vw;
-    margin-left: 1%;
-    border-width: 5px;
-    background-color: var(--waswitchrgb);
-}
-
-.wa-userpage{
-    float: left;
-    text-align: left;
-    border-style: var(--borderstyle1);
-    padding-left: 1vw;
-    height: 25%;
+    margin-right: 3vw;
+    top: 12.5vh;
 }
 
 .wa-Button{
@@ -62,7 +46,7 @@
     width:fit-content;
     color: whitesmoke;
     display: block;
-    background-color: var(--primary-color);
+    background-color: #D6517d;
     border-radius: 10px;
     padding: 5px;
     top: 35vh;
@@ -75,7 +59,7 @@
     color: rgba(245, 245, 245, 0.77);
     box-shadow: 0px 2px 2px 1px #0F0F0F;
     transition: all .4s ease;
-    background-color: var(--primary-color);
+    background-color: #d6517dd3;
 }
 
 .wa-PendingTransactions{
@@ -84,68 +68,6 @@
 }
 
 .wa-TransactionHistory{
-    /* display: none; */
+    display: none;
     overflow-y: scroll;
-}
-
-.switch input
-{
-  display: none;
-}
-
-.switch 
-{
-  display: inline-block;
-  width: 50px; /*=w*/
-  height: 25px; /*=h*/
-  margin: 4px;
-  transform: translateY(50%);
-  position: relative;   
-}
-
-.slider
-{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  border-radius: 30px;
-  box-shadow: 0 0 0 2px var(--primary-color), 0 0 8px var(--primary-color);
-  cursor: pointer;
-  border: 4px solid transparent;
-  overflow: hidden;
-  transition: 0.2s;
-}
-
-.slider:before
-{
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  border-radius: 30px;
-  transform: translateX(-25px); /*translateX(-(w-h))*/
-  transition: 0.2s;
-  background-color: var(--primary-color);
-}
-
-input:checked + .slider:before
-{
-  transform: translateX(25px); /*translateX(w-h)*/
-}
-
-.switchbox {
-    position: absolute;
-    top: 2%;
-    right: calc(10px + 2%);
-    z-index: 10;
-}
-
-.wa-warn {
-    font-size: 1vw;
-    font-weight:100;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-shadow: none;
-    max-width: 10vw;
 }

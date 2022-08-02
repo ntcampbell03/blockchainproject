@@ -1,16 +1,16 @@
 /* start the tags with bl */
 .bl-title {
-    color: var(--primary-color);
-    font-family: var(--cringefont);
-    font-size: 42px;
+    color: #D6517d;
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 3vw;
     text-shadow: 2px 2px 2px #0F0F0F;
 }
 
 .bl-subtitle {
     color: white;
-    font-family: var(--cringefont);
-    font-size: 21px;
-    text-shadow: 0px 2px 2px var(--primary-color);
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5vw;
+    text-shadow: 0px 2px 2px #D6517d;
     text-align: center;
     width: max-content;
 }
@@ -22,33 +22,32 @@
 }
 
 .scroll {
-    height: 92.5px;
+    max-height: 15vh;
     width: 98%-15px;
     margin: 1%;
-    
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
     border-radius: 15px;
     padding: 0 7.5px;
-    border: var(--primary-color);
+    border: #D6517d;
     border-width: 5px;
-    border-style: var(--borderstyle1);
+    border-style: ridge;
 }
 
 .bg-scroll {
-    height: 92.5px;
+    max-height: 15vh;
     width: 98%-15px;
+    opacity: 30%;
     margin: 1%;
-    margin-bottom: 0%;
-    background-color: var(--color1);
+    background-color: #D6517d;
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
     border-radius: 15px;
     padding: 0 7.5px;
     position: relative;
-    top: calc(-100px);
+    top: calc(-5vw - 20px - 1%);
     z-index: -10;
 }
 
@@ -65,8 +64,8 @@
 }
 
 .bc-numbercard {
-    width: 72.5px;
-    height: 72.5px;
+    width: 5vw;
+    height: 5vw;
     margin: 5px 2.5px 5px 0;
     background-color: rgba(0,0,0,0.65);
     display: inline-block;
@@ -75,9 +74,9 @@
     justify-content: center;
     text-align: center;
     vertical-align: middle;
-    line-height: 72.5px;
+    line-height: 5vw;
     font-size: 20px;
-    font-family: var(--cringefont);
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: whitesmoke;
 }
 
@@ -97,11 +96,11 @@
     margin-top: 0%;
     border-radius: 15px;
     padding: 0 7.5px;
-    border: var(--primary-color);
+    border: #D6517d;
     border-width: 5px;
-    border-style: var(--borderstyle1);
+    border-style: ridge;
     top: calc(-5vw - 20px);
-    background-color: var(--primary-transparent);
+    background-color: rgba(214,81,125,0.1);
 }
 
 .bc-transdisplay {
@@ -113,11 +112,11 @@
     margin-top: 0%;
     border-radius: 15px;
     padding: 0 7.5px;
-    border: var(--primary-color);
+    border: #D6517d;
     border-width: 5px;
-    border-style: var(--borderstyle1);
+    border-style: ridge;
     top: calc(-5vw - 20px);
-    background-color: var(--primary-transparent);
+    background-color: rgba(214,81,125,0.1);
     overflow-y: scroll;
 }
 

@@ -7,67 +7,48 @@
 <body>
   <div class="contentbg darkbg"></div>
   <div class="contentbg">
-    <div class="tr-subbox tr-floatLeft">
-      <button onclick="openGui()">open test gui</button>
-      <form method = "POST", action = "">
-        {{ form.hidden_tag() }}
-        <div class="form-group">
-          <label class="tr-labeltext" for="reciever">Reciever:</label>
-          {% if form.reciever.errors  %}
-            {{ form.reciever(class="form-control form-control-lg is-invalid tr-loginBox") }}
-            <div class = "invalid-feedback">
-              {% for error in form.reciever.errors %}
-                <span> {{ error }} </span>
-              {% endfor %}
-            </div>
-          {% else %}
-            {{ form.reciever(class="form-control form-control-lg tr-loginBox")}}
-          {% endif %}
-        </div>
+  <div class="tr-subbox tr-floatLeft">
+    <a href="{{ url_for('transaction') }}" style="color: white;">Send 5</a>
+    <form method = "POST", action = "">
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+        <label class="tr-labeltext" for="reciever">Reciever:</label>
+        {% if form.reciever.errors  %}
+          {{ form.reciever(class="form-control form-control-lg is-invalid tr-loginBox") }}
+          <div class = "invalid-feedback">
+            {% for error in form.reciever.errors %}
+              <span> {{ error }} </span>
+            {% endfor %}
+          </div>
+        {% else %}
+          {{ form.reciever(class="form-control form-control-lg tr-loginBox")}}
+        {% endif %}
+      </div>
 
-        <div class="form-group">
-          <label class="tr-labeltext" for="amount">Amount:</label>
-          {% if form.amount.errors  %}
-            {{ form.amount(class="form-control form-control-lg is-invalid tr-loginBox") }}
-            <div class = "invalid-feedback">
-              {% for error in form.amount.errors %}
-                <span> {{ error }} </span>
-              {% endfor %}
-            </div>
-          {% else %}
-            {{ form.amount(class="form-control form-control-lg tr-loginBox", type = "number")}}
-          {% endif %}
-        </div>
-        <div class="form-group">
-          {{ form.submit(class="tr-Button") }}
-        </div>
-      <form>
+      <div class="form-group">
+        <label class="tr-labeltext" for="amount">Amount:</label>
+        {% if form.amount.errors  %}
+          {{ form.amount(class="form-control form-control-lg is-invalid tr-loginBox") }}
+          <div class = "invalid-feedback">
+            {% for error in form.amount.errors %}
+              <span> {{ error }} </span>
+            {% endfor %}
+          </div>
+        {% else %}
+          {{ form.amount(class="form-control form-control-lg tr-loginBox", type = "number")}}
+        {% endif %}
+      </div>
+      <div class="form-group">
+        {{ form.submit(class="tr-Button") }}
+      </div>
+    <form>
+    <br><br>
+    {% for trans in blockchain.newTransactions %}
+      <small>Transactions: {{ trans }}</small>
       <br><br>
-      {% for trans in blockchain.newTransactions %}
-        <small>Transactions: {{ trans }}</small>
-        <br><br>
-      {% endfor %}
-    </div>
-    <div class="tr-subbox tr-floatRight">
-      <a href="{{ url_for('transaction') }}" style="color: white;">Send 5</a>
-    </div>
+    {% endfor %}
   </div>
-  <script>
-    function openGui() {
-      leftbox = document.getElementsByClassName('tr-floatLeft')[0];
-      leftbox.style.setProperty('width', "28.5vw");
-      
-      setTimeout(function(){
-        rightbox = document.getElementsByClassName('tr-floatRight')[0];
-        rightbox.style.setProperty('visibility', "visible");
-        rightbox = document.getElementsByClassName('tr-floatRight')[0];
-        rightbox.style.setProperty('width', "28.5vw");
-        
-      }, 50);
-      
-      
-    }
-  </script>
+  </div>
+  
 </body>
-
 {% endblock %}

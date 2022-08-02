@@ -3,35 +3,6 @@
     src: url('../assets/SYNNova-Bold.otf');
     font-weight: bold;
 }
-@font-face{
-    font-family: avenir;
-    src: url('../assets/AvenirNextLTPro-Regular.otf');
-}
-
-html {
-    --primary-color: #D6517d;
-    --primary-transparent: rgba(214,81,125,0.1);
-    --color1: rgba(214,81,125,0.25);
-    --color2: linear-gradient(to right, rgba(214,81,125,0.05),rgba(214,81,125,0.25),rgba(214,81,125,0.50), rgba(214,81,125,0.75) ,rgba(214,81,125,0.50),rgba(214,81,125,0.25),rgba(214,81,125,0.05));
-    --cringefont: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    --borderstyle1: ridge;
-    --borderstyle2: double;
-    --borderstyle3: groove;
-    --borderstyle4: outset;
-    --bgvid: url("https://i.imgur.com/KEnwbfZ.mp4");
-
-    --primary-color: gray;
-    --primary-transparent: gray;
-    --color1: gray;
-    --color2: gray;
-    --cringefont: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    --borderstyle1: solid; 
-    --borderstyle2: solid;
-    --borderstyle3: solid;
-    --borderstyle4: solid;
-    --bgvid: none;
-}
-
 small {
     font-size: large;
     color: white;

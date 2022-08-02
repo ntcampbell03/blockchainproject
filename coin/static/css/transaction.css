@@ -6,70 +6,62 @@
     text-align: center;
     box-shadow: 0px 2px 2px 1px #0F0F0F;
     text-decoration: none;
-    font-size: 1.5vw;
+    font-size: 15px;
     color: whitesmoke;
     display: block;
-    background-color: var(--primary-color);
+    background-color: #D6517d;
     border-radius: 10px;
     margin-top: 5px;
-    font-family: var(--cringefont);
-    width: 15vw;
-    height: 6vh;
 }
 
 .tr-Button:hover{ 
     color: rgba(245, 245, 245, 0.77);
     box-shadow: 0px 2px 2px 1px #0F0F0F;
     transition: all .4s ease;
-    background-color: var(--primary-color);
-    
+    background-color: #d6517dd3;
 }
 
 .tr-loginBox{
     padding-left: 0.5vw;
-    border-radius: 1vw;
-    width: 25vw;
-    height: 7.5vh;
-    font-size: x-large;
-    font-family: 'cyber';
+    border-radius: 20px;
 }
 
 .tr-subbox {
     position: relative;
-    height: 70vh;
+    width: 26.75vw;
+    height: 49vh;
     background: #f00;
     padding-top: 1vh;
     border-radius: 15px;
-    border: var(--primary-color);
+    border: #D6517d;
     border-width: 5px;
     background-color: rgba(214,81,125,0.25);
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.5vw;
-    text-shadow: 0px 2px 2px var(--primary-color);
+    text-shadow: 0px 2px 2px #D6517d;
     margin-bottom: 2vw;
-    transition-duration: 1s;
 }
 
 .tr-floatLeft{
     float: left;
-    width: calc(60vw - 1vw);
+    width: 40%;
     text-align: left;
-    border-style: var(--borderstyle1);
+    border-style: ridge;
     margin-left: 3vw;
     padding-left: 1vw;
+    margin-right: 1.5vw;
     top: 5vh;
     overflow-y: scroll;
 }
 
 .tr-floatRight{
     float: right;
-    width: 0vw;
-    visibility: hidden;
+    width: 40%;
     text-align: left;
-    border-style: var(--borderstyle1);
-    margin-right: 3vw;
+    border-style: ridge;
+    margin-left: 1.5vw;
     padding-left: 1vw;
-    top: 5vh;
-    overflow-y: scroll;
+    margin-right: 3vw;
+    top: 12.5vh;
 }
