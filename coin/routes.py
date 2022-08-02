@@ -24,6 +24,8 @@ def home():
 @app.route('/blockchain/<idx>')
 @app.route("/blockchain")
 def blockchain(idx = 0):
+    if current_user.is_authenticated:
+        blockchainObj.updateChain(current_user.node)
     distributorObj.setUserCount(len(User.query.filter().all()))
     chain = []
     for blockObj in blockchainObj.chain:
@@ -113,7 +115,8 @@ def wallet():
 def node():
     def zoomList(item):
         return item[0]
-
+    if current_user.is_authenticated:
+        blockchainObj.updateChain(current_user.node)
     distributorObj.setUserCount(len(User.query.filter().all()))
     nodes = User.query.with_entities(User.node).all()
     nodes = map(zoomList, nodes)
@@ -134,7 +137,4 @@ def inject_menu():
 @app.route("/addcoins")
 def addcoins():
     blockchainObj.addTransaction(Transaction(Wallet("Test Account"), current_user.wallet, 20))
-    if current_user.is_authenticated:
-        blockchainObj.updateChain(current_user.node)
-    reward = blockchainObj.getReward()
-    return render_template('mine.html', blockchain=blockchainObj, success=False, reward=reward)
+    return redirect(url_for('mine'))
