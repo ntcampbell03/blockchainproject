@@ -57,3 +57,8 @@
     transition: all .4s ease;
     background-color: var(--primary-color);
 }
+
+.ho-loginBox{
+    padding-left: 0.5vw;
+    border-radius: 20px;
+}
