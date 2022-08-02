@@ -11,9 +11,13 @@
 html {
     --primary-color: #D6517d;
     --primary-transparent: rgba(214,81,125,0.1);
+    --color1: rgba(214,81,125,0.25);
+    --cringefont: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
     --primary-color: gray;
-    --primary-transparent: none;
+    --primary-transparent: gray;
+    --color1: gray;
+    --cringefont: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 small {

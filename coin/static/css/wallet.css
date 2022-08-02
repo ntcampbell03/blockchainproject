@@ -1,7 +1,7 @@
 /* start the tags with wa */
 :root {
     --waswitch: var(--primary-color);
-    --waswitchrgb: rgba(214,81,125,0.25);
+    --waswitchrgb: var(--color1);
  }
 
  .wa-content {

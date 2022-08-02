@@ -1,14 +1,14 @@
 /* start the tags with bl */
 .bl-title {
     color: var(--primary-color);
-    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: var(--cringefont);
     font-size: 42px;
     text-shadow: 2px 2px 2px #0F0F0F;
 }
 
 .bl-subtitle {
     color: white;
-    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: var(--cringefont);
     font-size: 21px;
     text-shadow: 0px 2px 2px var(--primary-color);
     text-align: center;
@@ -78,7 +78,7 @@
     vertical-align: middle;
     line-height: 72.5px;
     font-size: 20px;
-    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: var(--cringefont);
     color: whitesmoke;
 }
 

@@ -12,7 +12,7 @@
     background-color: var(--primary-color);
     border-radius: 10px;
     margin-top: 5px;
-    font-family:'cyber', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: var(--cringefont);
     width: 15vw;
     height: 6vh;
 }
