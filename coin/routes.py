@@ -134,3 +134,7 @@ def inject_menu():
 @app.route("/addcoins")
 def addcoins():
     blockchainObj.addTransaction(Transaction(Wallet("Test Account"), current_user.wallet, 20))
+    if current_user.is_authenticated:
+        blockchainObj.updateChain(current_user.node)
+    reward = blockchainObj.getReward()
+    return render_template('mine.html', blockchain=blockchainObj, success=False, reward=reward)
