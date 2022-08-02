@@ -44,7 +44,7 @@ html {
     font-size: 3.25vh;
     color: white;
     display: block;
-    background-color: #D6517d;
+    background-color: var(--primary-color);
   }
 
 .la-navbar-item {
@@ -66,9 +66,9 @@ html {
 .la-logo {
     width: 22.5vh;
     height: auto;
-    -webkit-box-shadow:0 0 20px #D6517d; 
-    -moz-box-shadow: 0 0 20px #D6517d; 
-    box-shadow:0 0 20px #D6517d;
+    -webkit-box-shadow:0 0 20px var(--primary-color); 
+    -moz-box-shadow: 0 0 20px var(--primary-color); 
+    box-shadow:0 0 20px var(--primary-color);
     border-radius: 100px;
 }
 

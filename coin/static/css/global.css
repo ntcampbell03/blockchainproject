@@ -8,6 +8,10 @@
     src: url('../assets/AvenirNextLTPro-Regular.otf');
 }
 
+html {
+    --primary-color: #D6517d;
+}
+
 small {
     font-size: large;
     color: white;
