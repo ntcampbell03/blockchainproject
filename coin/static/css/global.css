@@ -10,7 +10,10 @@
 
 html {
     --primary-color: #D6517d;
+    --primary-transparent: rgba(214,81,125,0.1);
+
     --primary-color: gray;
+    --primary-transparent: none;
 }
 
 small {

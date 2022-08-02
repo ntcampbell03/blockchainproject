@@ -102,7 +102,7 @@
     border-width: 5px;
     border-style: ridge;
     top: calc(-5vw - 20px);
-    background-color: rgba(214,81,125,0.1);
+    background-color: var(--primary-transparent);
 }
 
 .bc-transdisplay {
@@ -118,7 +118,7 @@
     border-width: 5px;
     border-style: ridge;
     top: calc(-5vw - 20px);
-    background-color: rgba(214,81,125,0.1);
+    background-color: var(--primary-transparent);
     overflow-y: scroll;
 }
 

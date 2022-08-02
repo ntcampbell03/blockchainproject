@@ -320,7 +320,7 @@ input[type=checkbox]:checked + .mi-timer {
     border-radius: 15px;
     border: var(--primary-color);
     border-width: 5px;
-    background-color: rgba(214,81,125,0.1);
+    background-color: var(--primary-transparent);
     color: white;
     font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.5vw;
