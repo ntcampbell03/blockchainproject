@@ -8,7 +8,7 @@
     font-size: 30px;
     color: whitesmoke;
     display: block;
-    background-color: #D6517d;
+    background-color: var(--primary-color);
     position: fixed;
     left: 27.5%;
     top: 17.5%;
@@ -20,8 +20,8 @@
     width: inherit; 
     height: 10vh;
     background-image: linear-gradient(to right, rgba(214,81,125,0.05),rgba(214,81,125,0.25),rgba(214,81,125,0.50), rgba(214,81,125,0.75) ,rgba(214,81,125,0.50),rgba(214,81,125,0.25),rgba(214,81,125,0.05));
-    border-top: 5px #D6517d;
-    border-bottom: 5px #D6517d;
+    border-top: 5px var(--primary-color);
+    border-bottom: 5px var(--primary-color);
     border-style:double;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
@@ -37,7 +37,7 @@
     width: 123px;
     background: radial-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8), rgba(0,0,0,1));
     border-radius: 100%;
-    border: 5px #D6517d;
+    border: 5px var(--primary-color);
     border-style:outset;
     line-height: 110px;
     font-size: 35px;
@@ -56,12 +56,12 @@
     line-height: 130px;
     font-size: 40px;
     transition: all .4s ease;
-    color: #D6517d;
+    color: var(--primary-color);
 }
 
 .loader {
     border: 8px solid rgba(214,81,125,0.25); /* Light grey */
-    border-top: 8px solid #D6517d; /* Blue */
+    border-top: 8px solid var(--primary-color); /* Blue */
     border-radius: 50%;
     width: 15vh;
     height: 15vh;
@@ -84,7 +84,7 @@
     line-height: 9vw;
     font-size: 40px;
     transition: all .4s ease;
-    color: #D6517d;
+    color: var(--primary-color);
 }
 
 .visually-hidden {
@@ -105,7 +105,7 @@
 input[type=checkbox]:checked + .mine-label .mi-minebutton {
     transition-duration: 1s;
     border: 8px solid rgba(214,81,125,0.25); /* Light grey */
-    border-top: 8px solid #D6517d; /* Blue */
+    border-top: 8px solid var(--primary-color); /* Blue */
     border-radius: 50%;
     width: 15vh;
     height: 15vh;
@@ -249,8 +249,8 @@ input[type=checkbox]:checked + .mi-timer {
     width: 10px;
     height: 10px;
     border-radius: 5px;
-    background-color: #D6517d;
-    color: #D6517d;
+    background-color: var(--primary-color);
+    color: var(--primary-color);
     animation: dotFlashing 1s infinite linear alternate;
     animation-delay: .5s;
   }
@@ -267,8 +267,8 @@ input[type=checkbox]:checked + .mi-timer {
     width: 10px;
     height: 10px;
     border-radius: 5px;
-    background-color: #D6517d;
-    color: #D6517d;
+    background-color: var(--primary-color);
+    color: var(--primary-color);
     animation: dotFlashing 1s infinite alternate;
     animation-delay: 0s;
   }
@@ -278,15 +278,15 @@ input[type=checkbox]:checked + .mi-timer {
     width: 10px;
     height: 10px;
     border-radius: 5px;
-    background-color: #D6517d;
-    color: #D6517d;
+    background-color: var(--primary-color);
+    color: var(--primary-color);
     animation: dotFlashing 1s infinite alternate;
     animation-delay: 1s;
   }
   
   @keyframes dotFlashing {
     0% {
-        background-color: #D6517d;
+        background-color: var(--primary-color);
     }
     50%,
     100% {
@@ -296,7 +296,7 @@ input[type=checkbox]:checked + .mi-timer {
 
  
 .mining-text {
-    color: #D6517d;
+    color: var(--primary-color);
     font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     position: fixed;
     top: 22vh;
@@ -318,13 +318,13 @@ input[type=checkbox]:checked + .mi-timer {
     top: 26vh;
     padding-top: 1vh;
     border-radius: 15px;
-    border: #D6517d;
+    border: var(--primary-color);
     border-width: 5px;
     background-color: rgba(214,81,125,0.1);
     color: white;
     font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.5vw;
-    text-shadow: 0px 2px 2px #D6517d;
+    text-shadow: 0px 2px 2px var(--primary-color);
     margin-bottom: 2vw;
 }
 
@@ -351,7 +351,7 @@ input[type=checkbox]:checked + .mi-timer {
     color: white;
     font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 15vw;
-    text-shadow: 5px 10px 20px #D6517d;
+    text-shadow: 5px 10px 20px var(--primary-color);
     text-align: center;
     margin-top: 2vw;
     margin-bottom: 2vw;
