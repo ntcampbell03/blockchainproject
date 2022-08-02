@@ -38,7 +38,7 @@
     background: radial-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8), rgba(0,0,0,1));
     border-radius: 100%;
     border: 5px var(--primary-color);
-    border-style: var(--bordestyle4);
+    border-style: var(--borderstyle4);
     line-height: 110px;
     font-size: 35px;
     font-family: var(--cringefont);
