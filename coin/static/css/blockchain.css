@@ -39,10 +39,9 @@
 .bg-scroll {
     height: 92.5px;
     width: 98%-15px;
-    opacity: 30%;
     margin: 1%;
     margin-bottom: 0%;
-    background-color: var(--primary-color);
+    background-color: var(--color1);
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;

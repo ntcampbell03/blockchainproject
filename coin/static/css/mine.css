@@ -19,7 +19,7 @@
     top: 20vh;
     width: inherit; 
     height: 10vh;
-    background-image: linear-gradient(to right, rgba(214,81,125,0.05),rgba(214,81,125,0.25),rgba(214,81,125,0.50), rgba(214,81,125,0.75) ,rgba(214,81,125,0.50),rgba(214,81,125,0.25),rgba(214,81,125,0.05));
+    background-image: var(--color2);
     border-top: 5px var(--primary-color);
     border-bottom: 5px var(--primary-color);
     border-style:double;
