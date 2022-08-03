@@ -20,22 +20,23 @@
     --borderstyle4: outset;
     --toggleVisibility: visible;
     --color3: black;
+    --background-color: none;
 
 }
 
 :root.dark-mode {
-    --primary-color: #dcd3c9;
-    --primary-transparent: #94a8b3;
-    --color1: #bababa;
-    --color2: #000000;
+    --primary-color: ##e201f;
+    --primary-transparent: #4e201f;
+    --color1: #ed7b32;
+    --color2: #ed7b32;
     --cringefont: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     --borderstyle1: solid; 
     --borderstyle2: solid;
     --borderstyle3: solid;
     --borderstyle4: solid;
     --toggleVisibility: hidden;
-    --background-color: red;
     --color3: #dcd3c9;
+    --background-color: #1b3f54;
 }
 
 small {

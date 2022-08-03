@@ -78,8 +78,7 @@ html {
     min-height: 100vh;
     z-index: -1;
     top: 0;
-    background-color: white;
-    opacity: 20%;
+    background-color: var(--background-color);
     left: 0;
     position: fixed;
 }
