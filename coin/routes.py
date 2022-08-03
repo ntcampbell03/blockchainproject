@@ -1,6 +1,6 @@
 from flask import Flask, redirect
 from flask import render_template, flash
-from flask import Flask, jsonify, request, render_template, url_for, flash, redirect
+from flask import Flask, request, render_template, url_for, flash, redirect, session
 from flask_login import login_user, current_user, logout_user, login_required
 import jsonpickle
 from coin.forms import *
@@ -138,3 +138,13 @@ def inject_menu():
 def addcoins():
     blockchainObj.addTransaction(Transaction(Wallet("Test Account"), current_user.wallet, 20))
     return redirect(url_for('mine'))
+
+@app.get("/toggle-theme")
+def toggle_theme():
+    current_theme = session.get("theme")
+    if current_theme == "dark":
+        session["theme"] = "light"
+    else:
+        session["theme"] = "dark"
+
+    return redirect(request.args.get("current_page"))

@@ -14,10 +14,17 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/wallet.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css')}}" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        {% if theme == dark %}
+          <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dark.css')}}" />
+        {% else %}
+          <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/light.css')}}" />
+        {% endif %}
       </head>
 
     <body>
-        <span class="la-nodetext">Node: #{{ current_user.node }}</span>
+        <span class="la-nodetext">
+          <a href="{{ url_for('toggle_theme', current_page=request.path) }}">CHANGE THEME</a>
+          Node: #{{ current_user.node }}</span>
         <button for="label" onclick="ani()" class="magic">&#63;</button>
         <div class="la-superdiv">
             <div class="container-left"></div>
