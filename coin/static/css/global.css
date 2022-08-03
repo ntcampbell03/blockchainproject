@@ -35,8 +35,8 @@
     --borderstyle3: solid;
     --borderstyle4: solid;
     --toggleVisibility: hidden;
-    --color3: #1b3f54;
-    --background-color: #1b3f54;
+    --color3: rgb(34, 34, 34);
+    --background-color: #282424;
 }
 
 small {
