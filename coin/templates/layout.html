@@ -14,7 +14,7 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/wallet.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css')}}" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        {% if theme == dark %}
+        {% if session['theme'] == dark %}
           <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dark.css')}}" />
         {% else %}
           <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/light.css')}}" />
