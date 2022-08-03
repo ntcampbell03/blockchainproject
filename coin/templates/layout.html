@@ -23,7 +23,7 @@
 
     <body>
         <span class="la-nodetext">
-          <a href="{{ url_for('toggle_theme', current_page=request.path) }}">{{ theme }}</a>
+          <a href="{{ url_for('toggle_theme', current_page=request.path) }}">{{ session['theme'] }}</a>
           Node: #{{ current_user.node }}</span>
         <button for="label" onclick="ani()" class="magic">&#63;</button>
         <div class="la-superdiv">
