@@ -18,22 +18,24 @@
     --borderstyle2: double;
     --borderstyle3: groove;
     --borderstyle4: outset;
-    --bgvid: ;
     --toggleVisibility: visible;
+    --color3: black;
+
 }
 
 :root.dark-mode {
-    --primary-color: gray;
-    --primary-transparent: gray;
-    --color1: gray;
-    --color2: gray;
+    --primary-color: #dcd3c9;
+    --primary-transparent: #94a8b3;
+    --color1: #bababa;
+    --color2: #000000;
     --cringefont: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     --borderstyle1: solid; 
     --borderstyle2: solid;
     --borderstyle3: solid;
     --borderstyle4: solid;
-    --bgvid: none;
     --toggleVisibility: hidden;
+    --background-color: red;
+    --color3: #dcd3c9;
 }
 
 small {
@@ -42,7 +44,7 @@ small {
 }
 
 .darkbg {
-    background-color: black;
+    background-color: var(--color3);
     opacity: 50%;
 }
 
