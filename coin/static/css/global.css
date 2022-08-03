@@ -25,9 +25,9 @@
 }
 
 :root.dark-mode {
-    --primary-color: ##e201f;
+    --primary-color: #4e201f;
     --primary-transparent: #4e201f;
-    --color1: #ed7b32;
+    --color1: #1b3f54;
     --color2: #ed7b32;
     --cringefont: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     --borderstyle1: solid; 
@@ -35,7 +35,7 @@
     --borderstyle3: solid;
     --borderstyle4: solid;
     --toggleVisibility: hidden;
-    --color3: #dcd3c9;
+    --color3: #1b3f54;
     --background-color: #1b3f54;
 }
 
