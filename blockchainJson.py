@@ -3,13 +3,6 @@ import time
 import math
 import gnupg
 
-try:
-    import ujson as json
-except ImportError:
-    try:
-        import simplejson as json
-    except ImportError:
-        import json
 import jsonpickle
 import os
 import psycopg2
@@ -22,8 +15,8 @@ gpg = gnupg.GPG()
 gpg.encoding = 'utf-8'
 
 def get_db_connection():
-    url = os.environ["DATABASE_URL"]
-    url = os.environ["DATABASE_URL"]
+    # url = os.environ["DATABASE_URL"]
+    url = "postgres://nlydgbgfxpamym:b4c2d2f8e38a021ceb0d5b733a473d237ed0c9dbb28f0d2c685c3ce8b1f8de92@ec2-54-86-106-48.compute-1.amazonaws.com:5432/dcq1sg4ngoqh2m"
     url = url[:8] + "ql" + url[8:]
     conn = psycopg2.connect(url)
     return conn
@@ -166,7 +159,6 @@ class Blockchain:
                 return False
             prevHash = curBlock.hash
             for transaction in curBlock.transactions: # Check if transaction signatures are valid
-                rewardTransactions = 0
                 if not gpg.verify(transaction.signature):
                     print("Transaction signature is not valid")
                     return False

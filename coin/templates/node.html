@@ -8,9 +8,11 @@ Tessaract - Node
     <div class="contentbg darkbg"></div>
     <div class="contentbg">
         {% for node in nodesDict %}
-            Node #{{ node }}: {{ nodesDict[node] }} users
+            <small>Node #{{ node }}: {{ nodesDict[node] }} users.</small>
+            <small>Length: {{ chains[node-1].length }}</small>
             <br>
         {% endfor %}
+        <a href="{{ url_for('sync', current_page=request.path) }}" class="sync">Sync</button>
     </div>
 </body>
 {% endblock %}

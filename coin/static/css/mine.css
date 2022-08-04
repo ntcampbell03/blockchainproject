@@ -130,6 +130,10 @@ input[type=checkbox]:checked + .mi-timer {
 
 } */
 
+.mi-title {
+    color: var(--bigtextColor)
+}
+
 .mi-warn {
     white-space: nowrap;
     position: relative;
@@ -348,7 +352,7 @@ input[type=checkbox]:checked + .mi-timer {
 }
 
 .reward-text {
-    color: white;
+    color: var(--textColor);
     font-family: var(--cringefont);
     font-size: 15vw;
     text-shadow: 5px 10px 20px var(--primary-color);
@@ -359,7 +363,6 @@ input[type=checkbox]:checked + .mi-timer {
 
 .mi-translist {
     text-align: left;
-    color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.1vw;
     margin-bottom: .5vh;

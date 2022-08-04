@@ -116,12 +116,16 @@ def node():
     def zoomList(item):
         return item[0]
     if current_user.is_authenticated:
+        print(current_user.node)
         blockchainObj.updateChain(current_user.node)
     distributorObj.setUserCount(len(User.query.filter().all()))
     nodes = User.query.with_entities(User.node).all()
     nodes = map(zoomList, nodes)
     nodesDict = dict(Counter(sorted(nodes)).items())
-    return render_template('node.html', blockchain=blockchainObj, nodesDict=nodesDict, lent=len(User.query.filter().all()))
+
+    chains = distributorObj.generateNodeList()
+
+    return render_template('node.html', blockchain=blockchainObj, nodesDict=nodesDict, lent=len(User.query.filter().all()), chains=chains)
 
 @app.route("/delete/<int:id>")
 def delete(id):
@@ -147,4 +151,9 @@ def toggle_theme():
     else:
         session["theme"] = "dark"
 
+    return redirect(request.args.get("current_page"))
+
+@app.get("/sync")
+def sync():
+    distributorObj.syncChain()
     return redirect(request.args.get("current_page"))

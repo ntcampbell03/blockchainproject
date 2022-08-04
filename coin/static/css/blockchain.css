@@ -2,14 +2,14 @@
 .bl-title {
     color: var(--primary-color);
     font-family: var(--cringefont);
-    font-size: 42px;
+    font-size: calc(42px * var(--fontsizemultiplier));
     text-shadow: 2px 2px 2px #0F0F0F;
 }
 
 .bl-subtitle {
     color: white;
     font-family: var(--cringefont);
-    font-size: 21px;
+    font-size: calc(21px * var(--fontsizemultiplier));;
     text-shadow: 0px 2px 2px var(--primary-color);
     text-align: center;
     width: max-content;
@@ -37,7 +37,7 @@
 }
 
 .bg-scroll {
-    height: 92.5px;
+    height: 90px;
     width: 98%-15px;
     margin: 1%;
     margin-bottom: 0%;
@@ -76,14 +76,15 @@
     text-align: center;
     vertical-align: middle;
     line-height: 72.5px;
-    font-size: 20px;
+    font-size: calc(20px * var(--fontsizemultiplier));
     font-family: var(--cringefont);
     color: whitesmoke;
+    text-decoration: none;
 }
 
 .bc-numbercard:hover {
     background-color: rgba(0,0,0,.95);
-    font-size: 30px;
+    font-size: calc(30px * var(--fontsizemultiplier));;
     transition: all .4s ease;
     cursor: pointer;
 }
@@ -130,5 +131,5 @@
 }
 
 .bl-small {
-    font-size: 2vh;
+    font-size: calc(2vh * var(--fontsizemultiplier));;
 }

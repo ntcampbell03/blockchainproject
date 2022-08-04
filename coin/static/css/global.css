@@ -20,14 +20,19 @@
     --borderstyle4: outset;
     --toggleVisibility: visible;
     --color3: black;
+    --opacity: .5;
     --background-color: none;
-
+    --fontsizemultiplier: 1;
+    --bigtextColor: #D6517d;
+    --textColor: white;
+    --shadowDelete: 0px 2px 2px 1px #0F0F0F;
+    
 }
 
 :root.dark-mode {
-    --primary-color: #4e201f;
-    --primary-transparent: #4e201f;
-    --color1: #1b3f54;
+    --primary-color: #A7C6ED;
+    --primary-transparent: #C7DBF4;
+    --color1: #C7DBF4;
     --color2: #ed7b32;
     --cringefont: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     --borderstyle1: solid; 
@@ -35,18 +40,23 @@
     --borderstyle3: solid;
     --borderstyle4: solid;
     --toggleVisibility: hidden;
-    --color3: rgb(34, 34, 34);
-    --background-color: #282424;
+    --color3: #282424;
+    --opacity: 1;
+    --background-color: #dafefe;
+    --fontsizemultiplier: 1.05;
+    --bigtextColor: #276289;
+    --textColor: #004151;
+    --shadowDelete: none;
 }
 
 small {
     font-size: large;
-    color: white;
+    color: var(--textColor);
 }
 
 .darkbg {
     background-color: var(--color3);
-    opacity: 50%;
+    opacity: var(--opacity);
 }
 
 .contentbg {

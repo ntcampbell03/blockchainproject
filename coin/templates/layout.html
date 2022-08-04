@@ -17,9 +17,25 @@
       </head>
 
     <body>
-        <span class="la-nodetext">
-          <a href="{{ url_for('toggle_theme', current_page=request.path) }}">{{ session['theme'] }}</a>
-          Node: #{{ current_user.node }}</span>
+        <span class="la-nodetext">Node: #{{ current_user.node }}</span>
+        <div class="la-modetoggle">
+          <a href="{{ url_for('toggle_theme', current_page=request.path) }}">
+            {% if session['theme'] == "dark" %}
+              Performance
+            {% else %}
+              Quality
+            {% endif %}
+            <div class="tooltip"><i class="fa fa-question-circle-o" aria-hidden="true" style="margin-left:3px;"></i>
+              {% if session['theme'] == "dark" %}
+                <span class="tooltiptext">Click to switch to a quality optimized version of the website</span>
+              {% else %}
+                <span class="tooltiptext">Click to switch to a performance optimized version of the website</span>
+              {% endif %}
+            </div>
+          </a>
+          
+        </div>
+        
         <button for="label" onclick="ani()" class="magic">&#63;</button>
         <div class="la-superdiv">
             <div class="container-left"></div>

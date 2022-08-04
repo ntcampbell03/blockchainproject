@@ -42,7 +42,7 @@ html {
     border-radius: 15px;
     text-decoration: none;
     font-size: 3.25vh;
-    color: white;
+    color: var(--textColor);
     display: block;
     background-color: var(--primary-color);
   }
@@ -442,4 +442,66 @@ i {
   border-radius: 5px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: gainsboro;
+}
+
+.la-modetoggle {
+  position: fixed;
+  left: calc(60vw);
+  top: 90vh;
+  transform: translateX(-50%);
+  margin-right: 10px;
+  margin-bottom: 5px;
+  font-size: 1.15vw;
+  background-color: #141414;
+  margin-top: 1vh;
+  padding: 5px 20px;
+  border-radius: 5px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #f3b994;
+}
+
+.la-modetoggle a {
+  text-decoration: none;
+  color: inherit;
+}
+.la-modetoggle a:visited { 
+  text-decoration: none;
+  color: inherit;
+ }
+
+ .tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: black;
+  color: #bbb;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 7.5px;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap; 
+  font-size: 1vw;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }

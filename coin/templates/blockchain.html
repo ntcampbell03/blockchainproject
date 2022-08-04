@@ -15,7 +15,7 @@ Tessaract - Blockchain
     <div class="scroll">
       
       {% for block in blockchain.chain %}
-      <a href="{{ url_for('blockchain', idx=block.index) }}">
+      <a style="text-decoration: none;" href="{{ url_for('blockchain', idx=block.index) }}">
         <div class="bc-numbercard">{{ block.index }}</div>
       </a>
       {% endfor %}
@@ -26,7 +26,7 @@ Tessaract - Blockchain
     </div>
 
     <div class="bc-blockdisplay">
-      <strong class="bl-subtitle" >BLOCKCHAIN INFO</strong><br><br>
+      <strong class="bl-subtitle" style="color: var(--bigtextColor);">BLOCKCHAIN INFO</strong><br><br>
       <small class="bl-small">
         Name: Unnamed Blockchain<br> 
         Difficulty: {{ blockchain.difficulty }}<br>
@@ -38,14 +38,14 @@ Tessaract - Blockchain
     </div>
 
     <div class="bc-transdisplay">
-      <strong class="bl-subtitle" >TRANSACTION INFO</strong><br><br>
+      <strong class="bl-subtitle" style="color: var(--bigtextColor);">TRANSACTION INFO</strong><br><br>
       {% for transaction in selectedBlock.transactions %}
         <small class="bl-small">{{ transaction.transactionString }}<br></small>
       {% endfor %}
     </div>
     
     <div class="bc-blockdisplay">
-      <strong class="bl-subtitle" >BLOCK INFO</strong><br><br>
+      <strong class="bl-subtitle" style="color: var(--bigtextColor);">BLOCK INFO</strong><br><br>
       <small class="bl-small">
         Block#: {{ selectedBlock.index }}<br>
         Hash: {{ selectedBlock.hash[0:20] }}<br> 
