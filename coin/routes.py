@@ -116,7 +116,6 @@ def node():
     def zoomList(item):
         return item[0]
     if current_user.is_authenticated:
-        print(current_user.node)
         blockchainObj.updateChain(current_user.node)
     distributorObj.setUserCount(len(User.query.filter().all()))
     nodes = User.query.with_entities(User.node).all()
@@ -124,8 +123,16 @@ def node():
     nodesDict = dict(Counter(sorted(nodes)).items())
 
     chains = distributorObj.generateNodeList()
+    return render_template('node.html', blockchain=blockchainObj, nodesDict=nodesDict, chains=chains, current_user=current_user)
 
-    return render_template('node.html', blockchain=blockchainObj, nodesDict=nodesDict, lent=len(User.query.filter().all()), chains=chains)
+@app.route("/changeNode/<node>")
+def changeNode(node):
+    if current_user.is_authenticated:
+        current_user.node = node
+        db.session.commit()
+        blockchainObj.updateChain(current_user.node)
+    return redirect(url_for('node'))
+
 
 @app.route("/delete/<int:id>")
 def delete(id):

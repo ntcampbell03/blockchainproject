@@ -7,11 +7,45 @@ Tessaract - Node
 <body>
     <div class="contentbg darkbg"></div>
     <div class="contentbg">
-        {% for node in nodesDict %}
-            <small>Node #{{ node }}: {{ nodesDict[node] }} users.</small>
-            <small>Length: {{ chains[node-1].length }}</small>
-            <br>
-        {% endfor %}
+        <strong class="bl-subtitle">Nodes List:</strong>
+        <div class="no-nodeListContainer">
+            {% for node in nodesDict %}
+                {% if current_user.node == node %}
+                    <div class="no-nodeContainer no-curnodeOuter">
+                        <div class="no-nodeNumber no-curnodeInner">{{ node }}</div>
+                        <div class="no-nodeItem">
+                            User Count: {{ nodesDict[node] }}
+                        </div>
+                        <div class="no-nodeItem">
+                            Chain Length: {{ chains[node-1].length }}
+                        </div> 
+                        <div class="no-nodeItem">
+                            Pending Transactions: {{ chains[node-1].getNumTransactions() }}
+                        </div>
+                        <br>
+                    </div>
+                {% else %}
+                    <div class="no-nodeContainer">
+                        <div class="no-nodeNumber">{{ node }}</div>
+                        <div class="no-nodeItem">
+                            User Count: {{ nodesDict[node] }}
+                        </div>
+                        <div class="no-nodeItem">
+                            Chain Length: {{ chains[node-1].length }}
+                        </div>
+                        <div class="no-nodeItem">
+                            Pending Transactions: {{ chains[node-1].getNumTransactions() }}
+                        </div>
+                        <div class="no-swapico">
+                            <a href="{{ url_for('changeNode', node=node) }}">
+                                <i class="fa fa-exchange"></i>
+                            </a>
+                        </div>
+                        <br>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>  
         <a href="{{ url_for('sync', current_page=request.path) }}" class="sync">Sync</button>
     </div>
 </body>

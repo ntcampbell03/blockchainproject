@@ -49,6 +49,7 @@ class NodeDistributor:
         cur = conn.cursor()
         postgreSQL_select_Query = "select * from blockchain where id = (%s)"%(index,)
         cur.execute(postgreSQL_select_Query)
+        print(index)
         bcjson = cur.fetchall()[0][1]
         cur.close()
         conn.close()
@@ -56,7 +57,7 @@ class NodeDistributor:
 
     def generateNodeList(self):
         res = []
-        for i in range(math.ceil(self.userCount / CONFIG['nodes']['frequency'])):
+        for i in range(math.ceil(self.userCount / CONFIG['nodes']['frequency'])-1):
             res.append(self.getNode(i+1))
         return res        
         

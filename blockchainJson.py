@@ -47,8 +47,11 @@ class Blockchain:
         return int(10 * math.log(.2 * len(self.newTransactions) + 1) ** (1.2))
 
     def getTransactions(self):
-        # self.updateChain()
+        self.updateChain(self.curchain)
         return self.newTransactions
+    
+    def getNumTransactions(self):
+        return len(self.getTransactions())
 
     def getBlock(self, n):
         # self.updateChain()

@@ -150,3 +150,80 @@ input:checked + .slider:before
     max-width: 10vw;
     color: var(--textColor);
 }
+
+/* start the tags with tr */
+.tr-labeltext {
+    color: var(--textColor);
+}
+
+.tr-Button{
+    text-align: center;
+    box-shadow: var(--shadowDelete);
+    text-decoration: none;
+    font-size: 1.5vw;
+    color: whitesmoke;
+    display: block;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    margin-top: 5px;
+    font-family: var(--cringefont);
+    width: 15vw;
+    height: 6vh;
+}
+
+.tr-Button:hover{ 
+    color: rgba(245, 245, 245, 0.77);
+    box-shadow: 0px 2px 2px 1px #0F0F0F;
+    transition: all .4s ease;
+    background-color: var(--primary-color);
+    
+}
+
+.tr-loginBox{
+    padding-left: 0.5vw;
+    border-radius: 1vw;
+    width: 25vw;
+    height: 7.5vh;
+    font-size: x-large;
+    font-family: 'cyber';
+}
+
+.tr-subbox {
+    position: relative;
+    height: 70vh;
+    background: #f00;
+    padding-top: 1vh;
+    border-radius: 15px;
+    border: var(--primary-color);
+    border-width: 5px;
+    background-color: rgba(214,81,125,0.25);
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5vw;
+    text-shadow: 0px 2px 2px var(--primary-color);
+    margin-bottom: 2vw;
+    transition-duration: 1s;
+}
+
+.tr-floatLeft{
+    float: left;
+    width: calc(60vw - 1vw);
+    text-align: left;
+    border-style: var(--borderstyle1);
+    margin-left: 3vw;
+    padding-left: 1vw;
+    top: 5vh;
+    overflow-y: scroll;
+}
+
+.tr-floatRight{
+    float: right;
+    width: 0vw;
+    visibility: hidden;
+    text-align: left;
+    border-style: var(--borderstyle1);
+    margin-right: 3vw;
+    padding-left: 1vw;
+    top: 5vh;
+    overflow-y: scroll;
+}

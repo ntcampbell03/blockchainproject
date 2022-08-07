@@ -21,10 +21,10 @@ Tessaract - Mine
   <!-- END CLOCK  -->
     <div class="mi-designdiv">
       <input type="checkbox" id="toggle" class="visually-hidden" onclick="window.location.href='/mineblock/'">
-      {% if 2 > blockchain.numTransactions %}
+      {% if 2 > blockchain.getNumTransactions() %}
         <strong class="mi-warn left"> NEEDS MORE TRANSACTIONS </strong>
       {% endif %}
-      {% if 2 > blockchain.numTransactions %}
+      {% if 2 > blockchain.getNumTransactions() %}
         <label class="mi-minebutton">
           MINE
         </label>
@@ -39,7 +39,7 @@ Tessaract - Mine
           </div>
         </label>
       {% endif %}
-      {% if 2 > blockchain.numTransactions %}
+      {% if 2 > blockchain.getNumTransactions() %}
         <strong class="mi-warn right"> NEEDS MORE TRANSACTIONS </strong>
       {% endif %}
     </div>
