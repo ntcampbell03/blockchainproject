@@ -18,14 +18,15 @@ Tessaract - Login
 </head>
 
 <body class="bg-dark">
-  <div class="contentbg darkbg">
-  </div>
+  <div class="contentbg darkbg"></div>
   <div class="contentbg">
-  <div class="lo-subbox lo-floatLeft">
+  <div class="lo-titlecontainer">
+    <br><strong class="lo-title">LOGIN</strong><br><br>
+    <a href="{{ url_for('register') }}" class="bl-subtitle">Don't have an account yet?</a>
+  </div>
+  <div class="lo-floatLeft">
     <div class="card card-login mx-auto mt-5">
-      <div class="lo-labeltext" class="card-header">Login</div>
       <div class="card-body">
-
         {% with messages = get_flashed_messages(with_categories = true) %}
           {% if messages %}
             {% for category, message in messages %}
@@ -34,15 +35,12 @@ Tessaract - Login
               </div>
             {% endfor %}
           {% endif %}
-
         {% endwith %}
         <form method = "POST", action = "">
           {{ form.hidden_tag() }}
-
           <div class="lo-labeltext" class="form-group">
             {% if form.username.errors  %}
               {{ form.username(class="form-control form-control-lg is-invalid") }}
-
               <div class="lo-labeltext" class = "invalid-feedback">
                 {% for error in form.username.errors %}
                   <span> {{ error }} </span>
@@ -52,7 +50,6 @@ Tessaract - Login
               {{ form.username(class="form-control form-control-lg lo-loginBox")}}
             {% endif %}
           </div>
-
           <div class="lo-labeltext" class="form-group">
             {% if form.password.errors  %}
               {{ form.password(class="form-control form-control-lg is-invalid lo-loginBox") }}
@@ -64,29 +61,21 @@ Tessaract - Login
               </div>
             {% else %}
               {{ form.password(class="form-control form-control-lg lo-loginBox")}}
-            {% endif %}
-            
+            {% endif %}  
           </div>
-
           <div class="form-group">
             <div class="lo-labeltext" class="form-group">
               {{ form.submit(class="lo-Button") }}
             </div>
-            <div class="lo-labeltext" class="form-check">
-              {{ form.remember(class="form-check-input") }}
-              {{ form.remember.label(class="form-check-label") }}
-            </div>
           </div>
         </form>
-        <div class="text-center">
-          <a class="lo-forgot" href="{{ url_for('register') }}">Don't Have An Account Yet?</a>
-          <br>
-          <a class="lo-forgot" href="#">Forgot Password?</a>
+        <div class="lo-text-center">
+          For security reasons, there is no option for a user to recover their password if it is forgotten.<br>
         </div>
       </div>
     </div>
   </div>
-  <div class="lo-subbox lo-floatRight">
+  <div class="lo-floatRight">
     Username: 4-15 Characters
     <br>
     Password: 4-15 Characters

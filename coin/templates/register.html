@@ -6,82 +6,76 @@ Tessaract - Register
 {% block content %}
   <title>Lucrum - Register</title>
 
-    <!-- Custom fonts for this template--> 
+  <!-- Custom fonts for this template--> 
   <link href="{{ url_for('static', filename = 'vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this template-->
   <link href="{{ url_for('static', filename = 'css/sb-admin.css')}}" rel="stylesheet" type="text/css">
+  </head>
 
-
-
-</head>
-
-<body class="bg-dark">
-  <div class="contentbg darkbg"></div>
-  <div class="contentbg">
-  <div class="container re-floatLeft re-subbox re-loginBox">
-    <div class="card card-register mx-auto mt-5">
-      <div class="re-labeltext" class="card-header">Register an Account</div>
-      <div class="card-body">
-        <form method = "POST", action = "">
-          {{ form.hidden_tag() }}
-
-         <div class="re-labeltext" class="form-group">
-            {% if form.username.errors  %}
-              {{ form.username(class="form-control form-control-lg is-invalid re-loginBox") }}
-
-              <div class="re-labeltext" class = "invalid-feedback">
-                {% for error in form.username.errors %}
-                  <span> {{ error }} </span>
-                {% endfor %}
+  <body class="bg-dark">
+    <div class="contentbg darkbg"></div>
+      <div class="contentbg">
+        <div class="lo-titlecontainer">
+          <br><strong class="lo-title">REGISTER</strong><br><br>
+          <a href="{{ url_for('login') }}" class="bl-subtitle">Already have an account?</a>
+        </div>
+        <div class="lo-floatLeft">
+          <div class="card card-register mx-auto mt-5">
+            <div class="card-body">
+              <form method = "POST", action = "">
+                {{ form.hidden_tag() }}
+                <div class="lo-labeltext" class="form-group">
+                  {% if form.username.errors  %}
+                    {{ form.username(class="form-control form-control-lg is-invalid re-loginBox") }}
+                    <div class="lo-labeltext" class = "invalid-feedback">
+                      {% for error in form.username.errors %}
+                        <span> {{ error }} </span>
+                      {% endfor %}
+                    </div>
+                  {% else %}
+                    {{ form.username(class="form-control form-control-lg lo-loginBox")}}
+                  {% endif %}
+                </div>
+                <div class="lo-labeltext" class="form-group">
+                  {% if form.password.errors  %}
+                    {{ form.password(class="form-control form-control-lg is-invalid lo-loginBox") }}
+                    <div class="lo-labeltext" class = "invalid-feedback">
+                      {% for error in form.password.errors %}
+                        <span> {{ error }} </span>
+                      {% endfor %}
+                    </div>
+                  {% else %}
+                    {{ form.password(class="form-control form-control-lg lo-loginBox")}}
+                  {% endif %}
+                </div>
+                <div class="lo-labeltext" class="form-group">
+                  {% if form.confirmPassword.errors  %}
+                    {{ form.confirmPassword(class="form-control form-control-lg is-invalid lo-loginBox") }}
+                    <div class="lo-labeltext" class = "invalid-feedback">
+                      {% for error in form.confirmPassword.errors %}
+                        <span> {{ error }} </span>
+                      {% endfor %}
+                    </div>
+                  {% else %}
+                    {{ form.confirmPassword(class="form-control form-control-lg lo-loginBox")}}
+                  {% endif %}
+                </div>
+                <div class="lo-labeltext" class="form-group">
+                  {{ form.submit(class="lo-Button") }}
+                </div>
+              </form>
+              <div class="lo-text-center">
+                For security reasons, there is no option for a user to recover their password if it is forgotten.<br>
               </div>
-            {% else %}
-              {{ form.username(class="form-control form-control-lg re-loginBox")}}
-            {% endif %}
+            </div>
           </div>
-          <div class="re-labeltext" class="form-group">
-            {% if form.password.errors  %}
-              {{ form.password(class="form-control form-control-lg is-invalid re-loginBox") }}
-
-              <div class="re-labeltext" class = "invalid-feedback">
-                {% for error in form.password.errors %}
-                  <span> {{ error }} </span>
-                {% endfor %}
-              </div>
-            {% else %}
-              {{ form.password(class="form-control form-control-lg re-loginBox")}}
-            {% endif %}
-          </div>
-
-          <div class="re-labeltext" class="form-group">
-            {% if form.confirmPassword.errors  %}
-              {{ form.confirmPassword(class="form-control form-control-lg is-invalid re-loginBox") }}
-
-              <div class="re-labeltext" class = "invalid-feedback">
-                {% for error in form.confirmPassword.errors %}
-                  <span> {{ error }} </span>
-                {% endfor %}
-              </div>
-            {% else %}
-              {{ form.confirmPassword(class="form-control form-control-lg re-loginBox")}}
-            {% endif %}
-          </div>
-
-          <div class="re-labeltext" class="form-group">
-            {{ form.submit(class="re-Button") }}
-          </div>
-        </form>
-        <div class="text-center">
-          <a class="re-forgot" href="{{ url_for('login') }}">Already Have An Account?</a>
+        </div>
+        <div class="lo-floatRight">
+          Username: 4-15 Characters
+          <br>
+          Password: 4-15 Characters
         </div>
       </div>
-    </div>
-  </div>
-  <div class="re-subbox re-floatRight">
-    Username: 4-15 Characters
-    <br>
-    Password: 4-15 Characters
-  </div>
-  </div>
-</body>
+    </body>
 {% endblock %}

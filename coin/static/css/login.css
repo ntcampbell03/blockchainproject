@@ -1,67 +1,23 @@
-/* start the tags with lo */
 .lo-labeltext {
-    color: white
-}
-.lo-forgot {
-    color: pink;
-    text-decoration: none;
-}
-
-.lo-subbox {
-    position: relative;
-    width: 26.75vw;
-    height: 49vh;
-    background: #f00;
-    padding-top: 1vh;
-    border-radius: 15px;
-    border: var(--primary-color);
-    border-width: 5px;
-    background-color: rgba(214,81,125,0.25);
-    color: white;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 1.5vw;
-    text-shadow: 0px 2px 2px var(--primary-color);
-    margin-bottom: 2vw;
-    z-index: 1000;
-}
-
-.lo-floatLeft{
-    float: left;
-    width: 40%;
-    text-align: left;
-    border-style: var(--borderstyle1);
-    margin-left: 3vw;
-    padding-left: 1vw;
-    margin-right: 1.5vw;
-    top: 5vh;
-}
-
-.lo-floatRight{
-    float: right;
-    width: 40%;
-    text-align: left;
-    border-style: var(--borderstyle1);
-    margin-left: 1.5vw;
-    padding-left: 1vw;
-    margin-right: 3vw;
-    top: 5vh;
-}
-
-.lo-loginBox{
-    padding-left: 0.5vw;
-    border-radius: 20px;
+    color: var(--textColor);
 }
 
 .lo-Button{
     text-align: center;
-    box-shadow: 0px 2px 2px 1px #0F0F0F;
+    box-shadow: var(--shadowDelete);
     text-decoration: none;
-    font-size: 15px;
+    font-size: 1.5vw;
     color: whitesmoke;
     display: block;
     background-color: var(--primary-color);
     border-radius: 10px;
     margin-top: 5px;
+    font-family: var(--cringefont);
+    width: 15vw;
+    height: 6vh;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 2vh;
 }
 
 .lo-Button:hover{ 
@@ -69,4 +25,99 @@
     box-shadow: 0px 2px 2px 1px #0F0F0F;
     transition: all .4s ease;
     background-color: var(--primary-color);
+    
+}
+
+.lo-loginBox{
+    padding-left: 0.5vw;
+    border-radius: 1vw;
+    width: 25vw;
+    height: 7.5vh;
+    font-size: x-large;
+    font-family: 'cyber';
+    margin-left: 2.5vw;
+    margin-top: 2vh;
+}
+
+.lo-floatLeft{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 31vw;
+    height: 55vh;
+    text-align: left;
+    margin-left: 1vw;
+    margin-right: .5vw;
+    margin-bottom: 1vw;
+
+    border-radius: 15px;
+    border-color: var(--primary-color);
+    border-style: var(--borderstyle1);
+    border-width: 5px;
+    background-color: rgba(214,81,125,0.25);
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5vw;
+    text-shadow: 0px 2px 2px var(--primary-color);
+}
+
+.lo-floatRight{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 1vw;
+    width: 31vw;
+    text-align: left;
+    
+    margin-left: .5vw;
+    padding-left: 1vw;
+    margin-right: 1vw;
+    height: calc(80vh - 2vw);
+
+    border-radius: 15px;
+    border-color: var(--primary-color);
+    border-style: var(--borderstyle1);
+    border-width: 5px;
+    background-color: rgba(214,81,125,0.25);
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5vw;
+    text-shadow: 0px 2px 2px var(--primary-color);
+}
+
+.lo-titlecontainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 31vw;
+    height: 20vh;
+    margin-left: 1vw;
+    margin-top: 1vw;
+
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.lo-title {
+    color: var(--primary-color);
+    font-family: var(--cringefont);
+    font-size: calc(60px * var(--fontsizemultiplier));
+    text-shadow: 2px 2px 2px #0F0F0F;
+}
+
+.lo-subtitle {
+    color: white;
+    font-family: var(--cringefont);
+    font-size: calc(21px * var(--fontsizemultiplier));;
+    text-shadow: 0px 2px 2px var(--primary-color);
+    text-align: center;
+    width: max-content;
+}
+
+.lo-text-center {
+    padding: 4vh 2vw;
+    text-align: center;
 }
