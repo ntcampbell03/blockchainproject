@@ -6,7 +6,16 @@ Tessaract - Mine
 {% block content %}
 <body>
   <div class="contentbg darkbg"></div>
-  <div class="contentbg">    
+  <div class="contentbg">
+    <input type="checkbox" id="toggle" class="visually-hidden" onclick="window.location.href='/sync'">
+    <label for="toggle" class="sync-label bl-sync">
+      <div class="syncbutton">
+          <i class="fa fa-refresh"></i>
+      </div>
+      <div class="spinico">
+          <i class="fa fa-refresh fa-spin"></i>
+      </div>
+    </label>
   <!-- CLOCK -->
     <div class="clock-container">
       <span class="count tenhr tens"></span>
@@ -20,7 +29,7 @@ Tessaract - Mine
     </div>
   <!-- END CLOCK  -->
     <div class="mi-designdiv">
-      <input type="checkbox" id="toggle" class="visually-hidden" onclick="window.location.href='/mineblock/'">
+      <input type="checkbox" id="toggle2" class="visually-hidden" onclick="window.location.href='/mineblock/'">
       {% if 2 > blockchain.getNumTransactions() %}
         <strong class="mi-warn left"> NEEDS MORE TRANSACTIONS </strong>
       {% endif %}
@@ -29,7 +38,7 @@ Tessaract - Mine
           MINE
         </label>
       {% else %}
-        <label for="toggle" class="mine-label">
+        <label for="toggle2" class="mine-label">
           <div class="mi-minebutton">
             MINE
           </div>

@@ -7,6 +7,15 @@ Tessaract - Wallet
 <body>
   <div class="contentbg darkbg"></div>
   <div class="contentbg wa-content">
+    <input type="checkbox" id="toggle" class="visually-hidden" onclick="window.location.href='/sync'">
+    <label for="toggle" class="sync-label wa-sync">
+      <div class="syncbutton">
+          <i class="fa fa-refresh"></i>
+      </div>
+      <div class="spinico">
+          <i class="fa fa-refresh fa-spin"></i>
+      </div>
+    </label>
     <div class="switchbox">
       <label class="switch">
         <input type="checkbox" id="toggleWA" onchange="toggleCheck()">

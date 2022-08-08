@@ -246,6 +246,7 @@ class Wallet:
         RewardWallet = Wallet("REWARD")
         rewardTransaction = Transaction(RewardWallet, self, reward)
         Blockchain.addTransaction(rewardTransaction)
+        return rewardTransaction
                 
 # class godWallet(Wallet): # Wallet with infinite balance
 #     def __init__(self, name):

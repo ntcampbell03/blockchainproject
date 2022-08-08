@@ -5,16 +5,17 @@
     border-color: rgba(214,81,125,0.75);
     margin: 1vh;
     background-color: rgba(255,255,255,.1);
+    display: flex;
 }
 
 .no-nodeListContainer {
     height: 60vh;
     direction: ltr;
-    /* width: 65vw; */
-    /* border-width: 2px;
-    border-radius: calc(.6vh + .9vw);
-    border-style: solid;
-    border-color: gainsboro; */
+    border-width: 4px 0;
+    border-color: var(--primary-color);
+    border-style: var(--borderstyle2);
+    margin-top: 3vh;
+    overflow-y: scroll;
 }
 
 .no-nodeNumber {
@@ -64,10 +65,9 @@
 
 .no-swapico {
     height: 3.5vh;
-    width: 3.5vh;
+    /* width: 3.5vh; */
     font-size: 2vh;
-    background-color: 
-    #20CC82;
+    background-color: #369e71;
     color: gainsboro;
     display: inline-block;
     align-items: center;
@@ -77,20 +77,88 @@
     line-height: 3.5vh;
     text-decoration: none;
     margin: .75vh .5vw;
+    padding: 0 .5vw;
     border-radius: calc(.3vh + .3vw);
-    float: right;
 }
 
-
 a {
-    color: inherit
+    color: inherit;
+    text-decoration: none;
 }
 a:hover {
     color: inherit
 }
 
-.sync {
-    background-color: wheat;
-    font-size: 5vh;
+/* .sync {
+    background-color: #369e71;
+    font-family: var(--cringefont);
+    font-size: 4vh;
     text-decoration: none;
+    color: gainsboro;
+    padding: .25vh .5vw;
+    border-radius: calc(.3vh + .3vw);
+}
+
+.synci {
+    display: none !important;
+} */
+
+.syncbutton {
+    transition: all 0.3s ease-in-out;
+    font-family: var(--cringefont);
+    font-size: 4vh;
+    line-height: 4vh;
+    text-decoration: none;
+    color: gainsboro;
+    display: flex;
+    justify-content: center;
+}
+
+.spinico {
+    transition: all 0.3s ease-in-out;
+    font-family: var(--cringefont);
+    font-size: 4vh;
+    line-height: 4vh;
+    text-decoration: none;
+    color: gainsboro;
+    display: flex;
+    justify-content: center;
+    visibility: hidden;
+    display: none;
+}
+
+.sync-label {
+    transition: all 0.3s ease-in-out;
+    width: fit-content;
+    background-color: var(--primary-color);
+    opacity: 75%;
+    font-family: var(--cringefont);
+    font-size: 4vh;
+    text-decoration: none;
+    color: gainsboro;
+    width: 5vh;
+    height: 5vh;
+    border-radius: calc(.3vh + .3vw);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+}
+
+input[type=checkbox]:checked + .sync-label .syncbutton {
+    transition: all 0.3s ease-in-out;
+    visibility: hidden;
+    display: none;
+}
+
+input[type=checkbox]:checked + .sync-label .spinico {
+    transition: all 0.3s ease-in-out;
+    visibility: visible;
+    display: block;
+}
+
+.uplink {
+    color: gainsboro;
+    background-color: var(--primary-color);
 }

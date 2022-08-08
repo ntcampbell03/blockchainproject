@@ -133,3 +133,9 @@
 .bl-small {
     font-size: calc(2vh * var(--fontsizemultiplier));;
 }
+
+.bl-sync {
+    position: fixed;
+    right: calc(7.5vw + 20px);
+    top: calc(10vh + 20px);
+}

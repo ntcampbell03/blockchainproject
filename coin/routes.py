@@ -44,10 +44,12 @@ def mine():
 
 @app.route("/mineblock/", methods=['GET', 'POST'])
 def mineblock():
-    current_user.wallet.mineBlock(blockchainObj)
+    distributorObj.syncChain()
+    retrans = current_user.wallet.mineBlock(blockchainObj)
     flag_modified(current_user, "wallet")
     db.session.commit()
-    return render_template('mine.html', blockchain=blockchainObj, success=True)
+    distributorObj.syncChain(remove=retrans)
+    return redirect(url_for('mine'))
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -163,4 +165,4 @@ def toggle_theme():
 @app.get("/sync")
 def sync():
     distributorObj.syncChain()
-    return redirect(request.args.get("current_page"))
+    return redirect(request.referrer)

@@ -227,3 +227,10 @@ input:checked + .slider:before
     top: 5vh;
     overflow-y: scroll;
 }
+
+.wa-sync {
+    position: fixed;
+    right: calc(69.5vw - 19px);
+    top: calc(10vh + 20px);
+    z-index: 100;
+}

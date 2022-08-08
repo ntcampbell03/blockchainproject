@@ -7,8 +7,19 @@ Tessaract - Node
 <body>
     <div class="contentbg darkbg"></div>
     <div class="contentbg">
-        <strong class="bl-subtitle">Nodes List:</strong>
-        <div class="no-nodeListContainer">
+        <input type="checkbox" id="toggle" class="visually-hidden" onclick="window.location.href='/sync'">
+        <label for="toggle" class="sync-label bl-sync">
+            <div class="syncbutton">
+                <i class="fa fa-refresh"></i>
+            </div>
+            <div class="spinico">
+                <i class="fa fa-refresh fa-spin"></i>
+            </div>
+        </label>
+        <div class="bl-titlecontainer">
+        <strong class="bl-title">NODES</strong><br>
+        <strong class="bl-subtitle">Network Visualizer:</strong>
+        <div id="containerDiv" class="no-nodeListContainer">
             {% for node in nodesDict %}
                 {% if current_user.node == node %}
                     <div class="no-nodeContainer no-curnodeOuter">
@@ -46,7 +57,6 @@ Tessaract - Node
                 {% endif %}
             {% endfor %}
         </div>  
-        <a href="{{ url_for('sync', current_page=request.path) }}" class="sync">Sync</button>
     </div>
 </body>
 {% endblock %}

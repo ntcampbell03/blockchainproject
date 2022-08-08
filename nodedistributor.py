@@ -61,7 +61,7 @@ class NodeDistributor:
             res.append(self.getNode(i+1))
         return res        
         
-    def syncCalc(self):
+    def syncCalc(self, remove):
         verifiedChains = {}
         pendingTrans = []
         temp = []
@@ -82,13 +82,15 @@ class NodeDistributor:
                     temp.append(newTransaction.transactionString)
             i+=1
         longestChain.newTransactions = pendingTrans
+        if remove:
+            longestChain.newTransactions = [remove]
         # print(verifiedChains)  // can implement later for visuals and shi
         return longestChain
 
-    def syncChain(self):
+    def syncChain(self, remove=None):
         conn = get_db_connection()
         cur = conn.cursor()
-        longestJson = jsonpickle.encode(self.syncCalc())
+        longestJson = jsonpickle.encode(self.syncCalc(remove))
         for i in range(self.getNodeCount()):
             print("ENTERED LOOP")
             cur.execute('DELETE FROM blockchain WHERE id={}'.format(i+1))
