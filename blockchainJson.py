@@ -95,7 +95,9 @@ class Blockchain:
         try:
             senderCurBalance = self.getPendingBalance(newTransaction.sender)
             receiverCurBalance = self.getPendingBalance(newTransaction.reciever)
-            if senderCurBalance >= newTransaction.amount: # Checks if balance is sufficient
+            if newTransaction.amount < 0:
+                print("Cannot send negative amount!")
+            elif senderCurBalance >= newTransaction.amount: # Checks if balance is sufficient
                 self.newTransactions.append(newTransaction)
                 self.numTransactions += 1
                 self.miningReward = int(10 * math.log(.2 * len(self.newTransactions) + 1) ** (1.2))
