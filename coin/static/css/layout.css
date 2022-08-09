@@ -1,7 +1,5 @@
 /* start the tags with la */
-html {
-  background: #141414;
-}
+
 .la-sidenav {
     height: 100%;
     width: 300px;
@@ -12,16 +10,16 @@ html {
     background: transparent;
     overflow-x: hidden;
     padding-top: 2.25vh;
-    overflow-y: hidden;
+    
     font-size: 1em;
-    font-family: var(--cringefont);
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
   
   .la-logo-bg {
     text-align: center;
     margin: 5vh 2.25vh;
     max-width: 33.75vh;
-    border-radius: 50vw;
+    border-radius: 15px;
     text-decoration: none;
     font-size: 3.25vh;
     color: white;
@@ -44,7 +42,7 @@ html {
     font-size: 3.25vh;
     color: var(--textColor);
     display: block;
-    background-color: var(--primary-color);
+    background-color: #D6517d;
   }
 
 .la-navbar-item {
@@ -60,36 +58,36 @@ html {
 .la-bgvideo {
     min-width: 100vw;
     min-height: 100vh;
+<<<<<<< HEAD
     z-index: -1;
     visibility: var(--toggleVisibility);
+=======
+    z-index: -2;
+>>>>>>> 63d400a1d17fce207c98fb3e61fbf443358310d4
 }
 
 .la-logo {
     width: 22.5vh;
     height: auto;
-    -webkit-box-shadow:0 0 20px var(--primary-color); 
-    -moz-box-shadow: 0 0 20px var(--primary-color); 
-    box-shadow:0 0 20px var(--primary-color);
+    -webkit-box-shadow:0 0 20px #D6517d; 
+    -moz-box-shadow: 0 0 20px #D6517d; 
+    box-shadow:0 0 20px #D6517d;
     border-radius: 100px;
 }
 
 .la-overlay {
+    opacity: 90%;
     min-width: 100vw;
     min-height: 100vh;
     z-index: -1;
     top: 0;
+<<<<<<< HEAD
     background-color: var(--background-color);
+=======
+    background-color: white;
+>>>>>>> 63d400a1d17fce207c98fb3e61fbf443358310d4
     left: 0;
     position: fixed;
-}
-
-.la-underlay {
-  min-width: 100vw;
-  min-height: 100vh;
-  z-index: -2;
-  top: 0;
-  left: 0;
-  position: fixed;
 }
 
 .la-superdiv {
@@ -127,7 +125,7 @@ html {
 
 .time {
   display: block;
-  background-color: #2d2d2d;
+  background-color: #202124;
   width: 0%;
   top: calc(var(--i) * 10%);
   height: .4%;
@@ -157,7 +155,7 @@ html {
   left: 95vw;
   height: 5vw;
   width: 5vw;
-  font-family: var(--cringefont);
+  font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;
@@ -192,17 +190,6 @@ html {
   z-index: -100;
 }
 
-.infotainer {
-  position: relative;
-  width: 90vw;
-  height: 75vh;
-  background-color: transparent;
-  display: none;
-  grid-template-areas:
-    'left left middle middle right right'
-    '. . leave leave . .';
-}
-
 .right {
   text-align: right;
   width: 100%;
@@ -214,21 +201,16 @@ html {
 }
 
 .stack span {
-  position: relative;
+  font-weight: bold;
   grid-row-start: 1;
   grid-column-start: 1;
-  text-align: center;
-  font-family: 'avenir','Trebuchet MS', Arial,'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 4rem;
+  font-family: Arial, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   --stack-height: calc(100% / var(--stacks) - 1px);
   --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
   --clip-top: calc(var(--stack-height) * var(--index));
   --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
   clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
-}
-
-.lve {
-  font-size: 4rem;
-  font-weight: bold;
 }
 
 .stack-ani {
@@ -275,7 +257,7 @@ html {
   top: 0;
   left: 0;
   color: whitesmoke;
-  background-color: #2d2d2d;
+  background-color: #202124;
   font-size: 1.5rem;
   width: 100vw;
   height: 100vh;
@@ -286,30 +268,17 @@ html {
 }
 
 @keyframes shrink {
-  0% {
+  from {
       transform: scale(1);
   }
-  75% {
-      transform: scale(1.1);
-  }
-  90% {
-      width: 60vw;
-      height: 50vw;
-      border-radius: 0px;
-      background-color: transparent;
-  }
-  100% {
+  to {
       transform: scale(.01);
-      width: 10px;
-      height: 10px;
-      border-radius: 10px;
-      background-color: whitesmoke;
   }
 }
 
 .shrink {
   animation-name: shrink;
-  animation-duration: 1s;
+  animation-duration: 2s;
   animation-fill-mode: forwards;
 }
 
@@ -361,6 +330,7 @@ html {
   animation-name: exit-expand;
   animation-duration: 2s;
   animation-fill-mode: forwards;
+<<<<<<< HEAD
 }
 
 .infobox {
@@ -504,4 +474,6 @@ i {
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
+=======
+>>>>>>> 63d400a1d17fce207c98fb3e61fbf443358310d4
 }

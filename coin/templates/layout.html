@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8" />
         <title>{% block title %}{% endblock %}</title>
-        <link rel="icon" href="../static/assets/logo.png">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/global.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/blockchain.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css')}}" />
@@ -13,10 +12,10 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/transaction.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/wallet.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css')}}" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      </head>
+    </head>
 
     <body>
+<<<<<<< HEAD
         <span class="la-nodetext">Node: #{{ current_user.node }}</span>
         <div class="la-modetoggle">
           <a href="{{ url_for('toggle_theme', current_page=request.path) }}">
@@ -36,91 +35,37 @@
           
         </div>
         
+=======
+>>>>>>> 63d400a1d17fce207c98fb3e61fbf443358310d4
         <button for="label" onclick="ani()" class="magic">&#63;</button>
         <div class="la-superdiv">
             <div class="container-left"></div>
             <div class="container-right"></div>
             <div class="container1">
-              <div class="infotainer">
-                <div class="infobox rightinfo">
-                  <div class="stack" style="--stacks: 3;">
-                    <span style="--index: 0;" class="id1">Rithwik Babu</span>
-                    <span style="--index: 1;" class="id1">Rithwik Babu</span>
-                    <span style="--index: 2;" class="id1">Rithwik Babu</span>
-                  </div>
-                  <a href="https://github.com/rithwikbabu" class="github-link">
-                    <div>
-                      <i class="fa fa-github" style="font-size:40px;color:red"></i>
-                      <span class="gitlink">github.com</span><span class="sublink">/rithwikbabu</span>
-                    </div>
-                  </a>
-                  <a href="https://www.linkedin.com/in/rithwik-babu/" class="github-link">
-                    <div>
-                      <i class="fa fa-linkedin" style="font-size:35px;color:#0072b1"></i>
-                      <span class="gitlink">linkedin.com</span><span class="sublink">/rithwik-babu/</span>
-                    </div>
-                  </a>
-                </div>
-                <div class="infobox middleinfo">
-                  <div class="stack" style="--stacks: 3;">
-                    <span style="--index: 0;" class="id1">Noah Campbell</span>
-                    <span style="--index: 1;" class="id1">Noah Campbell</span>
-                    <span style="--index: 2;" class="id1">Noah Campbell</span>
-                  </div>
-                  <a href="https://github.com/ntcampbell03" class="github-link">
-                    <div>
-                      <i class="fa fa-github" style="font-size:40px;color:red"></i>
-                      <span class="gitlink">github.com</span><span class="sublink">/ntcampbell03</span>
-                    </div>
-                  </a>
-                  <a href="https://www.linkedin.com/in/noah-campbell-26b43a20b/" class="github-link">
-                    <div>
-                      <i class="fa fa-linkedin" style="font-size:35px;color:#0072b1"></i>
-                      <span class="gitlink">linkedin.com</span><span class="sublink">/noah-campbell/</span>
-                    </div>
-                  </a>
-                </div>
-                <div class="infobox leftinfo">
-                  <div class="stack" style="--stacks: 3;">
-                    <span style="--index: 0;" class="id1">Nikhil Jain</span>
-                    <span style="--index: 1;" class="id1">Nikhil Jain</span>
-                    <span style="--index: 2;" class="id1">Nikhil Jain</span>
-                  </div>
-                  <a href="https://github.com/JAIN0103" class="github-link">
-                    <div>
-                      <i class="fa fa-github EYECON" style="font-size:40px;color:red"></i>
-                      <span class="gitlink">github.com</span><span class="sublink">/JAIN0103</span>
-                    </div>
-                  </a>
-                  <a href="https://www.linkedin.com/in/nikhil-jain-174758228/" class="github-link">
-                    <div>
-                      <i class="fa fa-linkedin" style="font-size:35px;color:#0072b1"></i>
-                      <span class="gitlink">linkedin.com</span><span class="sublink">/nikhil-jain/</span>
-                    </div>
-                  </a>
-                </div>
-                <div class="stack leavebox" style="--stacks: 3; margin-top: 15vh;">
-                  <span onclick="leave()" style="--index: 0;" class="id1 lve">LEAVE</span>
-                  <span onclick="leave()" style="--index: 1;" class="id1 lve">LEAVE</span>
-                  <span onclick="leave()" style="--index: 2;" class="id1 lve">LEAVE</span>
-                </div>
+              <div class="stack" style="--stacks: 3;">
+                <span onclick="leave()" style="--index: 0;" class="id1">LEAVE</span>
+                <span onclick="leave()" style="--index: 1;" class="id1">LEAVE</span>
+                <span onclick="leave()" style="--index: 2;" class="id1">LEAVE</span>
               </div>
-              
             </div>
             <div class="glitchscreen">
               <div class="exit-screen"></div>
             </div>
         </div>
+<<<<<<< HEAD
         <div class="la-underlay">
             <video class="la-bgvideo" src='https://i.imgur.com/KEnwbfZ.mp4' muted autoPlay loop >
+=======
+        <div class="la-overlay">
+            <video class="la-bgvideo" src="https://i.imgur.com/KEnwbfZ.mp4" muted autoPlay loop >
+>>>>>>> 63d400a1d17fce207c98fb3e61fbf443358310d4
         </div>
-        <div class="la-overlay"></div>
 
         <div class="la-sidenav">
             <a href="{{ url_for('home') }}" class="la-logo-bg" ><img src="../static/assets/logo.png" class="la-logo"></a>
             <a href="{{ url_for('blockchain') }}" class="la-sidenav-box">BLOCKS</a>
             <a href="{{ url_for('mine') }}" class="la-sidenav-box">MINE</a>
-            <a href="{{ url_for('node') }}" class="la-sidenav-box">NODES</a>
+            <a href="{{ url_for('transactions') }}" class="la-sidenav-box">SEND MONEY</a>
             {% if current_user.is_authenticated %}
                 <a href="{{ url_for('wallet') }}" class="la-sidenav-box">WALLET</a>
                 <a href="{{ url_for('logout') }}" class="la-sidenav-box">LOGOUT</a>
@@ -148,34 +93,35 @@
     }
 
     const isize = 250;
+    
     let leftDiv = document.getElementsByClassName("container-left")[0];
-      for (i = 0; i<isize; i++) {
-        let divElement = document.createElement('div');
-        divElement.className = 'time';
-        divElement.style.setProperty("--i:", i);
-        leftDiv.appendChild(divElement)
-      }
+    for (i = 0; i<isize; i++) {
+      let divElement = document.createElement('div');
+      divElement.className = 'time';
+      divElement.style.setProperty("--i:", i);
+      leftDiv.appendChild(divElement)
+    }
 
-      let rightDiv = document.getElementsByClassName("container-right")[0];
-      for (i = 0; i<isize; i++) {
-        let divElement = document.createElement('div');
-        divElement.className = 'time';
-        divElement.style.setProperty("--i:", i);
-        rightDiv.appendChild(divElement)
-      }
+    let rightDiv = document.getElementsByClassName("container-right")[0];
+    for (i = 0; i<isize; i++) {
+      let divElement = document.createElement('div');
+      divElement.className = 'time';
+      divElement.style.setProperty("--i:", i);
+      rightDiv.appendChild(divElement)
+    }
+
+    var time = Math.random();
+    var cols = document.getElementsByClassName('time');
+    for (i = 0; i < cols.length; i++) {
+      var weight = Math.abs(((getComputedStyle(cols[i]).getPropertyValue('--i')) - (isize/2))/10);
+      time = (Math.random()+1) * (25-weight) ;
+      cols[i].style.setProperty('--animation-time', time + 's');
+      time = Math.random() * 5;
+      cols[i].style.setProperty('--animation-delay', time + 's');
+    }
 
     function ani() {
-      var time = Math.random();
-      var cols = document.getElementsByClassName('time');
-      for (i = 0; i < cols.length; i++) {
-        var weight = Math.abs(((getComputedStyle(cols[i]).getPropertyValue('--i')) - (isize/2))/10);
-        time = (Math.random()+1) * (25-weight) ;
-        cols[i].style.setProperty('--animation-time', time + 's');
-        time = Math.random() * 5;
-        cols[i].style.setProperty('--animation-delay', time + 's');
-      }
-
-      var cols = document.getElementsByClassName('time');
+      var cols = document.getElementsByClassName('time')
       for (i = 0; i < cols.length; i++) {
         cols[i].classList.add('close');
       }
@@ -189,17 +135,11 @@
         for (i = 0; i < cols.length; i++) {
             cols[i].classList.add('stack-ani');
         }
-        var cols = document.getElementsByClassName('id2');
-        for (i = 0; i < cols.length; i++) {
-            cols[i].classList.add('stack-ani');
-        }
       }, 12500);
 
       setTimeout(function(){
         var glitchscreen = document.getElementsByClassName('glitchscreen')[0];
         glitchscreen.style.setProperty('z-index', 1000);
-        var infotainer = document.getElementsByClassName('infotainer')[0];
-        infotainer.style.setProperty('display', "grid");
         glitchscreen.style.setProperty('display', "flex");
         removeAllChildNodes(document.getElementsByClassName("container-left")[0]);
         removeAllChildNodes(document.getElementsByClassName("container-right")[0]);
@@ -207,13 +147,15 @@
     }
 
     function leave() {
-        var infotainer = document.getElementsByClassName('infotainer')[0];
-        infotainer.classList.add('shrink');
+        var cols = document.getElementsByClassName('id1');
+        for (i = 0; i < cols.length; i++) {
+            cols[i].classList.add('shrink');
+        }
         exit = document.getElementsByClassName('exit-screen')[0];
         exit.style.setProperty('opacity', "100%");
         setTimeout(function(){
           exit.classList.add('exit-wide');
-        }, 1250);
+        }, 2000);
         setTimeout(function(){
           exit.classList.add('exit-expand');
           setTimeout(function(){
@@ -224,11 +166,9 @@
           setTimeout(function(){
             var superdiv = document.getElementsByClassName('la-superdiv')[0];
             superdiv.style.setProperty('z-index', -100);
-          }, 1500);
-        }, 3250);
+          }, 2000);
+        }, 4000);
       }
-
-  </script>
-  
+  </script> 
     </body>
 </html>

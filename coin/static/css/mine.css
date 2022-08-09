@@ -8,7 +8,7 @@
     font-size: 30px;
     color: whitesmoke;
     display: block;
-    background-color: var(--primary-color);
+    background-color: #D6517d;
     position: fixed;
     left: 27.5%;
     top: 17.5%;
@@ -19,10 +19,10 @@
     top: 20vh;
     width: inherit; 
     height: 10vh;
-    background-image: var(--color2);
-    border-top: 5px var(--primary-color);
-    border-bottom: 5px var(--primary-color);
-    border-style:var(--borderstyle2);
+    background-image: linear-gradient(to right, rgba(214,81,125,0.05),rgba(214,81,125,0.25),rgba(214,81,125,0.50), rgba(214,81,125,0.75) ,rgba(214,81,125,0.50),rgba(214,81,125,0.25),rgba(214,81,125,0.05));
+    border-top: 5px #D6517d;
+    border-bottom: 5px #D6517d;
+    border-style:double;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
@@ -32,16 +32,15 @@
 }
 
 .mi-minebutton {
-    position: fixed;
-    height: 123px;
-    width: 123px;
+    height: 15vh;
+    width: 15vh;
     background: radial-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8), rgba(0,0,0,1));
-    border-radius: 100%;
-    border: 5px var(--primary-color);
-    border-style: var(--borderstyle4);
-    line-height: 110px;
+    border-radius: 15vh;
+    border: 5px #D6517d;
+    border-style:outset;
+    line-height: 8vw;
     font-size: 35px;
-    font-family: var(--cringefont);
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: whitesmoke;
     align-items: center;
     justify-content: center;
@@ -51,22 +50,22 @@
 }
 
 .mi-minebutton:hover {
-    height: 140px;
-    width: 140px;
-    line-height: 130px;
+    height: 17vh;
+    width: 17vh;
+    line-height: 9vw;
     font-size: 40px;
     transition: all .4s ease;
-    color: var(--primary-color);
+    color: #D6517d;
 }
 
 .loader {
     border: 8px solid rgba(214,81,125,0.25); /* Light grey */
-    border-top: 8px solid var(--primary-color); /* Blue */
+    border-top: 8px solid #D6517d; /* Blue */
     border-radius: 50%;
     width: 15vh;
     height: 15vh;
     animation: spin .75s linear infinite;
-    border-style:var(--borderstyle2);
+    border-style:double;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
@@ -84,7 +83,7 @@
     line-height: 9vw;
     font-size: 40px;
     transition: all .4s ease;
-    color: var(--primary-color);
+    color: #D6517d;
 }
 
 .visually-hidden {
@@ -92,9 +91,9 @@
 }
 
 .mine-label {
-    height: 164px;
-    width: 164px;
-    border-radius: 100%;
+    height: 20vh;
+    width: 20vh;
+    border-radius: 15vh;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -105,12 +104,12 @@
 input[type=checkbox]:checked + .mine-label .mi-minebutton {
     transition-duration: 1s;
     border: 8px solid rgba(214,81,125,0.25); /* Light grey */
-    border-top: 8px solid var(--primary-color); /* Blue */
+    border-top: 8px solid #D6517d; /* Blue */
     border-radius: 50%;
     width: 15vh;
     height: 15vh;
     animation: spin .75s linear infinite;
-    border-style:var(--borderstyle2);
+    border-style:double;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
@@ -135,22 +134,15 @@ input[type=checkbox]:checked + .mi-timer {
 }
 
 .mi-warn {
-    white-space: nowrap;
+    /* line-height: 8vw; */
     position: relative;
     font-size: 20px;
-    font-family: var(--cringefont);
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: whitesmoke;
     text-shadow: 2px 2px 2px #0F0F0F;
     margin: 2.5vw;
     transform: scale(1);
 	animation: pulse 4s infinite;
-}
-
-.left {
-    float: left;
-}
-.right {
-    float: right;
 }
 
 @keyframes pulse {
@@ -195,7 +187,7 @@ input[type=checkbox]:checked + .mi-timer {
     width: 50%;
     font-size: 17.5vh;
     overflow: hidden;
-    font-family: var(--cringefont);
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: red;
 }
 
@@ -253,8 +245,8 @@ input[type=checkbox]:checked + .mi-timer {
     width: 10px;
     height: 10px;
     border-radius: 5px;
-    background-color: var(--primary-color);
-    color: var(--primary-color);
+    background-color: #D6517d;
+    color: #D6517d;
     animation: dotFlashing 1s infinite linear alternate;
     animation-delay: .5s;
   }
@@ -271,8 +263,8 @@ input[type=checkbox]:checked + .mi-timer {
     width: 10px;
     height: 10px;
     border-radius: 5px;
-    background-color: var(--primary-color);
-    color: var(--primary-color);
+    background-color: #D6517d;
+    color: #D6517d;
     animation: dotFlashing 1s infinite alternate;
     animation-delay: 0s;
   }
@@ -282,15 +274,15 @@ input[type=checkbox]:checked + .mi-timer {
     width: 10px;
     height: 10px;
     border-radius: 5px;
-    background-color: var(--primary-color);
-    color: var(--primary-color);
+    background-color: #D6517d;
+    color: #D6517d;
     animation: dotFlashing 1s infinite alternate;
     animation-delay: 1s;
   }
   
   @keyframes dotFlashing {
     0% {
-        background-color: var(--primary-color);
+        background-color: #D6517d;
     }
     50%,
     100% {
@@ -300,8 +292,8 @@ input[type=checkbox]:checked + .mi-timer {
 
  
 .mining-text {
-    color: var(--primary-color);
-    font-family: var(--cringefont);
+    color: #D6517d;
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     position: fixed;
     top: 22vh;
     font-size: 3vh;
@@ -316,46 +308,66 @@ input[type=checkbox]:checked + .mi-timer {
 
 .mi-subbox {
     position: relative;
-    width: 27.75vw;
+    width: 26.75vw;
     height: 49vh;
     background: #f00;
-    top: 26vh;
+    top: 25vh;
     padding-top: 1vh;
     border-radius: 15px;
-    border: var(--primary-color);
+    border: #D6517d;
     border-width: 5px;
-    background-color: var(--primary-transparent);
+    background-color: rgba(214,81,125,0.1);
     color: white;
-    font-family: var(--cringefont);
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.5vw;
-    text-shadow: 0px 2px 2px var(--primary-color);
+    text-shadow: 0px 2px 2px #D6517d;
     margin-bottom: 2vw;
 }
 
 .mi-rewardinfo {
     float: left;
     text-align: left;
-    border-style: var(--borderstyle1);
-    /* -webkit-mask-image: radial-gradient(circle 10vh at 27.75vw -5vh, transparent 0, transparent 10vh, black 10vh);
-    mask-image: radial-gradient(circle 10vh at 27.75vw -5vh, transparent 0, transparent 10vh, black 10vh); */
+    border-style: ridge;
+    background: 
+     radial-gradient(
+      circle 20vh at 27.75vw -5vh,
+      transparent 10vh,
+      #D6517d 10vh calc(10vh + 3px),
+      rgba(214,81,125,0.1) 10vh
+    ) border-box;
+    -webkit-mask-image: radial-gradient(circle 10vh at 27.75vw -5vh, transparent 0, transparent 10vh, black 10vh);
+    mask-image: radial-gradient(circle 10vh at 0 0, transparent 0, transparent 10vh, black 10vh);
     margin-left: 3vw;
     padding-left: 1vw;
 }
+
 .mi-pendinginfo {
     float: right;
     text-align: right;
-    border-style:var(--borderstyle3);
-    /* -webkit-mask-image: radial-gradient(circle 10vh at 0 -5vh, transparent 0, transparent 10vh, black 10vh); */
-    /* mask-image: radial-gradient(circle 10vh at 0 0, transparent 0, transparent 10vh, black 10vh); */
+    border-style:groove;
+    background: 
+     radial-gradient(
+      circle 20vh at 0 -5vh,
+      transparent 10vh,
+      #D6517d 10vh calc(10vh + 3px),
+      rgba(214,81,125,0.1) 10vh
+    ) border-box;
+    -webkit-mask-image: radial-gradient(circle 10vh at 0 -5vh, transparent 0, transparent 10vh, black 10vh);
+    mask-image: radial-gradient(circle 10vh at 0 0, transparent 0, transparent 10vh, black 10vh);
     margin-right: 3vw;
     padding-right: 1vw;
 }
 
 .reward-text {
+<<<<<<< HEAD
     color: var(--textColor);
     font-family: var(--cringefont);
+=======
+    color: white;
+    font-family: "cyber",'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+>>>>>>> 63d400a1d17fce207c98fb3e61fbf443358310d4
     font-size: 15vw;
-    text-shadow: 5px 10px 20px var(--primary-color);
+    text-shadow: 5px 10px 20px #D6517d;
     text-align: center;
     margin-top: 2vw;
     margin-bottom: 2vw;

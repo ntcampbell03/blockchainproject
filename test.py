@@ -1,33 +1,24 @@
-import json
-from blockchainJson import *
-from nodedistributor import *
+from blockchain import *
+
 import gnupg
 import os
 
-# blockchain1 =  Blockchain()
-# blockchain1.writeChain()
-# print(blockchain1.chain)
+blockchain =  Blockchain()
+blockchain.difficulty = 5
 
-# da = NodeDistributor()
-# da.test()
+god = godWallet('god')
+me = Wallet('me')
+you = Wallet('you')
 
-# def get_db_connection():
-#     conn = psycopg2.connect(user="xpahdelqnuopvl",
-#                     password="edcc7b324dd36ca1f59a3849bf503c52e1e3499cd64835f88ad7f96401d3d31c",
-#                     host="ec2-100-26-39-41.compute-1.amazonaws.com",
-#                     port="5432",
-#                     database="d8lbeqdtcsvnma")
-#     return conn
+t = Transaction(god, me, 10)
+u = Transaction(me, you, 5)
 
 
-# conn = get_db_connection()
-# cur = conn.cursor()
-# print("WRITING1")
-# cur.execute('ALTER TABLE blockchain ADD PRIMARY KEY (id);')
+blockchain.addTransaction(t)
+blockchain.addTransaction(u)
+blockchain.addBlock()
 
-# cur.close()
-# conn.close()
-POG = "postgres:/pncmsjbkasqnny:3"
-POG = POG[:8] + "ql" + POG[8:]
-print(POG)
+print(blockchain.getBalance(me))
+
+
 

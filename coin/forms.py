@@ -42,7 +42,7 @@ class TransactionForm(FlaskForm):
 
 	amount = IntegerField('Amount', validators=[DataRequired()])
 
-	submit = SubmitField('Send Transaction')
+	submit = SubmitField('Make a Transaction!')
 
 class TransactionFormNotLoggedIn(FlaskForm):
 
