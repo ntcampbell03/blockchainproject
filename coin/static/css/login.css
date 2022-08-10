@@ -71,9 +71,9 @@
     text-align: left;
     
     margin-left: .5vw;
-    padding-left: 1vw;
     margin-right: 1vw;
     height: calc(80vh - 2vw);
+    padding: 1vh 1vw;
 
     border-radius: 15px;
     border-color: var(--primary-color);
@@ -81,9 +81,11 @@
     border-width: 5px;
     background-color: var(--color1);
     color: white;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 1.5vw;
     text-shadow: 0px 2px 2px var(--primary-color);
+
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: calc(1.1vw + .7vh);
 }
 
 .lo-titlecontainer {
