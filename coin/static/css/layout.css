@@ -330,7 +330,6 @@
   animation-name: exit-expand;
   animation-duration: 2s;
   animation-fill-mode: forwards;
-<<<<<<< HEAD
 }
 
 .infobox {
@@ -474,6 +473,4 @@ i {
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
-=======
->>>>>>> 63d400a1d17fce207c98fb3e61fbf443358310d4
 }
