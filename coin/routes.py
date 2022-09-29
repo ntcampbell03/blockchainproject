@@ -155,10 +155,10 @@ def addcoins():
 @app.get("/toggle-theme")
 def toggle_theme():
     current_theme = session.get("theme")
-    if current_theme == "dark":
-        session["theme"] = "light"
-    else:
+    if current_theme == "light":
         session["theme"] = "dark"
+    else:
+        session["theme"] = "light"
 
     return redirect(request.args.get("current_page"))
 
