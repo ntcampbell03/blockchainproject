@@ -9,6 +9,27 @@
 }
 
 :root {
+    --primary-color: #A7C6ED;
+    --primary-transparent: #C7DBF4;
+    --color1: #C7DBF4;
+    --color2: #ed7b32;
+    --color3: #282424;
+    --color4: #A7C6ED;
+    --cringefont: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    --borderstyle1: solid; 
+    --borderstyle2: solid;
+    --borderstyle3: solid;
+    --borderstyle4: solid;
+    --toggleVisibility: hidden;
+    --opacity: 1;
+    --background-color: #dafefe;
+    --fontsizemultiplier: 1.05;
+    --bigtextColor: #276289;
+    --textColor: #004151;
+    --shadowDelete: none;
+}
+
+:root.light-mode {
     --primary-color: #D6517d;
     --primary-transparent: rgba(214,81,125,0.1);
     --color1: rgba(214,81,125,0.25);
@@ -28,27 +49,6 @@
     --textColor: white;
     --shadowDelete: 0px 2px 2px 1px #0F0F0F;
     
-}
-
-:root.dark-mode {
-    --primary-color: #A7C6ED;
-    --primary-transparent: #C7DBF4;
-    --color1: #C7DBF4;
-    --color2: #ed7b32;
-    --color3: #282424;
-    --color4: #A7C6ED;
-    --cringefont: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    --borderstyle1: solid; 
-    --borderstyle2: solid;
-    --borderstyle3: solid;
-    --borderstyle4: solid;
-    --toggleVisibility: hidden;
-    --opacity: 1;
-    --background-color: #dafefe;
-    --fontsizemultiplier: 1.05;
-    --bigtextColor: #276289;
-    --textColor: #004151;
-    --shadowDelete: none;
 }
 
 small {

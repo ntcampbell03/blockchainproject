@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="{{ 'dark-mode' if session.get('theme') == 'dark' }}">
+<html lang="en" class="{{ 'light-mode' if session.get('theme') == 'light' }}">
     <head>
         <meta charset="utf-8" />
         <title>{% block title %}{% endblock %}</title>
@@ -20,16 +20,16 @@
         <span class="la-nodetext">Node: #{{ current_user.node }}</span>
         <div class="la-modetoggle">
           <a href="{{ url_for('toggle_theme', current_page=request.path) }}">
-            {% if session['theme'] == "dark" %}
-              Performance
-            {% else %}
+            {% if session['theme'] == "light" %}
               Quality
+            {% else %}
+              Performance
             {% endif %}
             <div class="tooltip"><i class="fa fa-question-circle-o" aria-hidden="true" style="margin-left:3px;"></i>
               {% if session['theme'] == "dark" %}
-                <span class="tooltiptext">Click to switch to a quality optimized version of the website</span>
-              {% else %}
                 <span class="tooltiptext">Click to switch to a performance optimized version of the website</span>
+              {% else %}
+                <span class="tooltiptext">Click to switch to a quality optimized version of the website</span>
               {% endif %}
             </div>
           </a>
