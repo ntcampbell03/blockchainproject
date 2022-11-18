@@ -8,16 +8,22 @@ Tessaract - Home
     <div class="contentbg darkbg">
     </div>
     <div class="contentbg">
+        TITLE
     <div class="ho-subbox ho-floatLeft">
-        Tessaract is a revolutionary cryptocurrency for money transactions. Tessaract functions using the SHA256 hashing algorithm, the PGP encryption method for signing transactions, and blockchain verification technology.
+        Tessaract is a revolutionary cryptocurrency for monetary transactions. Tessaract functions using the SHA256 hashing algorithm, the PGP encryption method for signing transactions, and blockchain verification technology.
         <br><br>
         This website was created using Flask, PostgreSQL, and Heroku. 
         <br><br>
         Click the question mark in the top right corner to learn more about the creators.
     </div>
     <div class="ho-subbox ho-floatRight">
-        This website is a simulation and does not actually have any monetary value attached to the coins. To add coins to your balance, please click the button below. Mine a block to receive the coins.
-        <a href="{{ url_for('addcoins') }}" class="ho-Button" class="ho-loginBox">Add 20 Coins</a>
+        This website is a simulation and does not actually have any monetary value attached to the coins.
+        <br><br>
+        Before adding coins to your balance you must be logged in.
+        <br><br>
+        Once logged in, navigate to your wallet and enter <i>testaccount</i> as the reciever, and enter your desired number of coins as the amount. Any crypto sent to <i>testaccount</i> will be added to your balance.
+        <br><br>
+        Once the current block is mined, the coins will be in your wallet.
     </div>
     </div>
 </body>
