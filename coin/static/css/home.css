@@ -8,8 +8,8 @@
     border-radius: 15px;
     border: var(--primary-color);
     border-width: 5px;
-    background-color: rgba(214,81,125,0.25);
-    color: white;
+    background-color: var(--primary-transparent);
+    /* color: white; */
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.5vw;
     text-shadow: 0px 2px 2px var(--primary-color);
@@ -24,8 +24,10 @@
     border-style: var(--borderstyle1);
     margin-left: 3vw;
     padding-left: 1vw;
+    padding-right: 1vw;
     margin-right: 1.5vw;
     top: 5vh;
+
 }
 
 .ho-floatRight{
@@ -35,6 +37,7 @@
     border-style: var(--borderstyle1);
     margin-left: 1.5vw;
     padding-left: 1vw;
+    padding-right: 1vw;
     margin-right: 3vw;
     top: 5vh;
 }
