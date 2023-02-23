@@ -66,7 +66,7 @@ class NodeDistributor:
         pendingTrans = []
         temp = []
         clen = 0
-        longestChain = 0
+        longestChain = Blockchain(True)
         i = 1
         for chain in self.generateNodeList():
             if chain.verifyBlockchain():
