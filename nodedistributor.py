@@ -42,7 +42,8 @@ class NodeDistributor:
             return 1
         if self.nodeCount < math.ceil(self.userCount / CONFIG['nodes']['frequency']):
             self.provisionNode()
-        return random.randint(1, self.getNodeCount())
+        # return random.randint(1, self.getNodeCount())
+        return 1 # TODO *+*+*+*+*+*+*+*+*+*+*
 
     def getNode(self, index=1):
         conn = get_db_connection()
