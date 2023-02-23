@@ -10,21 +10,20 @@ import psycopg2
 gpg = gnupg.GPG()
 # gpg = gnupg.GPG(gnupghome='/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages')
 # gpg = gnupg.GPG(gnupghome='/Users/nikhiljain/Desktop/blockchainproject/env/lib/python3.9/site-packages/')
-# gpg = gnupg.GPG(gnupghome='/Users/rithwikbabu/Documents/appcode/blockchainproject/env/lib/python3.9/site-packages/')
+# gpg = gnupg.GPG(gnupghome='/Users/rithwikbabu/Documents/GitHub/blockchainproject/env/lib/python3.9/site-packages')
 
 gpg.encoding = 'utf-8'
 
 def get_db_connection():
     url = os.environ["CRUNCHY_DATABASE_URL"]
-    # url = "postgres://nlydgbgfxpamym:b4c2d2f8e38a021ceb0d5b733a473d237ed0c9dbb28f0d2c685c3ce8b1f8de92@ec2-54-86-106-48.compute-1.amazonaws.com:5432/dcq1sg4ngoqh2m"
+    # url = "postgres://postgres:UlWFrxixw9haCj7lZ49NrGzXdfLTE5HDi24ru634wPW0vy3d1fz1BRTQJJT48dHV@p.oyoqg2imozh7jop7q7pgve43yq.db.postgresbridge.com:5432/postgres"
     url = url[:8] + "ql" + url[8:]
     conn = psycopg2.connect(url)
     return conn
-    
 
 class Blockchain:
     def __init__(self, read=False):
-        self.curchain = 2
+        self.curchain = 1
         if read:
             readChain = self.readChain()
             self.chain = readChain.chain
@@ -179,9 +178,10 @@ class Blockchain:
         return genesis
 
     def initChain(self):
+
         conn = get_db_connection()
         cur = conn.cursor()
-        cur.execute('CREATE TABLE IF NOT EXISTS blockchain (id INTEGER, json TEXT, PRIMARY KEY (id));')
+        cur.execute('CREATE TABLE blockchain (id INTEGER, json TEXT);')
         cur.execute('INSERT INTO blockchain (id, json)'
                     'VALUES (%s, %s)',
                     (
