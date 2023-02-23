@@ -16,7 +16,7 @@ url = url[:8] + "ql" + url[8:]
 app.config['SQLALCHEMY_DATABASE_URI'] = url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-blockchainObj = Blockchain(True)
+blockchainObj = Blockchain(False)
 distributorObj = NodeDistributor()
 # blockchainObj.difficulty = 5
 
