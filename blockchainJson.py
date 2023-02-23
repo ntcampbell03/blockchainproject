@@ -24,7 +24,7 @@ def get_db_connection():
 
 class Blockchain:
     def __init__(self, read=False):
-        self.curchain = 1
+        self.curchain = 2
         if read:
             readChain = self.readChain()
             self.chain = readChain.chain
