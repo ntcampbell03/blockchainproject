@@ -10,8 +10,10 @@ from blockchainJson import *
 # for table in tables:
 #     cur.execute(f"DELETE FROM {table[0]}")
 # for table in tables:
-#     cur.execute(f"DROP TABLE {table[0]}")
+#     cur.execute(f'DROP TABLE "{table[0]}";')
 # conn.commit()
+# tables = cur.fetchall()
+# print(tables)
 
 # ======INIT  TABLE======
 
